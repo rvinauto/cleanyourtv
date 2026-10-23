@@ -1,0 +1,83 @@
+name: Bing Wallpaper Feed
+
+on:
+  schedule:
+    - cron: '30 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bing-wallpaper-feed
+  cancel-in-progress: false
+
+jobs:
+  feed:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate feed.json (Online Wallpapers feed v1)
+        run: |
+          cat > gen.py <<'PY'
+          import json, re, sys, urllib.request
+          from urllib.parse import urlsplit
+          UA = {"User-Agent": "Mozilla/5.0 cleanyourtv-feed"}
+          def get(u):
+              with urllib.request.urlopen(urllib.request.Request(u, headers=UA), timeout=30) as r:
+                  return r.read()
+          class NoRedir(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self, *a, **k): return None
+          opener = urllib.request.build_opener(NoRedir)
+          def ok(u):
+              # The app never follows redirects and rejects images > 10 MB.
+              try:
+                  req = urllib.request.Request(u, headers=UA, method="HEAD")
+                  with opener.open(req, timeout=30) as r:
+                      n = int(r.headers.get("Content-Length") or 0)
+                      return r.status == 200 and r.headers.get("Content-Type", "").startswith("image/") and 0 < n < 10 * 1024 * 1024
+              except Exception:
+                  return False
+          seen, items = set(), []
+          for idx in (0, 7):
+              data = json.loads(get(f"https://www.bing.com/HPImageArchive.aspx?format=js&idx={idx}&n=8&mkt=zh-CN"))
+              for im in data.get("images", []):
+                  base = im.get("urlbase", "")
+                  if not base.startswith("/") or base in seen: continue
+                  seen.add(base)
+                  url = next((u for u in ("https://www.bing.com" + base + s for s in ("_UHD.jpg", "_1920x1080.jpg")) if ok(u)), None)
+                  if not url: continue
+                  cap = " — ".join(x for x in (im.get("title", "").strip(), im.get("copyright", "").strip()) if x)
+                  items.append({"id": (im.get("startdate", "") + "-" + im.get("hsh", "")).strip("-") or base,
+                                "url": url, "caption": cap[:500]})
+          # Validate against OnlineWallpapers.parse rules.
+          assert 0 < len(items) <= 200
+          pat = re.compile(r"(^|.*/)\.\.?(/.*|$)")
+          for it in items:
+              assert 0 < len(it["id"].strip()) and len(it["id"]) <= 256 and len(it["url"]) <= 2048 and len(it["caption"]) <= 500
+              p = urlsplit(it["url"])
+              assert p.scheme == "https" and p.hostname and not p.username and not p.fragment and "\\" not in it["url"] and not pat.match(p.path)
+          feed = json.dumps({"version": 1, "wallpapers": items}, ensure_ascii=False, indent=1) + "\n"
+          assert len(feed.encode()) < 256 * 1024
+          open(sys.argv[1] if len(sys.argv) > 1 else "feed.json", "w", encoding="utf-8").write(feed)
+          print(f"{len(items)} wallpapers, {len(feed.encode())} bytes")
+          PY
+          python3 gen.py feed.json
+      - name: Publish to wallpaper-feed branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git init -q pub && cd pub
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          if git fetch -q --depth 1 origin wallpaper-feed; then
+            git checkout -q -B wallpaper-feed FETCH_HEAD
+          else
+            git checkout -q --orphan wallpaper-feed
+          fi
+          cp ../feed.json feed.json
+          git add feed.json
+          if git diff --cached --quiet; then echo "Feed unchanged"; exit 0; fi
+          git commit -qm "Update Bing wallpaper feed $(date -u +%F)"
+          git push -q origin wallpaper-feed
