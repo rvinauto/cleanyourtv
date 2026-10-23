@@ -6,6 +6,11 @@ android {
     namespace 'com.gathin.tvhome'
     compileSdk 34
 
+    buildFeatures {
+        // Compile out debug-only self-checks instead of retaining a runtime ApplicationInfo branch.
+        buildConfig true
+    }
+
     defaultConfig {
         // Opt-in identity for firmware with a package-name HOME allowlist; see docs/devices/xiaomi-mitv-aetp0-dofus.md.
         applicationId providers.gradleProperty('launcherApplicationId').getOrElse('com.gathin.tvhome')
@@ -45,4 +50,6 @@ dependencies {
     implementation 'androidx.dynamicanimation:dynamicanimation:1.0.0'
     // Test only (never in the APK): plain JVM tests for the module card validators, src/test.
     testImplementation 'junit:junit:4.13.2'
+    // Android's org.json implementation is a stub in local JVM tests. This never enters the APK.
+    testImplementation 'org.json:json:20240303'
 }

@@ -89,6 +89,10 @@ A new key needs one there in the same pull request.
 | `dock_opacity` | 30 to 100 | Opacity of the dock's band, in percent, so a wallpaper shows through it; 100 by default (the cinematic shelf keeps its own translucent band). Launcher settings on the TV offers 100, 70, 50 or 30, which wins until the next theme push or Follow theme |
 | `wallpaper_captions` | bool | With a rotating collection, the shown picture's name under the top-right buttons, from `wallpapers/captions.txt` (`001.jpg<TAB>Dusk over the peaks`, one per line); a picture without a line shows no name (`false` by default) |
 | `wallpaper_moods` | object | A rotating collection grouped by time of day: `{"morning": [...], "evening": [...], "night": [...]}` with file names from `wallpapers/`. Morning runs from sunrise to noon, evening until half an hour after sunset, night the rest, with the sun at config.xml's `latitude` and `longitude` (07:00 and 18:30 without them); a missing group rotates through every picture. Unset by default |
+| `online_wallpaper` | bool | Optional HTTPS feed and private cache (`false` by default); see Online wallpapers below. Off performs no online cache reads or background work |
+| `online_wallpaper_feed` | string | HTTPS feed URL, empty by default; never sent anywhere except the configured server |
+| `online_wallpaper_refresh_hours` | 1 to 168 | Minimum successful refresh interval in hours, default `12` |
+| `online_wallpaper_cache_count` | 1 to 30 | Maximum retained online images, default `10`; each image is limited to 10 MiB |
 | `tile_menu` | bool | Hold OK or press the remote's Menu key on a tile to open a small menu: Move, Remove from Home (with `app_library`) and App info. `false` (the default) keeps holding OK as a shortcut to the app's App info page and leaves Menu unchanged |
 | `festival` | string | Turns on a festive skin: the network pill becomes a diya whose flame follows the connection, Inputs a temple bell, Settings a marigold, and the first Home of the day gets a petal shower. `dussehra` and `diwali` have built-in greetings |
 | `festival_until` | `YYYY-MM-DD` | Last day the festive skin shows; it switches itself off after that. A malformed date turns it off |
@@ -146,12 +150,88 @@ An empty collection falls back to `wallpaper.jpg`, or the background colour if n
 Selection is random without an immediate repeat when alternatives exist. The current image and its
 change time survive app/process restarts. Rotation runs only while Home is visible; on return from
 another app, an overdue background changes then. Images are decoded on a worker thread and bounded
-to the screen size. There is no download service, Internet permission or computer-side scheduler.
+to the screen size. The optional online feed described below uses the Internet permission; local
+wallpapers need no network. There is no download service or computer-side scheduler.
 The original system idle screensaver is left unchanged.
 
 On the TV, Launcher settings has a Wallpaper row: pick one picture from the collection (or the theme's
 `wallpaper.jpg`), or None. A pick shows that one picture and stops the rotation until you choose Theme
 default, press Follow theme, or push a theme again.
+
+### Online wallpapers (optional)
+
+This fork can add a cached HTTPS collection to the existing local rotation. It is off by default.
+Set these keys in `config.json`, or the corresponding resources in `launcher/app/src/main/res/values/config.xml`:
+
+```json
+{
+  "online_wallpaper": true,
+  "online_wallpaper_feed": "https://example.com/wallpapers.json",
+  "online_wallpaper_refresh_hours": 12,
+  "online_wallpaper_cache_count": 10,
+  "wallpaper_rotation_minutes": 30,
+  "wallpaper_captions": true
+}
+```
+
+Resource values are clamped to 1–168 hours and 1–30 images; invalid theme values follow the usual
+configuration fallback. The feed must have this shape (version is the number `1`):
+
+```json
+{
+  "version": 1,
+  "wallpapers": [
+    { "id": "001", "url": "https://example.com/001.jpg", "caption": "Example" }
+  ]
+}
+```
+
+`id` is a nonempty string (up to 256 characters); `caption` is optional (up to 500 characters).
+Duplicate IDs or URLs keep their first entry. Unknown fields have no effect: a feed cannot change
+configuration or execute anything. Feed and image URLs must be HTTPS, without credentials,
+fragments or parent path traversal. Redirect responses are rejected. Only use public feed URLs;
+no authentication, cookies or credentials are configured by this feature.
+
+On Home creation, a worker loads the last valid cache. If its last successful refresh is within
+the interval, no request is made. Otherwise that worker makes one refresh attempt. There is no
+periodic service, retry loop or network work on the UI thread. Returning to Home in the same
+activity does not retry a failed refresh; a later Home recreation checks again. ETag and
+Last-Modified validators are scoped to the feed and sent as If-None-Match / If-Modified-Since;
+304 retains the pictures and advances the successful-refresh timestamp.
+All Home instances share one refresh queue. Its worker holds only the application context and
+a weak UI target; destroying Home cancels its queued/running task. The worker thread retires when idle.
+
+The app's private `files/online-wallpapers/` directory holds generated `image-*.jpg` filenames
+(the actual format may be JPEG, PNG or WebP) and `state.json`. State contains a feed hash,
+success time, HTTP validators and a list of generated files, entry hashes and captions; it does
+not store URLs. This directory is separate from the external theme `wallpapers/` directory and
+is not exposed by the theme provider. Turning the option off preserves the cache without reading
+it. Clearing app storage removes it. No new third-party library ships in the APK.
+
+Requests have 5-second connect and 8-second read timeouts, a 30-second transfer limit, a 256 KiB
+feed limit (at most 200 entries) and a 10 MiB image limit. Images must pass an Android bounds check
+(at most 8.4 million pixels) and an actual sampled decode. A refresh downloads the first configured
+number of unique feed entries to temporary files, then atomically commits its state only after
+all downloads validate. It retains the newest entries first, fills remaining places from older
+cached entries, and prunes excess files after commit. A failed refresh leaves the old cache intact.
+Image/state contents are fsynced, and directory entries are synced before state publication and
+before pruning. If a metadata sync fails after the state rename, both cache generations are kept;
+pruning waits until the currently valid state can be made durable. An interrupted temporary state
+file never replaces the previous state.
+With the maximum count, allow roughly 300 MiB for the cache plus temporary refresh space.
+
+Existing cached pictures can be selected at startup. Newly downloaded pictures join the local
+collection only at the next ordinary rotation interval; completion never replaces the current
+bitmap or resets the rotation clock. With rotation set to `0`, a downloaded collection is first
+eligible at the next Home recreation. Shuffle/sequential order, dimming and captions still apply;
+online captions use the feed's text. Local mood groups still filter the combined collection by
+filename, so a matching mood group takes precedence over ungrouped online images.
+`"wallpaper": false`, Wallpaper → None, and an explicit local picture choice suppress online work.
+
+HTTP errors, DNS/TLS failures, malformed/empty feeds, invalid images or disk errors keep the last
+good on-screen bitmap and cache. Without usable cached images, the original local collection,
+`wallpaper.jpg` or configured background remains available. With `online_wallpaper=false`, the
+local wallpaper behavior is unchanged.
 
 ## Reduced motion
 

@@ -236,6 +236,13 @@
          pictures in wallpapers/ ("01-dusk.jpg<TAB>Dusk over the peaks", one per line). A picture without a line
          shows no name. Can also be set with "wallpaper_captions": true in a theme's config.json. -->
     <bool name="wallpaper_captions">false</bool>
+    <!-- Optional HTTPS wallpaper feed. Off means no cache reads, downloads or online worker.
+         A theme may override these four keys. Refresh hours: 1..168; cached images: 1..30.
+         The private cache is separate from theme wallpapers; see themes/README.md. -->
+    <bool name="online_wallpaper">false</bool>
+    <string name="online_wallpaper_feed" translatable="false"></string>
+    <integer name="online_wallpaper_refresh_hours">12</integer>
+    <integer name="online_wallpaper_cache_count">10</integer>
     <!-- Rotating wallpapers grouped by the time of day, as JSON: {"morning": [file names], "evening": [...],
          "night": [...]}. While set, the rotation picks only from the group that fits now: morning from sunrise to
          noon, evening until half an hour after sunset, night the rest, with the sun at latitude and longitude (07:00
@@ -246,7 +253,7 @@
     <!-- Hold OK on a tile opens a small menu: Move (picks the tile up for reordering), Remove from Home (only with
          app_library) and App info. false keeps the old behaviour: holding OK opens the app's App info page.
          Can also be set with "tile_menu": true in a theme's config.json. -->
-    <bool name="tile_menu">false</bool>
+    <bool name="tile_menu">true</bool>
 
     <!-- Grid rows left visible under the dock on the home screen. 0 = dock sits at the very bottom. Tiles shrink if
          the dock, its title and this many rows would not otherwise fit the screen height. -->

@@ -200,6 +200,7 @@ final class Config {
     static final String GLOW_RADIAL = "radial", GLOW_HORIZON = "horizon";
     /** Show each rotating wallpaper's name from wallpapers/captions.txt (config.xml / theme wallpaper_captions). */
     final boolean wallpaperCaptions;
+    final OnlineWallpapers.Options onlineWallpaper;
     /** Answer VIEW_INPUTS with the Inputs menu (handle_view_inputs); see InputsRequestActivity. */
     final boolean handleViewInputs;
     /** Hold OK on a tile opens a menu (Move, Remove from Home, App info) instead of App info (config.xml / theme tile_menu). */
@@ -218,7 +219,8 @@ final class Config {
                    List<RaceWeekend.Race> raceCalendar, boolean cinematicHome, boolean ambientGlow, boolean appGlow, boolean fadeRows, int homeIdleClockMinutes,
                    boolean keyFilter, boolean dockGlass, String glowStyle, boolean wallpaperCaptions,
                    boolean handleViewInputs, boolean tileMenu, boolean dockEvenPadding, boolean cinematicDots, boolean cinematicWhiteFocus, boolean wifiStatusColor, int cinematicScrim, int cinematicArt,
-                   Map<String, Set<String>> wallpaperMoods) {
+                   Map<String, Set<String>> wallpaperMoods, OnlineWallpapers.Options onlineWallpaper) {
+        this.onlineWallpaper = onlineWallpaper;
         this.handleViewInputs = handleViewInputs;
         this.tileMenu = tileMenu;
         this.inputKeycodes = inputKeycodes;
@@ -515,7 +517,23 @@ final class Config {
                 Math.max(0, Math.min(100, skyIntensity)), settingsKeycodes, settingsKeyPanel, restoreKeyServices, wallpaperEnabled, wallpaper,
                 wallpapers, rotationMinutes, wallpaperDim, dockOpacity, wallpaperOrder, applied,
                 festival, inputKeycodes, appKeys, stockHomeRedirect, json == null ? Collections.emptyList() : raceCalendar(json), cinematic, ambientGlow, appGlow, fadeRows,
-                Math.max(0, idleClockMinutes), keyFilter, dockGlass, glowStyle, wallpaperCaptions, handleViewInputs, tileMenu, dockEvenPadding, cinematicDots, cinematicWhiteFocus, wifiStatusColor, cinematicScrim, cinematicArt, wallpaperMoods);
+                Math.max(0, idleClockMinutes), keyFilter, dockGlass, glowStyle, wallpaperCaptions, handleViewInputs, tileMenu, dockEvenPadding, cinematicDots, cinematicWhiteFocus, wifiStatusColor, cinematicScrim, cinematicArt, wallpaperMoods,
+                onlineWallpapers(res, json, wallpaperEnabled && chosen == null));
+    }
+
+    /** Keep these locals out of load's large layout/configuration pass. */
+    private static OnlineWallpapers.Options onlineWallpapers(Resources res, JSONObject json, boolean allowed) {
+        boolean enabled = res.getBoolean(R.bool.online_wallpaper);
+        String feed = res.getString(R.string.online_wallpaper_feed);
+        int hours = res.getInteger(R.integer.online_wallpaper_refresh_hours);
+        int count = res.getInteger(R.integer.online_wallpaper_cache_count);
+        if (json != null) {
+            enabled = bool(json, "online_wallpaper", enabled);
+            feed = string(json, "online_wallpaper_feed", feed);
+            hours = integer(json, "online_wallpaper_refresh_hours", hours, 1, 168);
+            count = integer(json, "online_wallpaper_cache_count", count, 1, 30);
+        }
+        return new OnlineWallpapers.Options(enabled && allowed, feed, hours, count);
     }
 
     /**

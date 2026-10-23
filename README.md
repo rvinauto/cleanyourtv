@@ -475,7 +475,11 @@ apps), which is why the report names that loss per package instead of calling it
 ## The launcher
 
 A small native home screen for Android TV: **about 474 KB**, plain Java, built for TVs with 1 GB of RAM.
-No blur, no video, no network permission, no background services.
+No blur, no video, no background services. This fork adds the Internet permission for an
+[optional HTTPS wallpaper feed with a private cache](themes/README.md#online-wallpapers-optional),
+disabled by default; local wallpaper operation remains offline.
+See the [Online Wallpapers handoff](docs/HANDOFF-2026-10-23-online-wallpapers.md) for the
+verified build results, remaining device checks and manual APK workflow instructions.
 
 The **TV** needs Android 8.0 (API 26) or newer: `minSdk` is a compile-time floor in
 [`launcher/app/build.gradle`](launcher/app/build.gradle), and the install script asks the TV for

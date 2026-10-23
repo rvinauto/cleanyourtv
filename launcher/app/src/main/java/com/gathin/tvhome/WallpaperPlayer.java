@@ -5,6 +5,10 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.os.Handler;
+import android.os.Looper;
+import android.system.Os;
+import android.system.OsConstants;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -17,23 +21,35 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.File;
+import java.io.FileDescriptor;
+import java.io.IOException;
+import java.lang.ref.WeakReference;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 /** Displays and rotates a theme's local wallpaper images while Home is visible. */
 final class WallpaperPlayer {
     private final FrameLayout root;
     private final ImageView image;
     private final List<File> files;
+    private final List<File> localFiles;
+    private final Map<String, String> localNames;
+    private final boolean online;
+    private Future<?> onlineTask;
+    private volatile OnlineWallpapers.Snapshot pendingOnline;
+    private OnlineWallpapers.Snapshot appliedOnline;
+    private boolean onlineLoading;
     private final long interval;
     private final String order;
     private final SharedPreferences preferences;
@@ -64,6 +80,9 @@ final class WallpaperPlayer {
     WallpaperPlayer(Context context, FrameLayout root, Config config) {
         this.root = root;
         files = new ArrayList<>(config.wallpapers);
+        localFiles = new ArrayList<>(files);
+        online = config.onlineWallpaper.enabled;
+        onlineLoading = online;
         interval = config.wallpaperRotationMinutes * 60_000L;
         bitmapConfig = config.wallpaperTrueColor ? Bitmap.Config.ARGB_8888 : Bitmap.Config.RGB_565;
         // The dim is painted into the picture (decode), so no full-screen shade layer is drawn on every frame.
@@ -75,7 +94,8 @@ final class WallpaperPlayer {
         longitude = moods.isEmpty() ? "" : context.getString(R.string.longitude);
         // Playback state belongs to one collection. Changing the collection starts from its first
         // picture instead of resuming a filename that belonged to the previous one.
-        String collection = collectionKey(files);
+        String collection = collectionKey(files) + (!online ? ""
+                : ":online:" + Integer.toHexString(config.onlineWallpaper.feed.hashCode()));
         if (!collection.equals(preferences.getString("collection", ""))) {
             preferences.edit().putString("collection", collection)
                     .remove("image").remove("changed").apply();
@@ -86,14 +106,76 @@ final class WallpaperPlayer {
         image = new ImageView(context);
         image.setScaleType(ImageView.ScaleType.CENTER_CROP);
         image.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
-        names = config.wallpaperCaptions && config.wallpaperEnabled && !files.isEmpty()
+        localNames = config.wallpaperCaptions && config.wallpaperEnabled && !files.isEmpty()
                 ? WallpaperCaptions.read(files.get(0).getParentFile()) : Collections.emptyMap();
-        caption = names.isEmpty() ? null : makeCaption(context, root);
-        if (config.wallpaperEnabled && !files.isEmpty()) {
+        names = new HashMap<>(localNames);
+        caption = names.isEmpty() && !(online && config.wallpaperCaptions)
+                ? null : makeCaption(context, root);
+        if (config.wallpaperEnabled && (!files.isEmpty() || online)) {
             root.addView(image, 0, new FrameLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             showFirst();
         }
+        if (online) onlineTask = Online.start(context.getApplicationContext(), config.onlineWallpaper, this);
+    }
+
+    /** Only the application and a weak target cross the worker boundary; no view or Activity is retained. */
+    private static final class Online implements OnlineWallpapers.Platform {
+        private static final Handler MAIN = new Handler(Looper.getMainLooper());
+        private static final Online PLATFORM = new Online();
+
+        static Future<?> start(Context app, OnlineWallpapers.Options options, WallpaperPlayer player) {
+            WeakReference<WallpaperPlayer> target = new WeakReference<>(player);
+            return OnlineWallpapers.submit(() -> {
+                try {
+                    OnlineWallpapers cache = new OnlineWallpapers(app.getFilesDir(), options, PLATFORM);
+                    OnlineWallpapers.Snapshot cached = cache.load();
+                    post(target, cached, true);
+                    post(target, cache.refresh(cached, System.currentTimeMillis()), false);
+                } catch (Exception | OutOfMemoryError | StackOverflowError failure) {
+                    post(target, null, true);
+                }
+            });
+        }
+
+        private static void post(WeakReference<WallpaperPlayer> target, OnlineWallpapers.Snapshot snapshot, boolean initial) {
+            MAIN.post(() -> {
+                WallpaperPlayer player = target.get();
+                if (player != null && !player.closed) player.receiveOnline(snapshot, initial);
+            });
+        }
+
+        @Override public OnlineWallpapers.Response get(String url, String etag, String modified) throws IOException {
+            return OnlineWallpapers.request(url, etag, modified);
+        }
+
+        @Override public boolean valid(File image) { return validOnlineImage(image); }
+
+        @Override public void sync(File directory) throws IOException {
+            try {
+                FileDescriptor fd = Os.open(directory.getPath(), OsConstants.O_RDONLY, 0);
+                try { Os.fsync(fd); } finally { Os.close(fd); }
+            } catch (android.system.ErrnoException failure) {
+                throw new IOException(failure);
+            }
+        }
+    }
+
+    private void receiveOnline(OnlineWallpapers.Snapshot snapshot, boolean initial) {
+        if (snapshot != null) pendingOnline = snapshot;
+        if (!initial) return; // newly downloaded files wait for the ordinary rotation clock
+        if (snapshot != null) {
+            admitOnline();
+            if (!snapshot.entries.isEmpty() && WallpaperRotation.find(files,
+                    preferences.getString("image", "")) == null) {
+                preferences.edit().putString("image", snapshot.entries.get(0).file.getName()).apply();
+            }
+        }
+        onlineLoading = false;
+        if (preferences.getLong("changed", 0) == 0) {
+            preferences.edit().putLong("changed", System.currentTimeMillis()).apply();
+        }
+        update();
     }
 
     /**
@@ -114,7 +196,7 @@ final class WallpaperPlayer {
                 root.setBackground(null);
                 displayed = first.getName();
                 showCaption(false);
-                if (!displayed.equals(previous)) {
+                if (!online && !displayed.equals(previous)) {
                     preferences.edit().putString("image", displayed)
                             .putLong("changed", System.currentTimeMillis()).apply();
                 }
@@ -150,19 +232,32 @@ final class WallpaperPlayer {
         active = false;
         closed = true;
         decoder.shutdownNow();
+        if (onlineTask != null) onlineTask.cancel(true);
     }
 
     void update() {
-        if (!active || closed || loading || files.isEmpty()) return;
+        if (!active || closed || loading || onlineLoading) return;
         String previous = preferences.getString("image", "");
+        long changed = preferences.getLong("changed", 0);
+        if (pendingOnline != appliedOnline && WallpaperRotation.due(changed, System.currentTimeMillis(), interval)) {
+            admitOnline();
+        }
+        if (files.isEmpty()) return;
         // A picture outside the time of day's group (the group changed) is replaced at once, not after the interval.
         List<File> playable = playable();
         File selected = WallpaperRotation.find(playable, previous);
-        long changed = preferences.getLong("changed", 0);
         if (selected == null || WallpaperRotation.due(changed, System.currentTimeMillis(), interval)) {
             selected = WallpaperRotation.pick(playable, previous, order, random);
         }
-        if (selected == null || selected.getName().equals(displayed)) return;
+        if (selected == null) return;
+        if (selected.getName().equals(displayed)) {
+            // The synchronous local fallback may already show this image before the cache has loaded.
+            if (online && (!displayed.equals(previous) || changed == 0)) {
+                preferences.edit().putString("image", displayed)
+                        .putLong("changed", System.currentTimeMillis()).apply();
+            }
+            return;
+        }
         File next = selected;
         loading = true;
         decoder.execute(() -> {
@@ -188,6 +283,27 @@ final class WallpaperPlayer {
                 }
             });
         });
+    }
+
+    /** No download callback changes the displayed bitmap, the rotation clock or its remembered position. */
+    private void admitOnline() {
+        if (pendingOnline == null || pendingOnline == appliedOnline) return;
+        appliedOnline = pendingOnline;
+        files.clear();
+        files.addAll(WallpaperRotation.withOnline(localFiles, appliedOnline.entries));
+        names.clear();
+        names.putAll(localNames);
+        for (OnlineWallpapers.Entry entry : appliedOnline.entries) {
+            if (!entry.caption.isEmpty()) names.put(entry.file.getName(), entry.caption);
+        }
+    }
+
+    /** Bounds first, then an actual sampled decode; a header alone is not a valid cached image. */
+    private static boolean validOnlineImage(File file) {
+        Bitmap bitmap = decode(file, 256, 256, Bitmap.Config.RGB_565, 0, true);
+        if (bitmap == null) return false;
+        bitmap.recycle();
+        return true;
     }
 
     /**
@@ -255,27 +371,34 @@ final class WallpaperPlayer {
     }
 
     private Bitmap decode(File file) {
+        return decode(file, width, height, bitmapConfig, dimColor, false);
+    }
+
+    /** Preview validates raw dimensions before decoding; both paths share bounds, sampling and failure handling. */
+    private static Bitmap decode(File file, int screenW, int screenH, Bitmap.Config color, int dim, boolean preview) {
         try {
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inJustDecodeBounds = true;
             BitmapFactory.decodeFile(file.getPath(), options);
             int width = options.outWidth, height = options.outHeight;
             if (width <= 0 || height <= 0) return null;
-            int sample = WallpaperSize.sampleSize(width, height, this.width, this.height);
+            if (preview && !WallpaperSize.accepted(width, height)) return null;
+            int sample = WallpaperSize.sampleSize(width, height, screenW, screenH);
             if (!WallpaperSize.accepted(width / sample, height / sample)) return null;
             options.inJustDecodeBounds = false;
             options.inSampleSize = sample;
-            int[] scale = WallpaperSize.coverScale(width / sample, height / sample, this.width, this.height);
+            int[] scale = WallpaperSize.coverScale(width / sample, height / sample, screenW, screenH);
             if (scale != null) {
                 options.inScaled = true;
                 options.inDensity = scale[0];
                 options.inTargetDensity = scale[1];
             }
-            options.inPreferredConfig = bitmapConfig;
-            options.inMutable = dimColor != 0;
+            options.inPreferredConfig = color;
+            options.inMutable = dim != 0;
             Bitmap decoded = BitmapFactory.decodeFile(file.getPath(), options);
             if (decoded == null) return null;
-            if (dimColor != 0) new Canvas(decoded).drawColor(dimColor);
+            if (preview) return decoded;
+            if (dim != 0) new Canvas(decoded).drawColor(dim);
             // One copy in GPU memory instead of a software bitmap plus its texture; the decode stays off the UI
             // thread for rotations, and Home's return no longer uploads 4-8 MB to the GPU.
             Bitmap gpu = decoded.copy(Bitmap.Config.HARDWARE, false);

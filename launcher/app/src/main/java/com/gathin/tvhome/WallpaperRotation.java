@@ -18,6 +18,13 @@ final class WallpaperRotation {
         return ORDER_SEQUENTIAL.equals(order) || ORDER_SHUFFLE.equals(order);
     }
 
+    /** Local ordering is unchanged; online files join only when the player admits a cache snapshot. */
+    static List<File> withOnline(List<File> local, List<OnlineWallpapers.Entry> cached) {
+        List<File> result = new ArrayList<>(local);
+        for (OnlineWallpapers.Entry entry : cached) result.add(entry.file);
+        return result;
+    }
+
     static List<File> images(File directory) {
         List<File> result = new ArrayList<>();
         File[] entries = directory == null ? null : directory.listFiles();
