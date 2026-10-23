@@ -1,0 +1,79 @@
+name: Build X90K Launcher APK
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  launcher:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Restore the existing debug signing key
+        env:
+          ANDROID_DEBUG_KEYSTORE_BASE64: ${{ secrets.ANDROID_DEBUG_KEYSTORE_BASE64 }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "${ANDROID_DEBUG_KEYSTORE_BASE64:-}" ]]; then
+            echo "::error::ANDROID_DEBUG_KEYSTORE_BASE64 is required; no signing key will be generated."
+            exit 1
+          fi
+          umask 077
+          install -d -m 700 "$HOME/.android"
+          printf '%s' "$ANDROID_DEBUG_KEYSTORE_BASE64" | base64 --decode > "$HOME/.android/debug.keystore"
+          test -s "$HOME/.android/debug.keystore"
+          chmod 600 "$HOME/.android/debug.keystore"
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: android-actions/setup-android@v4
+        with:
+          packages: platforms;android-34 build-tools;34.0.0
+      - name: Unit tests, lint and release build
+        working-directory: launcher
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Fail before Gradle can create a replacement debug key.
+          test -s "$HOME/.android/debug.keystore"
+          chmod +x gradlew
+          ./gradlew --no-daemon testReleaseUnitTest lintRelease assembleRelease
+      - name: APK size, checksum and commit
+        id: apk
+        shell: bash
+        run: |
+          set -euo pipefail
+          apk=launcher/app/build/outputs/apk/release/app-release.apk
+          size=$(stat -c %s "$apk")
+          checksum=$(sha256sum "$apk" | cut -d ' ' -f 1)
+          short_sha="${GITHUB_SHA:0:7}"
+          echo "APK size: $size bytes"
+          echo "APK SHA256: $checksum"
+          echo "Commit SHA: $GITHUB_SHA"
+          {
+            echo "APK size: $size bytes (must be < 491520)"
+            echo "APK SHA256: $checksum"
+            echo "Commit SHA: $GITHUB_SHA"
+          } >> "$GITHUB_STEP_SUMMARY"
+          if [[ "$size" -ge 491520 ]]; then
+            echo "::error::APK must be smaller than 491520 bytes."
+            exit 1
+          fi
+          echo "short_sha=$short_sha" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: CleanYourTV-X90K-${{ steps.apk.outputs.short_sha }}
+          path: launcher/app/build/outputs/apk/release/app-release.apk
+          if-no-files-found: error
+          retention-days: 14
+      - name: Remove the restored signing key
+        if: always()
+        shell: bash
+        run: rm -f -- "$HOME/.android/debug.keystore"
