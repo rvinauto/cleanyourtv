@@ -1,0 +1,18 @@
+# Sony XR-65X90K CN
+# BRAVIA_VH21_M_CN Android 12 / API 31
+# Build 682241
+# Batch 2 - help / camera / sensing / kids / eco
+# Apply camera/sensing entries only when BRAVIA CAM and related features are not used.
+
+com.sony.dtv.customersupport
+com.sony.dtv.helpguidecontents
+
+com.sony.dtv.gestureapp
+com.sony.dtv.sensingcamera.fwupdate
+com.sony.dtv.sensingcamera.settings
+com.sony.dtv.sensingfusionservice
+com.sony.dtv.videochatrecord
+com.sony.dtv.distancealert
+
+com.sony.dtv.ecodashboard
+com.sony.dtv.kidsprofileadapter

@@ -1,0 +1,16 @@
+# Sony XR-65X90K CN
+# BRAVIA_VH21_M_CN Android 12 / API 31
+# Build 682241
+# Batch 1 - telemetry / diagnostics / demo
+
+com.qterics.da.product
+com.sony.dtv.da.service
+com.sonyericsson.idd.agent
+com.sony.dtv.sonybugreportsys
+com.sony.dtv.usercontext
+
+com.sony.dtv.demosupport
+com.sony.dtv.demosystemsupport
+com.sony.dtv.multiscreendemo
+
+com.jd.smartservicetwo
