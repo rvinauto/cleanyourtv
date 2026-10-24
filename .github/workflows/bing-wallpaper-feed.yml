@@ -16,10 +16,12 @@ jobs:
   feed:
     runs-on: ubuntu-latest
     steps:
-      - name: Generate feed.json (Online Wallpapers feed v1)
+      - name: Generate feed.json, feed-movies.json, feed-mixed.json (Online Wallpapers feed v1)
+        env:
+          TMDB_TOKEN: ${{ secrets.TMDB_TOKEN }}
         run: |
           cat > gen.py <<'PY'
-          import json, re, sys, urllib.request
+          import json, os, re, urllib.request
           from urllib.parse import urlsplit
           UA = {"User-Agent": "Mozilla/5.0 cleanyourtv-feed"}
           def get(u):
@@ -51,19 +53,57 @@ jobs:
                   cap = " — ".join(x for x in (im.get("title", "").strip(), im.get("copyright", "").strip()) if x)
                   items.append({"id": (im.get("startdate", "") + "-" + im.get("hsh", "")).strip("-") or base,
                                 "url": url, "caption": cap[:500]})
-          # Validate against OnlineWallpapers.parse rules.
-          assert 0 < len(items) <= 200
           pat = re.compile(r"(^|.*/)\.\.?(/.*|$)")
-          for it in items:
-              assert 0 < len(it["id"].strip()) and len(it["id"]) <= 256 and len(it["url"]) <= 2048 and len(it["caption"]) <= 500
-              p = urlsplit(it["url"])
-              assert p.scheme == "https" and p.hostname and not p.username and not p.fragment and "\\" not in it["url"] and not pat.match(p.path)
-          feed = json.dumps({"version": 1, "wallpapers": items}, ensure_ascii=False, indent=1) + "\n"
-          assert len(feed.encode()) < 256 * 1024
-          open(sys.argv[1] if len(sys.argv) > 1 else "feed.json", "w", encoding="utf-8").write(feed)
-          print(f"{len(items)} wallpapers, {len(feed.encode())} bytes")
+          def write(name, items):
+              # Validate against OnlineWallpapers.parse rules (feed v1).
+              assert 0 < len(items) <= 200
+              for it in items:
+                  assert 0 < len(it["id"].strip()) and len(it["id"]) <= 256 and len(it["url"]) <= 2048 and len(it["caption"]) <= 500
+                  p = urlsplit(it["url"])
+                  assert p.scheme == "https" and p.hostname and not p.username and not p.fragment and "\\" not in it["url"] and not pat.match(p.path)
+              feed = json.dumps({"version": 1, "wallpapers": items}, ensure_ascii=False, indent=1) + "\n"
+              assert len(feed.encode()) < 256 * 1024
+              open(name, "w", encoding="utf-8").write(feed)
+              print(f"{name}: {len(items)} wallpapers, {len(feed.encode())} bytes")
+          write("feed.json", items)
+          # TMDB trending movies + TV (backdrops). Optional: skipped when TMDB_TOKEN is not set.
+          tok = os.environ.get("TMDB_TOKEN", "").strip()
+          movies = []
+          if tok:
+              def tmdb(path):
+                  h = dict(UA, Authorization="Bearer " + tok, Accept="application/json")
+                  with urllib.request.urlopen(urllib.request.Request("https://api.themoviedb.org/3" + path, headers=h), timeout=30) as r:
+                      return json.loads(r.read())
+              pool = []
+              for kind in ("movie", "tv"):
+                  for r in tmdb(f"/trending/{kind}/week?language=zh-CN").get("results", [])[:15]:
+                      pool.append((kind, r))
+              pool.sort(key=lambda kr: -(kr[1].get("popularity") or 0))
+              for kind, r in pool:
+                  if len(movies) >= 12: break
+                  try:
+                      imgs = tmdb(f"/{kind}/{r['id']}/images?include_image_language=zh,null,en").get("backdrops", [])
+                  except Exception:
+                      imgs = []
+                  # Prefer text-free backdrops (null language), then the widest.
+                  imgs.sort(key=lambda b: (b.get("iso_639_1") is not None, -(b.get("width") or 0)))
+                  paths = [b["file_path"] for b in imgs if b.get("file_path")] + ([r["backdrop_path"]] if r.get("backdrop_path") else [])
+                  url = next((u for u in ("https://image.tmdb.org/t/p/original" + fp for fp in paths[:3]) if ok(u)), None)
+                  if not url: continue
+                  title = (r.get("title") or r.get("name") or "").strip()
+                  year = (r.get("release_date") or r.get("first_air_date") or "")[:4]
+                  cap = f"{title} ({year})" if title and year else title
+                  movies.append({"id": f"tmdb-{kind}-{r['id']}", "url": url, "caption": cap[:500]})
+          if movies:
+              write("feed-movies.json", movies)
+              mixed = []
+              for i in range(max(len(items), len(movies))):
+                  mixed += items[i:i + 1] + movies[i:i + 1]
+              write("feed-mixed.json", mixed)
+          else:
+              print("::warning::No TMDB items; feed-movies.json / feed-mixed.json not updated.")
           PY
-          python3 gen.py feed.json
+          python3 gen.py
       - name: Publish to wallpaper-feed branch
         env:
           GH_TOKEN: ${{ github.token }}
@@ -78,17 +118,20 @@ jobs:
           else
             git checkout -q --orphan wallpaper-feed
           fi
-          cp ../feed.json feed.json
-          git add feed.json
+          cp ../feed*.json .
+          git add feed*.json
           if git diff --cached --quiet; then echo "Feed unchanged"; exit 0; fi
-          git commit -qm "Update Bing wallpaper feed $(date -u +%F)"
+          git commit -qm "Update wallpaper feeds $(date -u +%F)"
           git push -q origin wallpaper-feed
       - name: Purge jsDelivr cache
         # The launcher's default feed is served by jsDelivr (reachable in mainland China); refresh its copy now.
         run: |
           set -u
           for i in 1 2 3; do
-            if curl -fsS --max-time 60 "https://purge.jsdelivr.net/gh/${GITHUB_REPOSITORY}@wallpaper-feed/feed.json"; then
+            if curl -fsS --max-time 60 "https://purge.jsdelivr.net/gh/${GITHUB_REPOSITORY}@wallpaper-feed/feed.json,feed-movies.json,feed-mixed.json" \
+              || { curl -fsS --max-time 60 "https://purge.jsdelivr.net/gh/${GITHUB_REPOSITORY}@wallpaper-feed/feed.json" \
+                   && curl -fsS --max-time 60 "https://purge.jsdelivr.net/gh/${GITHUB_REPOSITORY}@wallpaper-feed/feed-movies.json" \
+                   && curl -fsS --max-time 60 "https://purge.jsdelivr.net/gh/${GITHUB_REPOSITORY}@wallpaper-feed/feed-mixed.json"; }; then
               echo; exit 0
             fi
             sleep 10
