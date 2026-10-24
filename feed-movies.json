@@ -1,0 +1,65 @@
+{
+ "version": 1,
+ "wallpapers": [
+  {
+   "id": "tmdb-movie-969681",
+   "url": "https://image.tmdb.org/t/p/original/r08LxMJCbf1SiJIWeyH9aJmdqwC.jpg",
+   "caption": "蜘蛛侠：崭新之日 (2026)"
+  },
+  {
+   "id": "tmdb-movie-1003596",
+   "url": "https://image.tmdb.org/t/p/original/6TgmIXoVGEDyp0MSoVytIeyfhDR.jpg",
+   "caption": "复仇者联盟5 (2026)"
+  },
+  {
+   "id": "tmdb-movie-1058424",
+   "url": "https://image.tmdb.org/t/p/original/2RxFCDsy6dumZxRrsd2966HKXst.jpg",
+   "caption": "希望 (2026)"
+  },
+  {
+   "id": "tmdb-tv-213375",
+   "url": "https://image.tmdb.org/t/p/original/uoXXbN2PrOxH6UKyP7kYwmGpAAP.jpg",
+   "caption": "幻视任务 (2026)"
+  },
+  {
+   "id": "tmdb-tv-247718",
+   "url": "https://image.tmdb.org/t/p/original/h0OC7ouop8YLwbAVfS3UUE2Lw4T.jpg",
+   "caption": "MobLand (2025)"
+  },
+  {
+   "id": "tmdb-tv-95480",
+   "url": "https://image.tmdb.org/t/p/original/gPQppUnLx9vqPDLz3WwZ2HJsNbt.jpg",
+   "caption": "Slow Horses (2022)"
+  },
+  {
+   "id": "tmdb-tv-153312",
+   "url": "https://image.tmdb.org/t/p/original/mNHRGO1gFpR2CYZdANe72kcKq7G.jpg",
+   "caption": "塔尔萨之王 (2022)"
+  },
+  {
+   "id": "tmdb-movie-1153576",
+   "url": "https://image.tmdb.org/t/p/original/qRN8eqYwG6HPSy0i3fKzuLrUOhp.jpg",
+   "caption": "街头霸王 (2026)"
+  },
+  {
+   "id": "tmdb-movie-1400940",
+   "url": "https://image.tmdb.org/t/p/original/kVtOcoUJ68chBD2tmERkdWz7lK5.jpg",
+   "caption": "泥面人 (2026)"
+  },
+  {
+   "id": "tmdb-tv-213562",
+   "url": "https://image.tmdb.org/t/p/original/wxiBsKFEOOFK8eQStWOykNORlXY.jpg",
+   "caption": "水晶湖 (2026)"
+  },
+  {
+   "id": "tmdb-movie-1561726",
+   "url": "https://image.tmdb.org/t/p/original/dgUDj84BWtW6EZzee8BkgKnjDhh.jpg",
+   "caption": "偷天父子兵 (2026)"
+  },
+  {
+   "id": "tmdb-movie-1423191",
+   "url": "https://image.tmdb.org/t/p/original/3icyRAqgakNcQn6aDVz9libFmBA.jpg",
+   "caption": "生化危机：爆发夜 (2026)"
+  }
+ ]
+}
