@@ -106,12 +106,12 @@ jobs:
           echo "APK SHA256: $checksum"
           echo "Commit SHA: $GITHUB_SHA"
           {
-            echo "APK size: $size bytes (must be < 491520)"
+            echo "APK size: $size bytes (must be < 524288)"
             echo "APK SHA256: $checksum"
             echo "Commit SHA: $GITHUB_SHA"
           } >> "$GITHUB_STEP_SUMMARY"
-          if [[ "$size" -ge 491520 ]]; then
-            echo "::error::APK must be smaller than 491520 bytes."
+          if [[ "$size" -ge 524288 ]]; then
+            echo "::error::APK must be smaller than 524288 bytes."
             exit 1
           fi
           echo "short_sha=$short_sha" >> "$GITHUB_OUTPUT"

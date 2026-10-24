@@ -652,4 +652,56 @@ public class OnlineWallpapersTest {
             assertFalse(unsafe.requestHeaders.containsKey("If-Modified-Since"));
         }
     }
+
+    /** The X90K bug: first run, no cache, nothing on screen. The download must be shown at once, not never. */
+    @Test public void firstRunWithEmptyCacheShowsTheDownloadImmediately() throws Exception {
+        Wire wire = new Wire();
+        OnlineWallpapers cache = cache(wire, 10);
+        OnlineWallpapers.Snapshot cached = cache.load();
+        assertTrue(cached.entries.isEmpty());
+        // The cached (empty) snapshot arrives first, with nothing to show.
+        assertTrue(WallpaperRotation.admitNow(true, "", cached.entries.size()));
+        wire.feed(feed("a", "b"));
+        wire.image(png());
+        wire.image(png());
+        OnlineWallpapers.Snapshot fresh = cache.refresh(cached, NOW);
+        assertEquals(2, fresh.entries.size());
+        assertTrue("a download with nothing displayed is admitted", WallpaperRotation.admitNow(false, "", 2));
+        assertFalse("a download never swaps a picture already shown", WallpaperRotation.admitNow(false, "x.jpg", 2));
+        assertFalse("an empty download is not admitted", WallpaperRotation.admitNow(false, "", 0));
+        // And with wallpaper_rotation_minutes 0 the online collection still has a ticking clock.
+        assertEquals(12 * HOUR, WallpaperRotation.interval(0, true, 12 * HOUR));
+        assertEquals(0, WallpaperRotation.interval(0, false, 12 * HOUR));
+        assertEquals(60 * 60_000L, WallpaperRotation.interval(60, true, 12 * HOUR));
+        assertTrue(WallpaperRotation.due(0, NOW, WallpaperRotation.interval(0, true, 12 * HOUR)));
+    }
+
+    @Test public void refreshNowMakesAFreshCacheDue() throws Exception {
+        Wire wire = new Wire();
+        OnlineWallpapers.Snapshot fresh = seed(cache(wire, 10), wire, "a");
+        OnlineWallpapers later = create(temp.getRoot(), new OnlineWallpapers.Options(true, FEED, 12, 10, NOW + 1),
+                wire, OnlineWallpapersTest::validImage, dir -> {});
+        assertFalse(cache(wire, 10).due(fresh, NOW + HOUR));
+        assertTrue(later.due(fresh, NOW + HOUR));
+    }
+
+    @Test public void platformLogsFeedAndImageResults() throws Exception {
+        Wire wire = new Wire();
+        List<String> log = new ArrayList<>();
+        OnlineWallpapers cache = new OnlineWallpapers(temp.getRoot(), new OnlineWallpapers.Options(true, FEED, 12, 10),
+                new OnlineWallpapers.Platform() {
+                    @Override public OnlineWallpapers.Response get(String url, String etag, String modified)
+                            throws IOException { return wire.get(url, etag, modified); }
+                    @Override public boolean valid(File file) throws IOException { return validImage(file); }
+                    @Override public void sync(File directory) { }
+                    @Override public void log(String message) { log.add(message); }
+                });
+        wire.feed(feed("a"));
+        wire.image(png());
+        cache.refresh(cache.load(), NOW);
+        String all = String.join("\n", log);
+        assertTrue(all, all.contains("feed HTTP 200"));
+        assertTrue(all, all.contains("feed entries: 1"));
+        assertTrue(all, all.contains("image ok"));
+    }
 }

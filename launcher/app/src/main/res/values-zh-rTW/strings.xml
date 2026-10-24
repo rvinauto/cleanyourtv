@@ -87,4 +87,25 @@
         <item quantity="other">%1$d 個應用程式</item>
     </plurals>
     <string name="greeting_with_name">%1$s，%2$s</string>
+    <!-- Launcher settings: online wallpaper (feed, refresh, cache, rotation). -->
+    <string name="online_wallpaper_state">線上桌布：%1$s</string>
+    <string name="online_wallpaper_label">線上桌布</string>
+    <string name="online_toggle">開關：%1$s</string>
+    <string name="online_source">來源：%1$s</string>
+    <string name="online_source_jsdelivr">Bing 4K（jsDelivr，中國大陸可用）</string>
+    <string name="online_source_github">Bing 4K（GitHub raw）</string>
+    <string name="online_source_custom">自訂網址</string>
+    <string name="online_refresh_hours">更新間隔：%1$d 小時</string>
+    <string name="online_cache_count">快取張數：%1$d</string>
+    <string name="online_rotation">切換間隔：%1$s</string>
+    <string name="rotation_minutes">%1$d 分鐘</string>
+    <string name="rotation_per_refresh">每次更新</string>
+    <string name="online_refresh_now">立即更新</string>
+    <string name="online_clear_cache">清除已下載的桌布</string>
+    <string name="online_status">上次更新：%1$s · %2$d 張</string>
+    <string name="online_status_never">從未</string>
+    <string name="online_status_error">上次錯誤：%1$s</string>
+    <string name="online_url_invalid">網址必須以 https:// 開頭</string>
+    <string name="online_refreshing">返回桌面後開始更新</string>
+    <string name="online_cache_cleared">已清除下載的桌布</string>
 </resources>

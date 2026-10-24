@@ -36,8 +36,15 @@ final class OnlineWallpapers {
         final String feed;
         final long interval;
         final int count;
+        /** A "refresh now" request from Launcher settings: a cache refreshed before this time is due. */
+        final long forceAfter;
 
         Options(boolean enabled, String feed, int hours, int count) {
+            this(enabled, feed, hours, count, 0);
+        }
+
+        Options(boolean enabled, String feed, int hours, int count, long forceAfter) {
+            this.forceAfter = forceAfter;
             this.enabled = enabled;
             this.feed = feed.trim();
             interval = Math.max(1, Math.min(168, hours)) * 3_600_000L;
@@ -76,6 +83,8 @@ final class OnlineWallpapers {
         Response get(String url, String etag, String modified) throws IOException;
         boolean valid(File image) throws IOException;
         void sync(File directory) throws IOException;
+        /** Diagnostics only (logcat on the TV); never required for correctness. */
+        default void log(String message) {}
     }
 
     private static final class Worker {
@@ -154,13 +163,18 @@ final class OnlineWallpapers {
     boolean due(Snapshot cached, long now) {
         return options.enabled && (!hash(options.feed).equals(cached.feedKey) || cached.entries.isEmpty()
                 || cached.entries.size() > options.count || cached.refreshed <= 0
-                || now < cached.refreshed || now - cached.refreshed >= options.interval);
+                || now < cached.refreshed || now - cached.refreshed >= options.interval
+                || cached.refreshed < options.forceAfter);
     }
 
     /** One attempt per Home instance, no retry loop. On any failure the caller retains this exact snapshot. */
     Snapshot refresh(Snapshot cached, long now) throws Exception {
-        if (!due(cached, now)) return cached;
+        if (!due(cached, now)) {
+            platform.log("cache fresh: " + cached.entries.size() + " images");
+            return cached;
+        }
         https(options.feed);
+        platform.log("fetching feed " + options.feed);
         if (!directory.isDirectory()) {
             if (!directory.mkdirs()) throw new IOException();
             platform.sync(directory.getParentFile()); // persist the new cache directory entry too
@@ -175,6 +189,7 @@ final class OnlineWallpapers {
             try (Response feed = platform.get(options.feed, conditional ? cached.etag : "",
                     conditional ? cached.modified : "")) {
                 List<Entry> entries;
+                platform.log("feed HTTP " + feed.status);
                 if (feed.status == 304 && conditional) {
                     entries = cached.entries;
                 } else {
@@ -182,18 +197,25 @@ final class OnlineWallpapers {
                     ByteArrayOutputStream json = new ByteArrayOutputStream();
                     copy(feed, json, MAX_FEED);
                     List<Entry> offered = parse(json.toString(StandardCharsets.UTF_8.name()));
-                    if (offered.isEmpty()) throw new IOException();
+                    if (offered.isEmpty()) throw new IOException("feed has no entries");
+                    platform.log("feed entries: " + offered.size());
                     entries = new ArrayList<>();
                     for (Entry item : offered.subList(0, Math.min(options.count, offered.size()))) {
                         File tmp = File.createTempFile("image-", ".tmp", directory);
                         created.add(tmp);
                         try (Response response = platform.get(item.url, "", "");
                              FileOutputStream out = new FileOutputStream(tmp)) {
+                            if (response.status < 200 || response.status >= 300)
+                                platform.log("image fail HTTP " + response.status + ": " + item.url);
                             success(response);
                             copy(response, out, MAX_IMAGE);
                             out.getFD().sync();
                         }
-                        if (!platform.valid(tmp)) throw new IOException();
+                        if (!platform.valid(tmp)) {
+                            platform.log("image fail undecodable: " + item.url);
+                            throw new IOException("undecodable image");
+                        }
+                        platform.log("image ok " + tmp.length() + " bytes: " + item.url);
                         File image = new File(directory, tmp.getName().replace(".tmp", ".jpg"));
                         if (image.exists()) throw new IOException(); // never replace a previous cache file
                         Files.move(tmp.toPath(), image.toPath(), StandardCopyOption.ATOMIC_MOVE);

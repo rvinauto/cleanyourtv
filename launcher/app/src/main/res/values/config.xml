@@ -239,8 +239,13 @@
     <!-- Optional HTTPS wallpaper feed. Off means no cache reads, downloads or online worker.
          A theme may override these four keys. Refresh hours: 1..168; cached images: 1..30.
          The private cache is separate from theme wallpapers; see themes/README.md. -->
-    <bool name="online_wallpaper">false</bool>
-    <string name="online_wallpaper_feed" translatable="false"></string>
+    <bool name="online_wallpaper">true</bool>
+    <!-- Bing's daily 4K pictures, rebuilt each day by .github/workflows/bing-wallpaper-feed.yml and served through
+         jsDelivr, which is reachable from mainland China where raw.githubusercontent.com often is not. -->
+    <string name="online_wallpaper_feed" translatable="false">https://cdn.jsdelivr.net/gh/rvinauto/cleanyourtv@wallpaper-feed/feed.json</string>
+    <!-- Minutes between wallpaper changes (0 to 1440). 0 rotates an online collection once per refresh. A theme's
+         "wallpaper_rotation_minutes" or Launcher settings override it. -->
+    <integer name="wallpaper_rotation_minutes">60</integer>
     <integer name="online_wallpaper_refresh_hours">12</integer>
     <integer name="online_wallpaper_cache_count">10</integer>
     <!-- Rotating wallpapers grouped by the time of day, as JSON: {"morning": [file names], "evening": [...],

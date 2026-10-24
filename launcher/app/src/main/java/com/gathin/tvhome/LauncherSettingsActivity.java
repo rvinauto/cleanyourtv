@@ -24,6 +24,13 @@ public final class LauncherSettingsActivity extends Activity {
     private static final int[] DOCK_OPACITIES = {100, 70, 50, 30};
     private final TextView[] dockChoices = new TextView[DOCK_OPACITIES.length];
     private TextView wallpaperChoice;
+    private TextView onlineChoice;
+    private TextView onlineStatus;
+    static final String FEED_JSDELIVR = "https://cdn.jsdelivr.net/gh/rvinauto/cleanyourtv@wallpaper-feed/feed.json";
+    static final String FEED_GITHUB = "https://raw.githubusercontent.com/rvinauto/cleanyourtv/wallpaper-feed/feed.json";
+    private static final int[] REFRESH_HOURS = {1, 3, 6, 12, 24, 48, 168};
+    private static final int[] CACHE_COUNTS = {3, 5, 10, 15, 20, 30};
+    private static final int[] ROTATION_MINUTES = {0, 5, 15, 30, 60, 120, 360, 1440};
     private TextView animationsChoice;
     private TextView advancedChoice;
     private TextView followThemeChoice;
@@ -96,6 +103,9 @@ public final class LauncherSettingsActivity extends Activity {
         }
         wallpaperChoice = findViewById(R.id.wallpaperChoice);
         wallpaperChoice.setOnClickListener(v -> showWallpaperPicker());
+        onlineChoice = findViewById(R.id.onlineWallpaperChoice);
+        onlineStatus = findViewById(R.id.onlineWallpaperStatus);
+        onlineChoice.setOnClickListener(v -> showOnlineMenu());
         animationsChoice = findViewById(R.id.animationsChoice);
         animationsChoice.setOnClickListener(v -> {
             animations = !animations;
@@ -121,9 +131,9 @@ public final class LauncherSettingsActivity extends Activity {
         followThemeChoice = findViewById(R.id.followThemeChoice);
         followThemeChoice.setOnClickListener(v -> {
             if (!hasOnTvChoices()) return;
-            choices.edit().remove("columns").remove(Config.ROWS_BELOW_DOCK_KEY).remove("animations")
-                    .remove("advanced_effects").remove(Config.WALLPAPER_CHOICE_KEY)
-                    .remove(Config.DOCK_OPACITY_KEY).commit();
+            Config.removeOnlineChoices(choices.edit().remove("columns").remove(Config.ROWS_BELOW_DOCK_KEY)
+                    .remove("animations").remove("advanced_effects").remove(Config.WALLPAPER_CHOICE_KEY)
+                    .remove(Config.DOCK_OPACITY_KEY)).commit();
             Config current = Config.load(this);
             columns = current.columns;
             rowsBelowDock = current.rowsBelowDock;
@@ -186,6 +196,165 @@ public final class LauncherSettingsActivity extends Activity {
                 .show();
     }
 
+    /** One row on the main screen; everything else about the online wallpaper lives in this remote-friendly list. */
+    private void showOnlineMenu() {
+        Config config = Config.load(this);
+        OnlineWallpapers.Options o = config.onlineWallpaper;
+        boolean enabled = choices.getBoolean(Config.ONLINE_KEY, o.enabled);
+        int rotation = config.wallpaperRotationMinutes;
+        String[] items = {
+                getString(R.string.online_toggle, getString(enabled ? R.string.on : R.string.off)),
+                getString(R.string.online_source, sourceLabel(o.feed)),
+                getString(R.string.online_refresh_hours, (int) (o.interval / 3_600_000L)),
+                getString(R.string.online_cache_count, o.count),
+                getString(R.string.online_rotation, rotationLabel(rotation)),
+                getString(R.string.online_refresh_now),
+                getString(R.string.online_clear_cache)};
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.online_wallpaper_label)
+                .setItems(items, (dialog, which) -> {
+                    switch (which) {
+                        case 0:
+                            choices.edit().putBoolean(Config.ONLINE_KEY, !enabled).apply();
+                            onlineChanged(true);
+                            break;
+                        case 1: showSourcePicker(o.feed); break;
+                        case 2:
+                            pickNumber(R.string.online_refresh_hours, REFRESH_HOURS, (int) (o.interval / 3_600_000L),
+                                    value -> choices.edit().putInt(Config.ONLINE_HOURS_KEY, value).apply());
+                            break;
+                        case 3:
+                            pickNumber(R.string.online_cache_count, CACHE_COUNTS, o.count,
+                                    value -> choices.edit().putInt(Config.ONLINE_COUNT_KEY, value).apply());
+                            break;
+                        case 4: showRotationPicker(rotation); break;
+                        case 5:
+                            choices.edit().putLong(Config.ONLINE_FORCE_KEY, System.currentTimeMillis()).apply();
+                            Toast.makeText(this, R.string.online_refreshing, Toast.LENGTH_SHORT).show();
+                            onlineChanged(false);
+                            break;
+                        default: clearOnlineCache(); break;
+                    }
+                })
+                .setNegativeButton(android.R.string.cancel, null)
+                .show();
+    }
+
+    private String sourceLabel(String feed) {
+        if (FEED_JSDELIVR.equals(feed)) return getString(R.string.online_source_jsdelivr);
+        if (FEED_GITHUB.equals(feed)) return getString(R.string.online_source_github);
+        return feed.isEmpty() ? getString(R.string.off) : feed;
+    }
+
+    private String rotationLabel(int minutes) {
+        return minutes == 0 ? getString(R.string.rotation_per_refresh) : getString(R.string.rotation_minutes, minutes);
+    }
+
+    private void showSourcePicker(String current) {
+        String[] labels = {getString(R.string.online_source_jsdelivr), getString(R.string.online_source_github),
+                getString(R.string.online_source_custom)};
+        int checked = FEED_JSDELIVR.equals(current) ? 0 : FEED_GITHUB.equals(current) ? 1 : 2;
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.online_wallpaper_label)
+                .setSingleChoiceItems(labels, checked, (dialog, which) -> {
+                    dialog.dismiss();
+                    if (which == 2) {
+                        showCustomFeed(current);
+                    } else {
+                        choices.edit().putString(Config.ONLINE_FEED_KEY, which == 0 ? FEED_JSDELIVR : FEED_GITHUB)
+                                .apply();
+                        onlineChanged(true);
+                    }
+                })
+                .setNegativeButton(android.R.string.cancel, null)
+                .show();
+    }
+
+    /** The TV's own on-screen keyboard types the address; only https is accepted, as the downloader requires. */
+    private void showCustomFeed(String current) {
+        android.widget.EditText input = new android.widget.EditText(this);
+        input.setSingleLine(true);
+        input.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_VARIATION_URI);
+        input.setHint(R.string.online_url_hint);
+        input.setText(current);
+        input.setSelection(input.getText().length());
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.online_source_custom)
+                .setView(input)
+                .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+                    String url = input.getText().toString().trim();
+                    try {
+                        OnlineWallpapers.https(url);
+                    } catch (java.io.IOException e) {
+                        Toast.makeText(this, R.string.online_url_invalid, Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    choices.edit().putString(Config.ONLINE_FEED_KEY, url).apply();
+                    onlineChanged(true);
+                })
+                .setNegativeButton(android.R.string.cancel, null)
+                .show();
+    }
+
+    private interface IntChoice { void save(int value); }
+
+    private void pickNumber(int title, int[] values, int current, IntChoice save) {
+        String[] labels = new String[values.length];
+        int checked = -1;
+        for (int i = 0; i < values.length; i++) {
+            labels[i] = getString(title, values[i]);
+            if (values[i] == current) checked = i;
+        }
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.online_wallpaper_label)
+                .setSingleChoiceItems(labels, checked, (dialog, which) -> {
+                    dialog.dismiss();
+                    save.save(values[which]);
+                    onlineChanged(true);
+                })
+                .setNegativeButton(android.R.string.cancel, null)
+                .show();
+    }
+
+    private void showRotationPicker(int current) {
+        String[] labels = new String[ROTATION_MINUTES.length];
+        int checked = -1;
+        for (int i = 0; i < labels.length; i++) {
+            labels[i] = rotationLabel(ROTATION_MINUTES[i]);
+            if (ROTATION_MINUTES[i] == current) checked = i;
+        }
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.online_wallpaper_label)
+                .setSingleChoiceItems(labels, checked, (dialog, which) -> {
+                    dialog.dismiss();
+                    choices.edit().putInt(Config.ROTATION_KEY, ROTATION_MINUTES[which]).apply();
+                    onlineChanged(true);
+                })
+                .setNegativeButton(android.R.string.cancel, null)
+                .show();
+    }
+
+    /** Deleted on the online worker's own queue, so it never races a download in progress. */
+    private void clearOnlineCache() {
+        File dir = new File(getFilesDir(), "online-wallpapers");
+        android.content.Context app = getApplicationContext();
+        OnlineWallpapers.submit(() -> {
+            File[] files = dir.listFiles();
+            if (files != null) for (File file : files) file.delete();
+            dir.delete();
+            app.getSharedPreferences(WallpaperPlayer.STATUS_NAME, MODE_PRIVATE).edit().clear().commit();
+        });
+        getSharedPreferences(WallpaperPlayer.STATUS_NAME, MODE_PRIVATE).edit().clear().apply();
+        Toast.makeText(this, R.string.online_cache_cleared, Toast.LENGTH_SHORT).show();
+        onlineChanged(false);
+    }
+
+    private void onlineChanged(boolean reopen) {
+        changed();
+        refresh();
+        if (reopen) showOnlineMenu();
+    }
+
     private static int indexOf(List<File> images, String name) {
         if (name == null) return -1;
         for (int i = 0; i < images.size(); i++) {
@@ -233,12 +402,26 @@ public final class LauncherSettingsActivity extends Activity {
                         : wallpaperCurrent != null ? wallpaperCurrent
                         : getString(R.string.wallpaper_theme_default)));
         followThemeChoice.setSelected(!hasOnTvChoices());
+        Config config = Config.load(this);
+        onlineChoice.setText(getString(R.string.online_wallpaper_state,
+                config.onlineWallpaper.enabled ? sourceLabel(config.onlineWallpaper.feed) : getString(R.string.off)));
+        SharedPreferences status = getSharedPreferences(WallpaperPlayer.STATUS_NAME, MODE_PRIVATE);
+        long refreshed = status.getLong("refreshed", 0);
+        String text = getString(R.string.online_status, refreshed <= 0 ? getString(R.string.online_status_never)
+                        : android.text.format.DateUtils.getRelativeTimeSpanString(refreshed).toString(),
+                status.getInt("count", 0));
+        String error = status.getString("error", null);
+        if (error != null) text += "\n" + getString(R.string.online_status_error, error);
+        onlineStatus.setText(text);
     }
 
     private boolean hasOnTvChoices() {
         return choices.contains("columns") || choices.contains(Config.ROWS_BELOW_DOCK_KEY)
                 || choices.contains("animations") || choices.contains("advanced_effects")
-                || choices.contains(Config.WALLPAPER_CHOICE_KEY) || choices.contains(Config.DOCK_OPACITY_KEY);
+                || choices.contains(Config.WALLPAPER_CHOICE_KEY) || choices.contains(Config.DOCK_OPACITY_KEY)
+                || choices.contains(Config.ONLINE_KEY) || choices.contains(Config.ONLINE_FEED_KEY)
+                || choices.contains(Config.ONLINE_HOURS_KEY) || choices.contains(Config.ONLINE_COUNT_KEY)
+                || choices.contains(Config.ROTATION_KEY);
     }
 
     private void open(Intent intent) {

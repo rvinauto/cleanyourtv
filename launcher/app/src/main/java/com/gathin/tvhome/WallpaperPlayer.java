@@ -50,6 +50,12 @@ final class WallpaperPlayer {
     private volatile OnlineWallpapers.Snapshot pendingOnline;
     private OnlineWallpapers.Snapshot appliedOnline;
     private boolean onlineLoading;
+    private final OnlineWallpapers.Options onlineOptions;
+    private final Context appContext;
+    /** The last online attempt failed (offline, blocked, bad feed); a network coming back retries once. */
+    private volatile boolean onlineFailed;
+    static final String ONLINE_TAG = "TvHome.Online";
+    static final String STATUS_NAME = "online_wallpaper_status";
     private final long interval;
     private final String order;
     private final SharedPreferences preferences;
@@ -83,7 +89,10 @@ final class WallpaperPlayer {
         localFiles = new ArrayList<>(files);
         online = config.onlineWallpaper.enabled;
         onlineLoading = online;
-        interval = config.wallpaperRotationMinutes * 60_000L;
+        interval = WallpaperRotation.interval(config.wallpaperRotationMinutes, online,
+                config.onlineWallpaper.interval);
+        onlineOptions = config.onlineWallpaper;
+        appContext = context.getApplicationContext();
         bitmapConfig = config.wallpaperTrueColor ? Bitmap.Config.ARGB_8888 : Bitmap.Config.RGB_565;
         // The dim is painted into the picture (decode), so no full-screen shade layer is drawn on every frame.
         dimColor = config.wallpaperDim > 0 ? (config.wallpaperDim * 255 / 100) << 24 : 0;
@@ -116,7 +125,7 @@ final class WallpaperPlayer {
                     ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             showFirst();
         }
-        if (online) onlineTask = Online.start(context.getApplicationContext(), config.onlineWallpaper, this);
+        if (online) onlineTask = Online.start(appContext, onlineOptions, this, true);
     }
 
     /** Only the application and a weak target cross the worker boundary; no view or Activity is retained. */
@@ -124,19 +133,34 @@ final class WallpaperPlayer {
         private static final Handler MAIN = new Handler(Looper.getMainLooper());
         private static final Online PLATFORM = new Online();
 
-        static Future<?> start(Context app, OnlineWallpapers.Options options, WallpaperPlayer player) {
+        static Future<?> start(Context app, OnlineWallpapers.Options options, WallpaperPlayer player, boolean initial) {
             WeakReference<WallpaperPlayer> target = new WeakReference<>(player);
+            player.onlineFailed = false;
             return OnlineWallpapers.submit(() -> {
+                SharedPreferences status = app.getSharedPreferences(STATUS_NAME, Context.MODE_PRIVATE);
                 try {
                     OnlineWallpapers cache = new OnlineWallpapers(app.getFilesDir(), options, PLATFORM);
                     OnlineWallpapers.Snapshot cached = cache.load();
-                    post(target, cached, true);
-                    post(target, cache.refresh(cached, System.currentTimeMillis()), false);
+                    Log.i(ONLINE_TAG, "cache: " + cached.entries.size() + " images");
+                    if (initial) post(target, cached, true);
+                    OnlineWallpapers.Snapshot fresh = cache.refresh(cached, System.currentTimeMillis());
+                    Log.i(ONLINE_TAG, "ready: " + fresh.entries.size() + " images");
+                    status.edit().putLong("refreshed", fresh.refreshed).putInt("count", fresh.entries.size())
+                            .remove("error").apply();
+                    post(target, fresh, false);
                 } catch (Exception | OutOfMemoryError | StackOverflowError failure) {
-                    post(target, null, true);
+                    String error = failure.getClass().getSimpleName()
+                            + (failure.getMessage() == null ? "" : ": " + failure.getMessage());
+                    Log.w(ONLINE_TAG, "refresh failed: " + error);
+                    status.edit().putString("error", error).putLong("error_time", System.currentTimeMillis()).apply();
+                    WallpaperPlayer failed = target.get();
+                    if (failed != null) failed.onlineFailed = true;
+                    if (initial) post(target, null, true);
                 }
             });
         }
+
+        @Override public void log(String message) { Log.i(ONLINE_TAG, message); }
 
         private static void post(WeakReference<WallpaperPlayer> target, OnlineWallpapers.Snapshot snapshot, boolean initial) {
             MAIN.post(() -> {
@@ -163,7 +187,16 @@ final class WallpaperPlayer {
 
     private void receiveOnline(OnlineWallpapers.Snapshot snapshot, boolean initial) {
         if (snapshot != null) pendingOnline = snapshot;
-        if (!initial) return; // newly downloaded files wait for the ordinary rotation clock
+        if (!initial) {
+            // Newly downloaded files wait for the rotation clock, unless nothing is on screen yet (first run).
+            if (snapshot != null && !onlineLoading
+                    && WallpaperRotation.admitNow(false, displayed, snapshot.entries.size())) {
+                admitOnline();
+                preferences.edit().remove("image").putLong("changed", 0).apply();
+                update();
+            }
+            return;
+        }
         if (snapshot != null) {
             admitOnline();
             if (!snapshot.entries.isEmpty() && WallpaperRotation.find(files,
@@ -226,6 +259,14 @@ final class WallpaperPlayer {
             sun = WallpaperMood.sun(sunDay, latitude, longitude, ZoneId.systemDefault());
         }
         return WallpaperMood.select(files, moods, WallpaperMood.timeOfDay(now.getHour() * 60 + now.getMinute(), sun[0], sun[1]));
+    }
+
+    /** A network came up: retry an online refresh that failed (offline at boot, DNS not ready). */
+    void networkAvailable() {
+        if (!online || closed || !onlineFailed) return;
+        if (onlineTask != null && !onlineTask.isDone()) return;
+        Log.i(ONLINE_TAG, "network available, retrying");
+        onlineTask = Online.start(appContext, onlineOptions, this, false);
     }
 
     void close() {

@@ -531,6 +531,10 @@ and a wallpaper.
   - **Wallpaper**: one picture from the theme's collection (or its `wallpaper.jpg`), **None**, or **Theme
     default**. A pick holds that picture and stops the rotation until you choose Theme default, press
     Follow theme, or push the theme again.
+  - **Online wallpaper**: on or off; the source (Bing 4K through jsDelivr, which works in mainland China,
+    Bing 4K from GitHub raw, or a custom `https://` address typed with the TV keyboard); refresh every 1 to
+    168 hours; pictures kept 3 to 30; how often the picture changes; **Refresh now** and **Clear downloaded
+    pictures**. The line under it shows the last refresh, the number of pictures and the last error.
   - **Animations** on or off, and **Advanced effects** (tile lift, icon zoom and smooth ambient-colour
     transitions; they may use more memory) once animations are on.
   - **Follow theme (reset on-TV choices)**, which clears every choice above. Pushing or resetting a theme

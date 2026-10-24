@@ -282,6 +282,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         @Override
         public void onAvailable(@NonNull Network network) {
             handler.post(MainActivity.this::updateWifiLabel);
+            handler.post(() -> { if (wallpaperPlayer != null) wallpaperPlayer.networkAvailable(); });
         }
 
         @Override
