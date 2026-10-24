@@ -190,3 +190,45 @@ device acceptance, and a passing build does not resolve the four outstanding scr
 To leave online work off, keep `online_wallpaper=false` (the default) and the existing local theme.
 No cache migration is required for existing installations. No TV rollback is needed for this
 source-only handoff because no installation or device change was made.
+
+## Update 2026-10-24 (Asia/Shanghai) — first-run fix, built-in Bing default, settings UI
+
+**Root cause found on the X90K (config was loaded correctly):** on a first run with an empty cache the
+downloaded snapshot arrived with `initial=false` and was only admitted when the rotation clock was due;
+with `wallpaper_rotation_minutes` 0 the interval was 0 and `WallpaperRotation.due()` never returned true,
+so a download was never shown in that Home instance. OnlineWallpapers also logged nothing.
+
+Changes (commit `efc6882` on `feature/online-wallpapers`):
+- `WallpaperPlayer.receiveOnline`: a download is shown at once when nothing is displayed
+  (`WallpaperRotation.admitNow`). Rotation interval falls back to the refresh interval when online and
+  rotation is 0 (`WallpaperRotation.interval`). A failed refresh retries once when the default network
+  becomes available. Logcat tag **`TvHome.Online`** (feed HTTP status, entries, image ok/fail, exception
+  class). Status (last refresh, count, last error) in shared prefs `online_wallpaper_status`.
+- Defaults in `res/values/config.xml`: `online_wallpaper=true`, feed
+  `https://cdn.jsdelivr.net/gh/rvinauto/cleanyourtv@wallpaper-feed/feed.json`, `wallpaper_rotation_minutes=60`.
+  Precedence: Launcher settings choice > theme `config.json` > resources. A theme push/reset clears the
+  on-TV online choices like the other choices.
+- Launcher settings: **Online wallpaper** row (en / zh-CN / zh-TW; other locales fall back to English):
+  on/off, source (Bing jsDelivr / Bing GitHub raw / custom https URL via TV keyboard), refresh 1–168 h,
+  cache 3–30, rotation interval, Refresh now, Clear downloaded pictures; status line under the row.
+- APK size gate raised to **524288 bytes** (ci.yml, build-launcher-apk.yml, AGENTS.md). versionCode 8.
+- `main`: `0a9e143` Bing feed workflow prefers cn.bing.com (only if 200 without redirect) and purges
+  jsDelivr after publishing; `679d5d2` same size gate in build-launcher-apk.yml.
+
+Verified (box + GitHub Actions):
+| Item | Result |
+|---|---|
+| Android JVM tests (local) | **229 passed** (OnlineWallpapersTest 38, incl. first-run empty-cache test) |
+| lint (local) | **0 errors**, 74 warnings |
+| Python suite | 663 run, **4 failures = the known screenshot-only `online_wallpaper*` keys**, 3 skipped |
+| GitHub run | [40049414767](https://github.com/rvinauto/cleanyourtv/actions/runs/40049414767) success, commit `efc68821f791280fa462e8a9f20a90eea07160e5` |
+| APK size | **499691 bytes** (< 524288; margin 24597) |
+| APK SHA256 | `d7b794d3dbc59cd9a4df40396b1d5f2b8bd745c5db624713a6434a8321d16430` |
+| Signing cert SHA-256 | `012B76CC…39DEF24F` — matches the TV's key |
+| cn.bing.com `_UHD.jpg` | 200, image/jpeg, no redirect (checked from a non-China host only) |
+| jsDelivr feed URL | 200 application/json (non-China host) |
+
+**NOT TESTED:** v8 not installed on the Sony X90K; online wallpaper display on the TV; jsDelivr / cn.bing.com
+reachability from the TV's network in mainland China; Settings UI on the TV (D-pad, keyboard input);
+network-retry path on a real network; offline → recovery; power loss during cache write; long rotation;
+the 4 screenshot-only requirements; the jsDelivr purge step (runs on the next scheduled feed job).
