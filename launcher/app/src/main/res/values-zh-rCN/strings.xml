@@ -84,4 +84,10 @@
     <string name="online_url_invalid">地址必须以 https:// 开头</string>
     <string name="online_refreshing">返回桌面后开始刷新</string>
     <string name="online_cache_cleared">已清除下载的壁纸</string>
+    <string name="online_type">壁纸类型：%1$s</string>
+    <string name="online_type_scenery">风景（必应）</string>
+    <string name="online_type_movies">影视（TMDB）</string>
+    <string name="online_type_mixed">混合</string>
+    <string name="online_captions">显示标题：%1$s</string>
+    <string name="online_type_custom">壁纸类型只适用于内置来源</string>
 </resources>

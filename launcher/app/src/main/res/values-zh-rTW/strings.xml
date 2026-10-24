@@ -108,4 +108,10 @@
     <string name="online_url_invalid">網址必須以 https:// 開頭</string>
     <string name="online_refreshing">返回桌面後開始更新</string>
     <string name="online_cache_cleared">已清除下載的桌布</string>
+    <string name="online_type">桌布類型：%1$s</string>
+    <string name="online_type_scenery">風景（Bing）</string>
+    <string name="online_type_movies">影視（TMDB）</string>
+    <string name="online_type_mixed">混合</string>
+    <string name="online_captions">顯示標題：%1$s</string>
+    <string name="online_type_custom">桌布類型只適用於內建來源</string>
 </resources>

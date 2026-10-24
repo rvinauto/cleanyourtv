@@ -28,6 +28,32 @@ public final class LauncherSettingsActivity extends Activity {
     private TextView onlineStatus;
     static final String FEED_JSDELIVR = "https://cdn.jsdelivr.net/gh/rvinauto/cleanyourtv@wallpaper-feed/feed.json";
     static final String FEED_GITHUB = "https://raw.githubusercontent.com/rvinauto/cleanyourtv/wallpaper-feed/feed.json";
+    /** Wallpaper type: the same feed host serves feed.json (scenery), feed-movies.json and feed-mixed.json. */
+    private static final String[] FEED_FILES = {"feed.json", "feed-movies.json", "feed-mixed.json"};
+    private static final int[] FEED_TYPE_LABELS = {R.string.online_type_scenery, R.string.online_type_movies,
+            R.string.online_type_mixed};
+
+    /** Index into FEED_FILES for a built-in feed address, or -1 for a custom one. */
+    static int feedType(String feed) {
+        for (String base : new String[]{FEED_JSDELIVR, FEED_GITHUB}) {
+            String dir = base.substring(0, base.length() - "feed.json".length());
+            for (int i = 0; i < FEED_FILES.length; i++) if ((dir + FEED_FILES[i]).equals(feed)) return i;
+        }
+        return -1;
+    }
+
+    /** The built-in base address (jsDelivr or GitHub) behind a typed feed address, else the address itself. */
+    static String feedBase(String feed) {
+        int type = feedType(feed);
+        if (type <= 0) return feed;
+        return feed.substring(0, feed.length() - FEED_FILES[type].length()) + "feed.json";
+    }
+
+    static String withType(String feed, int type) {
+        String base = feedBase(feed);
+        return base.substring(0, base.length() - "feed.json".length()) + FEED_FILES[type];
+    }
+
     private static final int[] REFRESH_HOURS = {1, 3, 6, 12, 24, 48, 168};
     private static final int[] CACHE_COUNTS = {3, 5, 10, 15, 20, 30};
     private static final int[] ROTATION_MINUTES = {0, 5, 15, 30, 60, 120, 360, 1440};
@@ -205,6 +231,8 @@ public final class LauncherSettingsActivity extends Activity {
         String[] items = {
                 getString(R.string.online_toggle, getString(enabled ? R.string.on : R.string.off)),
                 getString(R.string.online_source, sourceLabel(o.feed)),
+                getString(R.string.online_type, typeLabel(o.feed)),
+                getString(R.string.online_captions, getString(config.wallpaperCaptions ? R.string.on : R.string.off)),
                 getString(R.string.online_refresh_hours, (int) (o.interval / 3_600_000L)),
                 getString(R.string.online_cache_count, o.count),
                 getString(R.string.online_rotation, rotationLabel(rotation)),
@@ -219,16 +247,21 @@ public final class LauncherSettingsActivity extends Activity {
                             onlineChanged(true);
                             break;
                         case 1: showSourcePicker(o.feed); break;
-                        case 2:
+                        case 2: showTypePicker(o.feed); break;
+                        case 3:
+                            choices.edit().putBoolean(Config.CAPTIONS_KEY, !config.wallpaperCaptions).apply();
+                            onlineChanged(true);
+                            break;
+                        case 4:
                             pickNumber(R.string.online_refresh_hours, REFRESH_HOURS, (int) (o.interval / 3_600_000L),
                                     value -> choices.edit().putInt(Config.ONLINE_HOURS_KEY, value).apply());
                             break;
-                        case 3:
+                        case 5:
                             pickNumber(R.string.online_cache_count, CACHE_COUNTS, o.count,
                                     value -> choices.edit().putInt(Config.ONLINE_COUNT_KEY, value).apply());
                             break;
-                        case 4: showRotationPicker(rotation); break;
-                        case 5:
+                        case 6: showRotationPicker(rotation); break;
+                        case 7:
                             choices.edit().putLong(Config.ONLINE_FORCE_KEY, System.currentTimeMillis()).apply();
                             Toast.makeText(this, R.string.online_refreshing, Toast.LENGTH_SHORT).show();
                             onlineChanged(false);
@@ -240,7 +273,32 @@ public final class LauncherSettingsActivity extends Activity {
                 .show();
     }
 
+    private String typeLabel(String feed) {
+        int type = feedType(feed);
+        return type < 0 ? getString(R.string.online_source_custom) : getString(FEED_TYPE_LABELS[type]);
+    }
+
+    private void showTypePicker(String current) {
+        int checked = feedType(current);
+        if (checked < 0) {
+            Toast.makeText(this, R.string.online_type_custom, Toast.LENGTH_LONG).show();
+            return;
+        }
+        String[] labels = new String[FEED_FILES.length];
+        for (int i = 0; i < labels.length; i++) labels[i] = getString(FEED_TYPE_LABELS[i]);
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.online_wallpaper_label)
+                .setSingleChoiceItems(labels, checked, (dialog, which) -> {
+                    dialog.dismiss();
+                    choices.edit().putString(Config.ONLINE_FEED_KEY, withType(current, which)).apply();
+                    onlineChanged(true);
+                })
+                .setNegativeButton(android.R.string.cancel, null)
+                .show();
+    }
+
     private String sourceLabel(String feed) {
+        feed = feedBase(feed);
         if (FEED_JSDELIVR.equals(feed)) return getString(R.string.online_source_jsdelivr);
         if (FEED_GITHUB.equals(feed)) return getString(R.string.online_source_github);
         return feed.isEmpty() ? getString(R.string.off) : feed;
@@ -253,7 +311,9 @@ public final class LauncherSettingsActivity extends Activity {
     private void showSourcePicker(String current) {
         String[] labels = {getString(R.string.online_source_jsdelivr), getString(R.string.online_source_github),
                 getString(R.string.online_source_custom)};
-        int checked = FEED_JSDELIVR.equals(current) ? 0 : FEED_GITHUB.equals(current) ? 1 : 2;
+        String base = feedBase(current);
+        int type = Math.max(0, feedType(current));
+        int checked = FEED_JSDELIVR.equals(base) ? 0 : FEED_GITHUB.equals(base) ? 1 : 2;
         new AlertDialog.Builder(this)
                 .setTitle(R.string.online_wallpaper_label)
                 .setSingleChoiceItems(labels, checked, (dialog, which) -> {
@@ -261,7 +321,8 @@ public final class LauncherSettingsActivity extends Activity {
                     if (which == 2) {
                         showCustomFeed(current);
                     } else {
-                        choices.edit().putString(Config.ONLINE_FEED_KEY, which == 0 ? FEED_JSDELIVR : FEED_GITHUB)
+                        choices.edit().putString(Config.ONLINE_FEED_KEY,
+                                withType(which == 0 ? FEED_JSDELIVR : FEED_GITHUB, type))
                                 .apply();
                         onlineChanged(true);
                     }

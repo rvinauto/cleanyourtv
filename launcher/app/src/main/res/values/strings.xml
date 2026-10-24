@@ -167,4 +167,10 @@
     <string name="online_refreshing">Refreshing when you go back to Home</string>
     <string name="online_cache_cleared">Downloaded pictures cleared</string>
     <string name="online_url_hint" translatable="false">https://example.com/feed.json</string>
+    <string name="online_type">Type: %1$s</string>
+    <string name="online_type_scenery">Scenery (Bing)</string>
+    <string name="online_type_movies">Movies &amp; TV (TMDB)</string>
+    <string name="online_type_mixed">Mixed</string>
+    <string name="online_captions">Title on picture: %1$s</string>
+    <string name="online_type_custom">Wallpaper type applies to the built-in sources only</string>
 </resources>

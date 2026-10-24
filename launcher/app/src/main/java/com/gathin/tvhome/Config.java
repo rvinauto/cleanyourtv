@@ -45,7 +45,8 @@ final class Config {
     /** Launcher settings' online wallpaper choices; absent means the theme or config.xml decides. */
     static final String ONLINE_KEY = "online_wallpaper", ONLINE_FEED_KEY = "online_wallpaper_feed",
             ONLINE_HOURS_KEY = "online_wallpaper_refresh_hours", ONLINE_COUNT_KEY = "online_wallpaper_cache_count",
-            ROTATION_KEY = "wallpaper_rotation_minutes", ONLINE_FORCE_KEY = "online_wallpaper_force";
+            ROTATION_KEY = "wallpaper_rotation_minutes", ONLINE_FORCE_KEY = "online_wallpaper_force",
+            CAPTIONS_KEY = "wallpaper_captions";
     static final String DOCK_OPACITY_KEY = "dock_opacity";
     /**
      * Counts the changes made in Launcher settings. Home remembers the count it was built with and rebuilds on
@@ -480,6 +481,7 @@ final class Config {
         if (chosenRows >= 0 && chosenRows <= 3) rowsBelow = chosenRows;
         animations = choices.getBoolean("animations", animations);
         advancedEffects = choices.getBoolean("advanced_effects", advancedEffects);
+        wallpaperCaptions = choices.getBoolean(CAPTIONS_KEY, wallpaperCaptions);
         File wallpaper = dir != null ? new File(dir, WALLPAPER_NAME) : null;
         if (wallpaper != null && !(wallpaper.isFile() && wallpaper.length() > 0)) wallpaper = null;
         // A theme can also switch the wallpaper off while the file is still there.
@@ -609,7 +611,7 @@ final class Config {
     /** A theme push or reset hands the online wallpaper back to the theme, like every other on-TV choice. */
     static SharedPreferences.Editor removeOnlineChoices(SharedPreferences.Editor editor) {
         return editor.remove(ONLINE_KEY).remove(ONLINE_FEED_KEY).remove(ONLINE_HOURS_KEY)
-                .remove(ONLINE_COUNT_KEY).remove(ROTATION_KEY);
+                .remove(ONLINE_COUNT_KEY).remove(ROTATION_KEY).remove(CAPTIONS_KEY);
     }
 
     /** The dock band opacity chosen in Launcher settings, or the theme's when none (or an out-of-range one) is saved. */
