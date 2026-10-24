@@ -44,7 +44,9 @@ jobs:
                   base = im.get("urlbase", "")
                   if not base.startswith("/") or base in seen: continue
                   seen.add(base)
-                  url = next((u for u in ("https://www.bing.com" + base + s for s in ("_UHD.jpg", "_1920x1080.jpg")) if ok(u)), None)
+                  # cn.bing.com first: reachable from mainland China. ok() only accepts a 200 without redirect.
+                  url = next((u for u in (h + base + s for s in ("_UHD.jpg", "_1920x1080.jpg")
+                                          for h in ("https://cn.bing.com", "https://www.bing.com")) if ok(u)), None)
                   if not url: continue
                   cap = " — ".join(x for x in (im.get("title", "").strip(), im.get("copyright", "").strip()) if x)
                   items.append({"id": (im.get("startdate", "") + "-" + im.get("hsh", "")).strip("-") or base,
@@ -81,3 +83,14 @@ jobs:
           if git diff --cached --quiet; then echo "Feed unchanged"; exit 0; fi
           git commit -qm "Update Bing wallpaper feed $(date -u +%F)"
           git push -q origin wallpaper-feed
+      - name: Purge jsDelivr cache
+        # The launcher's default feed is served by jsDelivr (reachable in mainland China); refresh its copy now.
+        run: |
+          set -u
+          for i in 1 2 3; do
+            if curl -fsS --max-time 60 "https://purge.jsdelivr.net/gh/${GITHUB_REPOSITORY}@wallpaper-feed/feed.json"; then
+              echo; exit 0
+            fi
+            sleep 10
+          done
+          echo "::warning::jsDelivr purge failed; its copy refreshes on its own within about 12 hours."
