@@ -10,11 +10,21 @@ jobs:
   launcher:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    env:
+      # Cert SHA-256 of C:\Users\rv\.android\debug.keystore (created 2026-05-23).
+      EXPECTED_CERT_SHA256: 012B76CCFECBDCF3363C8374C5C810BA0F71A40BC007B564BAF8193339DEF24F
     steps:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Restore the existing debug signing key
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: android-actions/setup-android@v4
+        with:
+          packages: platforms;android-34 build-tools;34.0.0
+      - name: Restore and verify the existing debug signing key
         env:
           ANDROID_DEBUG_KEYSTORE_BASE64: ${{ secrets.ANDROID_DEBUG_KEYSTORE_BASE64 }}
         shell: bash
@@ -24,18 +34,33 @@ jobs:
             echo "::error::ANDROID_DEBUG_KEYSTORE_BASE64 is required; no signing key will be generated."
             exit 1
           fi
+          # Pin every location AGP may use for debug.keystore to one directory.
+          user_home="$HOME/.android"
           umask 077
-          install -d -m 700 "$HOME/.android"
-          printf '%s' "$ANDROID_DEBUG_KEYSTORE_BASE64" | base64 --decode > "$HOME/.android/debug.keystore"
-          test -s "$HOME/.android/debug.keystore"
-          chmod 600 "$HOME/.android/debug.keystore"
-      - uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: "17"
-      - uses: android-actions/setup-android@v4
-        with:
-          packages: platforms;android-34 build-tools;34.0.0
+          install -d -m 700 "$user_home"
+          ks="$user_home/debug.keystore"
+          rm -f -- "$ks"
+          # Tolerate CR/LF/whitespace from Windows clipboard.
+          if ! printf '%s' "$ANDROID_DEBUG_KEYSTORE_BASE64" | tr -d ' \r\n\t' | base64 --decode > "$ks" 2>/dev/null; then
+            echo "::error::Secret is not valid Base64. Re-copy debug.keystore and update the secret."
+            exit 1
+          fi
+          test -s "$ks"
+          chmod 600 "$ks"
+          if ! out=$(keytool -list -v -keystore "$ks" -storepass android -alias androiddebugkey 2>&1); then
+            echo "::error::Secret does not decode to a valid debug keystore (storepass android, alias androiddebugkey). Re-copy and update the secret."
+            exit 1
+          fi
+          got=$(printf '%s\n' "$out" | grep -E '^\s*SHA256:' | head -1 | sed -E 's/.*SHA256:\s*//' | tr -d ' :' | tr 'a-f' 'A-F')
+          if [[ "$got" != "$EXPECTED_CERT_SHA256" ]]; then
+            echo "::error::Keystore cert SHA-256 $got does not match expected $EXPECTED_CERT_SHA256. Re-copy the correct debug.keystore into the secret."
+            exit 1
+          fi
+          echo "Keystore cert SHA-256 verified: $got"
+          sha256sum "$ks" | cut -d ' ' -f 1 > "$RUNNER_TEMP/keystore.sha256"
+          {
+            echo "ANDROID_USER_HOME=$user_home"
+          } >> "$GITHUB_ENV"
       - name: Unit tests, lint and release build
         working-directory: launcher
         shell: bash
@@ -43,8 +68,31 @@ jobs:
           set -euo pipefail
           # Fail before Gradle can create a replacement debug key.
           test -s "$HOME/.android/debug.keystore"
+          echo "ANDROID_USER_HOME=$ANDROID_USER_HOME"
           chmod +x gradlew
           ./gradlew --no-daemon testReleaseUnitTest lintRelease assembleRelease
+          # Fail if the restored key was replaced or another debug key appeared.
+          test "$(sha256sum "$HOME/.android/debug.keystore" | cut -d ' ' -f 1)" = "$(cat "$RUNNER_TEMP/keystore.sha256")"
+          extra=$(find "$HOME" "$GITHUB_WORKSPACE" -name debug.keystore -not -path "$HOME/.android/debug.keystore" 2>/dev/null || true)
+          if [[ -n "$extra" ]]; then
+            echo "::error::Unexpected debug.keystore generated: $extra"
+            exit 1
+          fi
+      - name: Verify APK signing certificate
+        shell: bash
+        run: |
+          set -euo pipefail
+          apk=launcher/app/build/outputs/apk/release/app-release.apk
+          apksigner="$ANDROID_HOME/build-tools/34.0.0/apksigner"
+          certs=$("$apksigner" verify --print-certs "$apk")
+          n=$(printf '%s\n' "$certs" | grep -c 'certificate SHA-256 digest:' || true)
+          got=$(printf '%s\n' "$certs" | grep 'certificate SHA-256 digest:' | head -1 | sed -E 's/.*digest:\s*//' | tr -d ' :' | tr 'a-f' 'A-F')
+          echo "APK cert SHA-256: $got"
+          if [[ "$n" -ne 1 || "$got" != "$EXPECTED_CERT_SHA256" ]]; then
+            echo "::error::APK signer $got does not match expected $EXPECTED_CERT_SHA256."
+            exit 1
+          fi
+          echo "APK cert SHA-256: $got (verified)" >> "$GITHUB_STEP_SUMMARY"
       - name: APK size, checksum and commit
         id: apk
         shell: bash
