@@ -2,9 +2,9 @@
  "version": 1,
  "wallpapers": [
   {
-   "id": "20261023-8b6a33956db57eaa614b800cd9e6c3d8",
-   "url": "https://cn.bing.com/th?id=OHR.PortugueseLibrary_ZH-CN7096893027_UHD.jpg",
-   "caption": "书香里的极致华美 — 皇家葡萄牙语阅览室，里约热内卢，巴西 (© Antonio Salaverry/Shutterstock)"
+   "id": "20261024-e5e6a9075ef5d714848599cb68148e62",
+   "url": "https://cn.bing.com/th?id=OHR.MaligneFest_ZH-CN8343066766_UHD.jpg",
+   "caption": "群峰与宁静相遇之地 — 玛琳湖，贾斯珀国家公园，艾伯塔省，加拿大 (© Andrey Popov/Getty Images)"
   },
   {
    "id": "tmdb-movie-969681",
@@ -12,9 +12,9 @@
    "caption": "蜘蛛侠：崭新之日 (2026)"
   },
   {
-   "id": "20261022-0360442f708dff212a10b844a50f9ef0",
-   "url": "https://cn.bing.com/th?id=OHR.YellowstoneWolves_ZH-CN6767268961_UHD.jpg",
-   "caption": "荒野伙伴 — 两只灰狼，黄石国家公园，怀俄明州，美国 (© John Morrison/Getty Images)"
+   "id": "20261023-8b6a33956db57eaa614b800cd9e6c3d8",
+   "url": "https://cn.bing.com/th?id=OHR.PortugueseLibrary_ZH-CN7096893027_UHD.jpg",
+   "caption": "书香里的极致华美 — 皇家葡萄牙语阅览室，里约热内卢，巴西 (© Antonio Salaverry/Shutterstock)"
   },
   {
    "id": "tmdb-movie-1003596",
@@ -22,14 +22,24 @@
    "caption": "复仇者联盟5 (2026)"
   },
   {
-   "id": "20261021-f5712223d70223a41356c0e2064f8cbd",
-   "url": "https://cn.bing.com/th?id=OHR.NaejangsanNP_ZH-CN6538893004_UHD.jpg",
-   "caption": "静水映斑斓 — 内藏山国立公园的秋景，韩国 (© Twenty47studio/Getty Images)"
+   "id": "20261022-0360442f708dff212a10b844a50f9ef0",
+   "url": "https://cn.bing.com/th?id=OHR.YellowstoneWolves_ZH-CN6767268961_UHD.jpg",
+   "caption": "荒野伙伴 — 两只灰狼，黄石国家公园，怀俄明州，美国 (© John Morrison/Getty Images)"
   },
   {
    "id": "tmdb-movie-1058424",
    "url": "https://image.tmdb.org/t/p/original/2RxFCDsy6dumZxRrsd2966HKXst.jpg",
    "caption": "希望 (2026)"
+  },
+  {
+   "id": "20261021-f5712223d70223a41356c0e2064f8cbd",
+   "url": "https://cn.bing.com/th?id=OHR.NaejangsanNP_ZH-CN6538893004_UHD.jpg",
+   "caption": "静水映斑斓 — 内藏山国立公园的秋景，韩国 (© Twenty47studio/Getty Images)"
+  },
+  {
+   "id": "tmdb-movie-1368337",
+   "url": "https://image.tmdb.org/t/p/original/bulFtfy3oBQtCnAMSi7g6DSSds3.jpg",
+   "caption": "奥德赛 (2026)"
   },
   {
    "id": "20261020-a7a759485d043460ce495a296170a16d",
@@ -77,9 +87,9 @@
    "caption": "发掘尘封的过去 — 肖维岩洞艺术作品等比例复制品，瓦隆蓬达尔克，法国 (© Audrey Poree/Alamy)"
   },
   {
-   "id": "tmdb-movie-1153576",
-   "url": "https://image.tmdb.org/t/p/original/qRN8eqYwG6HPSy0i3fKzuLrUOhp.jpg",
-   "caption": "街头霸王 (2026)"
+   "id": "tmdb-movie-1400940",
+   "url": "https://image.tmdb.org/t/p/original/kVtOcoUJ68chBD2tmERkdWz7lK5.jpg",
+   "caption": "泥面人 (2026)"
   },
   {
    "id": "20261015-01324fb451f97a15a594d097f3d816c5",
@@ -87,9 +97,9 @@
    "caption": "一窥科罗拉多群峰 — 斯奈费尔斯山，里奇韦附近的圣胡安山脉，科罗拉多州，美国 (© lightphoto/Getty Images)"
   },
   {
-   "id": "tmdb-movie-1400940",
-   "url": "https://image.tmdb.org/t/p/original/kVtOcoUJ68chBD2tmERkdWz7lK5.jpg",
-   "caption": "泥面人 (2026)"
+   "id": "tmdb-movie-1153576",
+   "url": "https://image.tmdb.org/t/p/original/qRN8eqYwG6HPSy0i3fKzuLrUOhp.jpg",
+   "caption": "街头霸王 (2026)"
   },
   {
    "id": "20261014-4ca868c84dea42c17e5d790158722de1",
@@ -97,9 +107,9 @@
    "caption": "桥梁、屋顶与暮色 — 弗罗茨瓦夫集市广场景观，摄自女巫桥，弗罗茨瓦夫，波兰 (© Piotr Mitelski/Shutterstock)"
   },
   {
-   "id": "tmdb-tv-213562",
-   "url": "https://image.tmdb.org/t/p/original/wxiBsKFEOOFK8eQStWOykNORlXY.jpg",
-   "caption": "水晶湖 (2026)"
+   "id": "tmdb-movie-1561726",
+   "url": "https://image.tmdb.org/t/p/original/nhJab93yQdDJa7btFEu9MQ8s2OG.jpg",
+   "caption": "偷天父子兵 (2026)"
   },
   {
    "id": "20261013-999a4070dbede033fe884401e20c4f09",
@@ -107,19 +117,14 @@
    "caption": "穿越时间的螺旋 — 侏罗纪时期的菊石化石 (© J Nemchinova/Getty Images)"
   },
   {
-   "id": "tmdb-movie-1561726",
-   "url": "https://image.tmdb.org/t/p/original/dgUDj84BWtW6EZzee8BkgKnjDhh.jpg",
-   "caption": "偷天父子兵 (2026)"
+   "id": "tmdb-tv-213562",
+   "url": "https://image.tmdb.org/t/p/original/wxiBsKFEOOFK8eQStWOykNORlXY.jpg",
+   "caption": "水晶湖 (2026)"
   },
   {
    "id": "20261012-ad1579bbbad955364787e365373dc47f",
    "url": "https://cn.bing.com/th?id=OHR.PlitviceAutumn_ZH-CN5646237897_UHD.jpg",
    "caption": "蓝与绿的交响曲 — 普利特维采湖群国家公园，克罗地亚 (© Jan Wlodarczyk/Alamy)"
-  },
-  {
-   "id": "tmdb-movie-1423191",
-   "url": "https://image.tmdb.org/t/p/original/3icyRAqgakNcQn6aDVz9libFmBA.jpg",
-   "caption": "生化危机：爆发夜 (2026)"
   },
   {
    "id": "20261011-52a0d9733d05abd4f85ef59a8830caf9",
@@ -130,11 +135,6 @@
    "id": "20261010-9561adf7c48edb8bad9274e4bfac4225",
    "url": "https://cn.bing.com/th?id=OHR.BabcockSP_ZH-CN5266848536_UHD.jpg",
    "caption": "秋色中转动的水轮 — 格莱德溪磨坊，巴布科克州立公园，西弗吉尼亚州，美国 (© dszc/Getty Images)"
-  },
-  {
-   "id": "20261009-5334aa6c5bad613d8231ab1fb253585d",
-   "url": "https://cn.bing.com/th?id=OHR.CormorantsFlight_ZH-CN0770863330_UHD.jpg",
-   "caption": "迁飞路线上的生命 — 蒙特雷湾上空的双冠鸬鹚，加利福尼亚州，美国 (© Hiroya Minakuchi/Minden Pictures)"
   }
  ]
 }

@@ -17,6 +17,11 @@
    "caption": "希望 (2026)"
   },
   {
+   "id": "tmdb-movie-1368337",
+   "url": "https://image.tmdb.org/t/p/original/bulFtfy3oBQtCnAMSi7g6DSSds3.jpg",
+   "caption": "奥德赛 (2026)"
+  },
+  {
    "id": "tmdb-tv-213375",
    "url": "https://image.tmdb.org/t/p/original/uoXXbN2PrOxH6UKyP7kYwmGpAAP.jpg",
    "caption": "幻视任务 (2026)"
@@ -37,29 +42,24 @@
    "caption": "塔尔萨之王 (2022)"
   },
   {
-   "id": "tmdb-movie-1153576",
-   "url": "https://image.tmdb.org/t/p/original/qRN8eqYwG6HPSy0i3fKzuLrUOhp.jpg",
-   "caption": "街头霸王 (2026)"
-  },
-  {
    "id": "tmdb-movie-1400940",
    "url": "https://image.tmdb.org/t/p/original/kVtOcoUJ68chBD2tmERkdWz7lK5.jpg",
    "caption": "泥面人 (2026)"
   },
   {
-   "id": "tmdb-tv-213562",
-   "url": "https://image.tmdb.org/t/p/original/wxiBsKFEOOFK8eQStWOykNORlXY.jpg",
-   "caption": "水晶湖 (2026)"
+   "id": "tmdb-movie-1153576",
+   "url": "https://image.tmdb.org/t/p/original/qRN8eqYwG6HPSy0i3fKzuLrUOhp.jpg",
+   "caption": "街头霸王 (2026)"
   },
   {
    "id": "tmdb-movie-1561726",
-   "url": "https://image.tmdb.org/t/p/original/dgUDj84BWtW6EZzee8BkgKnjDhh.jpg",
+   "url": "https://image.tmdb.org/t/p/original/nhJab93yQdDJa7btFEu9MQ8s2OG.jpg",
    "caption": "偷天父子兵 (2026)"
   },
   {
-   "id": "tmdb-movie-1423191",
-   "url": "https://image.tmdb.org/t/p/original/3icyRAqgakNcQn6aDVz9libFmBA.jpg",
-   "caption": "生化危机：爆发夜 (2026)"
+   "id": "tmdb-tv-213562",
+   "url": "https://image.tmdb.org/t/p/original/wxiBsKFEOOFK8eQStWOykNORlXY.jpg",
+   "caption": "水晶湖 (2026)"
   }
  ]
 }
