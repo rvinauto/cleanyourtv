@@ -7,19 +7,14 @@
    "caption": "蜘蛛侠：崭新之日 (2026)"
   },
   {
-   "id": "tmdb-movie-1003596",
-   "url": "https://image.tmdb.org/t/p/original/6TgmIXoVGEDyp0MSoVytIeyfhDR.jpg",
-   "caption": "复仇者联盟5 (2026)"
-  },
-  {
    "id": "tmdb-movie-1058424",
    "url": "https://image.tmdb.org/t/p/original/2RxFCDsy6dumZxRrsd2966HKXst.jpg",
    "caption": "希望 (2026)"
   },
   {
-   "id": "tmdb-movie-1368337",
-   "url": "https://image.tmdb.org/t/p/original/bulFtfy3oBQtCnAMSi7g6DSSds3.jpg",
-   "caption": "奥德赛 (2026)"
+   "id": "tmdb-movie-1003596",
+   "url": "https://image.tmdb.org/t/p/original/6TgmIXoVGEDyp0MSoVytIeyfhDR.jpg",
+   "caption": "复仇者联盟5 (2026)"
   },
   {
    "id": "tmdb-tv-213375",
@@ -53,13 +48,18 @@
   },
   {
    "id": "tmdb-movie-1561726",
-   "url": "https://image.tmdb.org/t/p/original/nhJab93yQdDJa7btFEu9MQ8s2OG.jpg",
+   "url": "https://image.tmdb.org/t/p/original/fAlQZsCOCvxOj0PmFmt4i8IWR2u.jpg",
    "caption": "偷天父子兵 (2026)"
   },
   {
    "id": "tmdb-tv-213562",
    "url": "https://image.tmdb.org/t/p/original/wxiBsKFEOOFK8eQStWOykNORlXY.jpg",
    "caption": "水晶湖 (2026)"
+  },
+  {
+   "id": "tmdb-movie-1423191",
+   "url": "https://image.tmdb.org/t/p/original/3icyRAqgakNcQn6aDVz9libFmBA.jpg",
+   "caption": "生化危机：爆发夜 (2026)"
   }
  ]
 }

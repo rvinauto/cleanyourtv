@@ -2,14 +2,24 @@
  "version": 1,
  "wallpapers": [
   {
-   "id": "20261024-e5e6a9075ef5d714848599cb68148e62",
-   "url": "https://cn.bing.com/th?id=OHR.MaligneFest_ZH-CN8343066766_UHD.jpg",
-   "caption": "群峰与宁静相遇之地 — 玛琳湖，贾斯珀国家公园，艾伯塔省，加拿大 (© Andrey Popov/Getty Images)"
+   "id": "20261025-61fbf9f782353a6a4a80ac713224c053",
+   "url": "https://cn.bing.com/th?id=OHR.SitovoWaterfall_ZH-CN8495214046_UHD.jpg",
+   "caption": "大自然的秋日乐章 — 秋日瀑布，西托沃附近，普罗夫迪夫州，保加利亚 (© Nadya85/Getty Images)"
   },
   {
    "id": "tmdb-movie-969681",
    "url": "https://image.tmdb.org/t/p/original/r08LxMJCbf1SiJIWeyH9aJmdqwC.jpg",
    "caption": "蜘蛛侠：崭新之日 (2026)"
+  },
+  {
+   "id": "20261024-e5e6a9075ef5d714848599cb68148e62",
+   "url": "https://cn.bing.com/th?id=OHR.MaligneFest_ZH-CN8343066766_UHD.jpg",
+   "caption": "群峰与宁静相遇之地 — 玛琳湖，贾斯珀国家公园，艾伯塔省，加拿大 (© Andrey Popov/Getty Images)"
+  },
+  {
+   "id": "tmdb-movie-1058424",
+   "url": "https://image.tmdb.org/t/p/original/2RxFCDsy6dumZxRrsd2966HKXst.jpg",
+   "caption": "希望 (2026)"
   },
   {
    "id": "20261023-8b6a33956db57eaa614b800cd9e6c3d8",
@@ -27,9 +37,9 @@
    "caption": "荒野伙伴 — 两只灰狼，黄石国家公园，怀俄明州，美国 (© John Morrison/Getty Images)"
   },
   {
-   "id": "tmdb-movie-1058424",
-   "url": "https://image.tmdb.org/t/p/original/2RxFCDsy6dumZxRrsd2966HKXst.jpg",
-   "caption": "希望 (2026)"
+   "id": "tmdb-tv-213375",
+   "url": "https://image.tmdb.org/t/p/original/uoXXbN2PrOxH6UKyP7kYwmGpAAP.jpg",
+   "caption": "幻视任务 (2026)"
   },
   {
    "id": "20261021-f5712223d70223a41356c0e2064f8cbd",
@@ -37,9 +47,9 @@
    "caption": "静水映斑斓 — 内藏山国立公园的秋景，韩国 (© Twenty47studio/Getty Images)"
   },
   {
-   "id": "tmdb-movie-1368337",
-   "url": "https://image.tmdb.org/t/p/original/bulFtfy3oBQtCnAMSi7g6DSSds3.jpg",
-   "caption": "奥德赛 (2026)"
+   "id": "tmdb-tv-247718",
+   "url": "https://image.tmdb.org/t/p/original/h0OC7ouop8YLwbAVfS3UUE2Lw4T.jpg",
+   "caption": "MobLand (2025)"
   },
   {
    "id": "20261020-a7a759485d043460ce495a296170a16d",
@@ -47,9 +57,9 @@
    "caption": "飞掠河面 — 香江上的阮潢桥，顺化，越南 (© VU PHAM VAN/Getty Images)"
   },
   {
-   "id": "tmdb-tv-213375",
-   "url": "https://image.tmdb.org/t/p/original/uoXXbN2PrOxH6UKyP7kYwmGpAAP.jpg",
-   "caption": "幻视任务 (2026)"
+   "id": "tmdb-tv-95480",
+   "url": "https://image.tmdb.org/t/p/original/gPQppUnLx9vqPDLz3WwZ2HJsNbt.jpg",
+   "caption": "Slow Horses (2022)"
   },
   {
    "id": "20261019-1a1dd724adcbc1c2aa3af8c97ea83f63",
@@ -57,9 +67,9 @@
    "caption": "慢节奏生活 — 褐喉三趾树懒，塔拉曼卡旧港，哥斯达黎加 (© Suzi Eszterhas/Minden Pictures)"
   },
   {
-   "id": "tmdb-tv-247718",
-   "url": "https://image.tmdb.org/t/p/original/h0OC7ouop8YLwbAVfS3UUE2Lw4T.jpg",
-   "caption": "MobLand (2025)"
+   "id": "tmdb-tv-153312",
+   "url": "https://image.tmdb.org/t/p/original/mNHRGO1gFpR2CYZdANe72kcKq7G.jpg",
+   "caption": "塔尔萨之王 (2022)"
   },
   {
    "id": "20261018-423ca0274a16c6906e776de99f1a0240",
@@ -67,9 +77,9 @@
    "caption": "水上通衢 — 大运河，威尼斯，意大利 (© Juan Romero/Cavan Images)"
   },
   {
-   "id": "tmdb-tv-95480",
-   "url": "https://image.tmdb.org/t/p/original/gPQppUnLx9vqPDLz3WwZ2HJsNbt.jpg",
-   "caption": "Slow Horses (2022)"
+   "id": "tmdb-movie-1400940",
+   "url": "https://image.tmdb.org/t/p/original/kVtOcoUJ68chBD2tmERkdWz7lK5.jpg",
+   "caption": "泥面人 (2026)"
   },
   {
    "id": "20261017-65461e4b90bf6915104c62b9a3ec91e7",
@@ -77,9 +87,9 @@
    "caption": "75载，风华正茂 — 多巴达恩城堡，兰贝里斯，斯诺登尼亚国家公园，威尔士 (© joe daniel price/Getty Images)"
   },
   {
-   "id": "tmdb-tv-153312",
-   "url": "https://image.tmdb.org/t/p/original/mNHRGO1gFpR2CYZdANe72kcKq7G.jpg",
-   "caption": "塔尔萨之王 (2022)"
+   "id": "tmdb-movie-1153576",
+   "url": "https://image.tmdb.org/t/p/original/qRN8eqYwG6HPSy0i3fKzuLrUOhp.jpg",
+   "caption": "街头霸王 (2026)"
   },
   {
    "id": "20261016-4e1ade5dbf2afc59df2b3bd5a69a55ad",
@@ -87,9 +97,9 @@
    "caption": "发掘尘封的过去 — 肖维岩洞艺术作品等比例复制品，瓦隆蓬达尔克，法国 (© Audrey Poree/Alamy)"
   },
   {
-   "id": "tmdb-movie-1400940",
-   "url": "https://image.tmdb.org/t/p/original/kVtOcoUJ68chBD2tmERkdWz7lK5.jpg",
-   "caption": "泥面人 (2026)"
+   "id": "tmdb-movie-1561726",
+   "url": "https://image.tmdb.org/t/p/original/fAlQZsCOCvxOj0PmFmt4i8IWR2u.jpg",
+   "caption": "偷天父子兵 (2026)"
   },
   {
    "id": "20261015-01324fb451f97a15a594d097f3d816c5",
@@ -97,9 +107,9 @@
    "caption": "一窥科罗拉多群峰 — 斯奈费尔斯山，里奇韦附近的圣胡安山脉，科罗拉多州，美国 (© lightphoto/Getty Images)"
   },
   {
-   "id": "tmdb-movie-1153576",
-   "url": "https://image.tmdb.org/t/p/original/qRN8eqYwG6HPSy0i3fKzuLrUOhp.jpg",
-   "caption": "街头霸王 (2026)"
+   "id": "tmdb-tv-213562",
+   "url": "https://image.tmdb.org/t/p/original/wxiBsKFEOOFK8eQStWOykNORlXY.jpg",
+   "caption": "水晶湖 (2026)"
   },
   {
    "id": "20261014-4ca868c84dea42c17e5d790158722de1",
@@ -107,19 +117,14 @@
    "caption": "桥梁、屋顶与暮色 — 弗罗茨瓦夫集市广场景观，摄自女巫桥，弗罗茨瓦夫，波兰 (© Piotr Mitelski/Shutterstock)"
   },
   {
-   "id": "tmdb-movie-1561726",
-   "url": "https://image.tmdb.org/t/p/original/nhJab93yQdDJa7btFEu9MQ8s2OG.jpg",
-   "caption": "偷天父子兵 (2026)"
+   "id": "tmdb-movie-1423191",
+   "url": "https://image.tmdb.org/t/p/original/3icyRAqgakNcQn6aDVz9libFmBA.jpg",
+   "caption": "生化危机：爆发夜 (2026)"
   },
   {
    "id": "20261013-999a4070dbede033fe884401e20c4f09",
    "url": "https://cn.bing.com/th?id=OHR.AmmoniteFossils_ZH-CN5825251327_UHD.jpg",
    "caption": "穿越时间的螺旋 — 侏罗纪时期的菊石化石 (© J Nemchinova/Getty Images)"
-  },
-  {
-   "id": "tmdb-tv-213562",
-   "url": "https://image.tmdb.org/t/p/original/wxiBsKFEOOFK8eQStWOykNORlXY.jpg",
-   "caption": "水晶湖 (2026)"
   },
   {
    "id": "20261012-ad1579bbbad955364787e365373dc47f",
@@ -130,11 +135,6 @@
    "id": "20261011-52a0d9733d05abd4f85ef59a8830caf9",
    "url": "https://cn.bing.com/th?id=OHR.MumblesSwansea2026_ZH-CN5419531039_UHD.jpg",
    "caption": "从铁轨到潮汐 — 曼布尔斯码头，斯旺西，威尔士 (© Helen Hotson/Shutterstock)"
-  },
-  {
-   "id": "20261010-9561adf7c48edb8bad9274e4bfac4225",
-   "url": "https://cn.bing.com/th?id=OHR.BabcockSP_ZH-CN5266848536_UHD.jpg",
-   "caption": "秋色中转动的水轮 — 格莱德溪磨坊，巴布科克州立公园，西弗吉尼亚州，美国 (© dszc/Getty Images)"
   }
  ]
 }
