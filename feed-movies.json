@@ -3,7 +3,7 @@
  "wallpapers": [
   {
    "id": "tmdb-movie-969681",
-   "url": "https://image.tmdb.org/t/p/original/r08LxMJCbf1SiJIWeyH9aJmdqwC.jpg",
+   "url": "https://image.tmdb.org/t/p/original/4tjxYg2AbOzzG9G1YuiT2NzYhlH.jpg",
    "caption": "蜘蛛侠：崭新之日 (2026)"
   },
   {
@@ -12,9 +12,9 @@
    "caption": "希望 (2026)"
   },
   {
-   "id": "tmdb-movie-1003596",
-   "url": "https://image.tmdb.org/t/p/original/6TgmIXoVGEDyp0MSoVytIeyfhDR.jpg",
-   "caption": "复仇者联盟5 (2026)"
+   "id": "tmdb-tv-247718",
+   "url": "https://image.tmdb.org/t/p/original/h0OC7ouop8YLwbAVfS3UUE2Lw4T.jpg",
+   "caption": "MobLand (2025)"
   },
   {
    "id": "tmdb-tv-213375",
@@ -22,9 +22,9 @@
    "caption": "幻视任务 (2026)"
   },
   {
-   "id": "tmdb-tv-247718",
-   "url": "https://image.tmdb.org/t/p/original/h0OC7ouop8YLwbAVfS3UUE2Lw4T.jpg",
-   "caption": "MobLand (2025)"
+   "id": "tmdb-tv-153312",
+   "url": "https://image.tmdb.org/t/p/original/mNHRGO1gFpR2CYZdANe72kcKq7G.jpg",
+   "caption": "塔尔萨之王 (2022)"
   },
   {
    "id": "tmdb-tv-95480",
@@ -32,24 +32,24 @@
    "caption": "Slow Horses (2022)"
   },
   {
-   "id": "tmdb-tv-153312",
-   "url": "https://image.tmdb.org/t/p/original/mNHRGO1gFpR2CYZdANe72kcKq7G.jpg",
-   "caption": "塔尔萨之王 (2022)"
-  },
-  {
    "id": "tmdb-movie-1400940",
    "url": "https://image.tmdb.org/t/p/original/kVtOcoUJ68chBD2tmERkdWz7lK5.jpg",
    "caption": "泥面人 (2026)"
   },
   {
-   "id": "tmdb-movie-1153576",
-   "url": "https://image.tmdb.org/t/p/original/qRN8eqYwG6HPSy0i3fKzuLrUOhp.jpg",
-   "caption": "街头霸王 (2026)"
+   "id": "tmdb-tv-120911",
+   "url": "https://image.tmdb.org/t/p/original/2qS2LGqsAyT1NEDeIj24Hp2IR10.jpg",
+   "caption": "The Terminal List (2022)"
   },
   {
-   "id": "tmdb-movie-1561726",
-   "url": "https://image.tmdb.org/t/p/original/fAlQZsCOCvxOj0PmFmt4i8IWR2u.jpg",
-   "caption": "偷天父子兵 (2026)"
+   "id": "tmdb-tv-96677",
+   "url": "https://image.tmdb.org/t/p/original/jgAZYiuRV37pCxmhx8NTdhE36RL.jpg",
+   "caption": "Lupin (2021)"
+  },
+  {
+   "id": "tmdb-tv-30984",
+   "url": "https://image.tmdb.org/t/p/original/aXO5vBpGEl2xUfhJtZyLWeLY5ZJ.jpg",
+   "caption": "死神 (2004)"
   },
   {
    "id": "tmdb-tv-213562",
@@ -58,7 +58,7 @@
   },
   {
    "id": "tmdb-movie-1423191",
-   "url": "https://image.tmdb.org/t/p/original/3icyRAqgakNcQn6aDVz9libFmBA.jpg",
+   "url": "https://image.tmdb.org/t/p/original/vqNSvCFknXObgqn7nOFrJVEeGht.jpg",
    "caption": "生化危机：爆发夜 (2026)"
   }
  ]
