@@ -344,6 +344,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             if (festive) updateWifiLabel();
             sky.update();
             wallpaperPlayer.update();
+            fetchWallpapers();
             handler.postDelayed(this, MINUTE_MS);
         }
     };
@@ -855,6 +856,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         if (showStats) startStats();
         sky.update();
         wallpaperPlayer.start();
+        fetchWallpapers();
         handler.postDelayed(minuteTick, MINUTE_MS);
         if (festive && diya != null) {
             diya.start();
@@ -1079,6 +1081,16 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             if (libraryFocusPending && appLibrary == null) focusLibrary();
             showCardPrompt();
         }
+    }
+
+    /** wallpaper_auto_update: a due feed fetch in the background, then the player reloads the folder. */
+    private void fetchWallpapers() {
+        WallpaperFeed.maybeRun(this, () -> {
+            Config fresh = Config.load(getApplicationContext());
+            handler.post(() -> {
+                if (!isDestroyed() && wallpaperPlayer != null) wallpaperPlayer.reload(this, fresh);
+            });
+        });
     }
 
     @Override

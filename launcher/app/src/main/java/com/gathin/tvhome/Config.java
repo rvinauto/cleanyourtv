@@ -480,6 +480,10 @@ final class Config {
         boolean wallpaperEnabled = json == null || bool(json, "wallpaper", true);
         if (!wallpaperEnabled) wallpaper = null;
         int rotationMinutes = json == null ? 0 : integer(json, "wallpaper_rotation_minutes", 0, 0, 1440);
+        // wallpaper_auto_update switched on with no rotation: rotate the downloaded pictures every 30 minutes.
+        if (rotationMinutes == 0 && json != null && wallpaperEnabled && json.optBoolean(WallpaperFeed.CONFIG_KEY, false)) {
+            rotationMinutes = 30;
+        }
         int wallpaperDim = json == null ? 0 : integer(json, "wallpaper_dim", 0, 0, 90);
         int dockOpacity = json == null ? 100 : integer(json, "dock_opacity", 100, 30, 100);
         dockOpacity = chosenDockOpacity(choices.getInt(DOCK_OPACITY_KEY, -1), dockOpacity);

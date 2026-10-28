@@ -52,8 +52,10 @@ final class WallpaperPlayer {
     private boolean loading;
     private String displayed = "";
     /** wallpaper_captions: the shown picture's name from wallpapers/captions.txt; null when off or there are none. */
-    private final TextView caption;
-    private final Map<String, String> names;
+    private TextView caption;
+    private Map<String, String> names;
+    private final boolean captionsOn;
+    private String lastSkip = "";
     /** wallpaper_moods: the collection's groups by time of day; empty rotates through all of it. */
     private final Map<String, Set<String>> moods;
     /** config.xml latitude and longitude for the sun's times, and today's {sunrise, sunset} once worked out. */
@@ -86,6 +88,7 @@ final class WallpaperPlayer {
         image = new ImageView(context);
         image.setScaleType(ImageView.ScaleType.CENTER_CROP);
         image.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
+        captionsOn = config.wallpaperCaptions;
         names = config.wallpaperCaptions && config.wallpaperEnabled && !files.isEmpty()
                 ? WallpaperCaptions.read(files.get(0).getParentFile()) : Collections.emptyMap();
         caption = names.isEmpty() ? null : makeCaption(context, root);
@@ -152,8 +155,39 @@ final class WallpaperPlayer {
         decoder.shutdownNow();
     }
 
+    /**
+     * New pictures from the automatic feed: replace the collection with a freshly loaded config's list (a theme's
+     * on-TV choice still wins, as Config applies it), keep the shown picture, and re-read captions. Main thread.
+     */
+    void reload(Context context, Config config) {
+        if (closed) return;
+        files.clear();
+        files.addAll(config.wallpapers);
+        if (captionsOn && config.wallpaperEnabled && !files.isEmpty()) {
+            names = WallpaperCaptions.read(files.get(0).getParentFile());
+            if (caption == null && !names.isEmpty()) caption = makeCaption(context, root);
+        }
+        Log.i("TvHome.Wallpaper", "reloaded collection: " + files.size() + " pictures");
+        if (config.wallpaperEnabled && !files.isEmpty() && image.getParent() == null) {
+            root.addView(image, 0, new FrameLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+            showFirst();
+        } else {
+            update();
+        }
+    }
+
+    /** Logs why update() kept the picture, once per distinct reason, so logcat is not flooded every minute. */
+    private void skip(String reason) {
+        if (reason.equals(lastSkip)) return;
+        lastSkip = reason;
+        Log.d("TvHome.Wallpaper", "no change: " + reason);
+    }
+
     void update() {
-        if (!active || closed || loading || files.isEmpty()) return;
+        if (!active || closed) return;
+        if (loading) { skip("decoding"); return; }
+        if (files.isEmpty()) { skip("no pictures"); return; }
         String previous = preferences.getString("image", "");
         // A picture outside the time of day's group (the group changed) is replaced at once, not after the interval.
         List<File> playable = playable();
@@ -162,7 +196,14 @@ final class WallpaperPlayer {
         if (selected == null || WallpaperRotation.due(changed, System.currentTimeMillis(), interval)) {
             selected = WallpaperRotation.pick(playable, previous, order, random);
         }
-        if (selected == null || selected.getName().equals(displayed)) return;
+        if (selected == null) { skip("nothing playable (" + playable.size() + " of " + files.size() + ")"); return; }
+        if (selected.getName().equals(displayed)) {
+            skip(interval <= 0 ? "rotation off (wallpaper_rotation_minutes 0)"
+                    : playable.size() < 2 ? "only " + playable.size() + " playable picture(s)"
+                    : "interval not reached (" + interval / 60_000L + " min)");
+            return;
+        }
+        lastSkip = "";
         File next = selected;
         loading = true;
         decoder.execute(() -> {
