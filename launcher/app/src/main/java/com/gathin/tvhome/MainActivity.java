@@ -401,7 +401,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         // The glow is one bitmap, so its alpha can be applied while drawing it. Otherwise every frame of
         // a fade renders it into a full-screen offscreen buffer first.
         ambient.forceHasOverlappingRendering(false);
-        ambientGlow = cfg.ambientGlow;
+        // A wallpaper is on screen: the full-screen glow in the focused app's colour tinted the picture on every
+        // focus move. Keep the wallpaper stable; the focus highlight on the tile itself is unchanged.
+        ambientGlow = cfg.ambientGlow && !wallpaperPlayer.showsWallpaper();
         appGlow = cfg.appGlow;
         if (!ambientGlow) ambient.setVisibility(View.GONE);
         heroName = findViewById(R.id.heroName);

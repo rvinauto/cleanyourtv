@@ -93,7 +93,7 @@ final class WallpaperPlayer {
                 config.onlineWallpaper.interval);
         onlineOptions = config.onlineWallpaper;
         appContext = context.getApplicationContext();
-        bitmapConfig = config.wallpaperTrueColor ? Bitmap.Config.ARGB_8888 : Bitmap.Config.RGB_565;
+        bitmapConfig = config.wallpaperTrueColor ? Bitmap.Config.ARGB_8888 : Bitmap.Config.RGB_565;   // default true since 2.6.1
         // The dim is painted into the picture (decode), so no full-screen shade layer is drawn on every frame.
         dimColor = config.wallpaperDim > 0 ? (config.wallpaperDim * 255 / 100) << 24 : 0;
         order = config.wallpaperOrder;
@@ -239,6 +239,11 @@ final class WallpaperPlayer {
             playable = playable();
             first = WallpaperRotation.pick(playable, previous, order, random);
         }
+    }
+
+    /** Whether a wallpaper (local or online) is drawn behind Home. */
+    boolean showsWallpaper() {
+        return image.getParent() != null;
     }
 
     void start() {
