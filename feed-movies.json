@@ -2,14 +2,14 @@
  "version": 1,
  "wallpapers": [
   {
-   "id": "tmdb-movie-969681",
-   "url": "https://image.tmdb.org/t/p/original/4tjxYg2AbOzzG9G1YuiT2NzYhlH.jpg",
-   "caption": "蜘蛛侠：崭新之日 (2026)"
-  },
-  {
    "id": "tmdb-movie-1058424",
    "url": "https://image.tmdb.org/t/p/original/2RxFCDsy6dumZxRrsd2966HKXst.jpg",
    "caption": "希望 (2026)"
+  },
+  {
+   "id": "tmdb-movie-969681",
+   "url": "https://image.tmdb.org/t/p/original/4tjxYg2AbOzzG9G1YuiT2NzYhlH.jpg",
+   "caption": "蜘蛛侠：崭新之日 (2026)"
   },
   {
    "id": "tmdb-tv-247718",
@@ -27,14 +27,14 @@
    "caption": "塔尔萨之王 (2022)"
   },
   {
-   "id": "tmdb-tv-95480",
-   "url": "https://image.tmdb.org/t/p/original/gPQppUnLx9vqPDLz3WwZ2HJsNbt.jpg",
-   "caption": "Slow Horses (2022)"
-  },
-  {
    "id": "tmdb-movie-1400940",
    "url": "https://image.tmdb.org/t/p/original/kVtOcoUJ68chBD2tmERkdWz7lK5.jpg",
    "caption": "泥面人 (2026)"
+  },
+  {
+   "id": "tmdb-tv-95480",
+   "url": "https://image.tmdb.org/t/p/original/gPQppUnLx9vqPDLz3WwZ2HJsNbt.jpg",
+   "caption": "Slow Horses (2022)"
   },
   {
    "id": "tmdb-tv-120911",
@@ -52,14 +52,14 @@
    "caption": "死神 (2004)"
   },
   {
-   "id": "tmdb-tv-213562",
-   "url": "https://image.tmdb.org/t/p/original/wxiBsKFEOOFK8eQStWOykNORlXY.jpg",
-   "caption": "水晶湖 (2026)"
+   "id": "tmdb-tv-2190",
+   "url": "https://image.tmdb.org/t/p/original/3UviYOlhn8EgXMBuiT6MnUuo1w9.jpg",
+   "caption": "南方公园 (1997)"
   },
   {
-   "id": "tmdb-movie-1423191",
-   "url": "https://image.tmdb.org/t/p/original/vqNSvCFknXObgqn7nOFrJVEeGht.jpg",
-   "caption": "生化危机：爆发夜 (2026)"
+   "id": "tmdb-tv-220542",
+   "url": "https://image.tmdb.org/t/p/original/gffVOVZ2Y9cmVIZ26Gt9ByMGCYH.jpg",
+   "caption": "药屋少女的呢喃 (2023)"
   }
  ]
 }
