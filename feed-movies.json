@@ -12,29 +12,29 @@
    "caption": "蜘蛛侠：崭新之日 (2026)"
   },
   {
+   "id": "tmdb-tv-213375",
+   "url": "https://image.tmdb.org/t/p/original/58v1KFe3rxvHrYM1hLH5ScpwqNR.jpg",
+   "caption": "幻视任务 (2026)"
+  },
+  {
    "id": "tmdb-tv-247718",
    "url": "https://image.tmdb.org/t/p/original/h0OC7ouop8YLwbAVfS3UUE2Lw4T.jpg",
    "caption": "MobLand (2025)"
   },
   {
-   "id": "tmdb-tv-213375",
-   "url": "https://image.tmdb.org/t/p/original/uoXXbN2PrOxH6UKyP7kYwmGpAAP.jpg",
-   "caption": "幻视任务 (2026)"
-  },
-  {
-   "id": "tmdb-tv-153312",
-   "url": "https://image.tmdb.org/t/p/original/mNHRGO1gFpR2CYZdANe72kcKq7G.jpg",
-   "caption": "塔尔萨之王 (2022)"
-  },
-  {
    "id": "tmdb-movie-1400940",
-   "url": "https://image.tmdb.org/t/p/original/kVtOcoUJ68chBD2tmERkdWz7lK5.jpg",
+   "url": "https://image.tmdb.org/t/p/original/VnT9D7NogVWrmN2UuT30exIYPh.jpg",
    "caption": "泥面人 (2026)"
   },
   {
    "id": "tmdb-tv-95480",
    "url": "https://image.tmdb.org/t/p/original/gPQppUnLx9vqPDLz3WwZ2HJsNbt.jpg",
    "caption": "Slow Horses (2022)"
+  },
+  {
+   "id": "tmdb-movie-1596275",
+   "url": "https://image.tmdb.org/t/p/original/hbz4aeVsjnKb2HRoFbbr46Egh8y.jpg",
+   "caption": "极速：伪装者 (2026)"
   },
   {
    "id": "tmdb-tv-120911",
@@ -47,19 +47,19 @@
    "caption": "Lupin (2021)"
   },
   {
+   "id": "tmdb-movie-1283515",
+   "url": "https://image.tmdb.org/t/p/original/cKetrF2dAnQ0AMV5i4BMOs41I5P.jpg",
+   "caption": "不存在的罪人 (2026)"
+  },
+  {
+   "id": "tmdb-movie-1384216",
+   "url": "https://image.tmdb.org/t/p/original/yhCHnkidQdR3lksbdyFxduRXFPK.jpg",
+   "caption": "末世行者 (2026)"
+  },
+  {
    "id": "tmdb-tv-30984",
    "url": "https://image.tmdb.org/t/p/original/aXO5vBpGEl2xUfhJtZyLWeLY5ZJ.jpg",
    "caption": "死神 (2004)"
-  },
-  {
-   "id": "tmdb-tv-2190",
-   "url": "https://image.tmdb.org/t/p/original/3UviYOlhn8EgXMBuiT6MnUuo1w9.jpg",
-   "caption": "南方公园 (1997)"
-  },
-  {
-   "id": "tmdb-tv-220542",
-   "url": "https://image.tmdb.org/t/p/original/gffVOVZ2Y9cmVIZ26Gt9ByMGCYH.jpg",
-   "caption": "药屋少女的呢喃 (2023)"
   }
  ]
 }
