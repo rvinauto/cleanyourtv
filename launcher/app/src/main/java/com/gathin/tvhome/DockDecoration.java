@@ -28,6 +28,8 @@ public class DockDecoration extends RecyclerView.ItemDecoration {
     private final boolean evenPadding;
     /** The band's top and bottom the glass gradient was made for; it is remade when they move. */
     private float shaderTop = Float.NaN, shaderBottom = Float.NaN;
+    /** dock_opacity scales the glass too, so Launcher settings' Dock band opacity still works with dock_glass. */
+    private final float glassAlpha;
 
     /**
      * @param translucent the cinematic shelf's band: the artwork and the glow show through it.
@@ -43,10 +45,11 @@ public class DockDecoration extends RecyclerView.ItemDecoration {
         this.namesRoom = names ? 22 * density : 0;
         this.lightGlass = lightGlass;
         this.evenPadding = evenPadding;
+        this.glassAlpha = Math.max(30, Math.min(100, opacity)) / 100f;
         band.setColor(translucent ? 0x8C121014 : (Math.round(opacity * 2.55f) << 24) | 0x141416);
         edge.setStyle(Paint.Style.STROKE);
         edge.setStrokeWidth(density);
-        edge.setColor(lightGlass ? 0x38FFFFFF : translucent ? 0x26FFFFFF : 0x1FFFFFFF);
+        edge.setColor(lightGlass ? 0x47FFFFFF : translucent ? 0x26FFFFFF : 0x1FFFFFFF);
     }
 
     /** Concentric corners: the band's radius is the tiles' radius plus the band's padding around them. */
@@ -120,13 +123,20 @@ public class DockDecoration extends RecyclerView.ItemDecoration {
         }
         rect.bottom += namesRoom;
         if (lightGlass && (rect.top != shaderTop || rect.bottom != shaderBottom)) {
-            // The pills' glass (pill_bg: white, 18% fading to 8%), a little fainter over this much larger area.
-            band.setShader(new LinearGradient(0, rect.top, 0, rect.bottom, 0x24FFFFFF, 0x0DFFFFFF,
-                    Shader.TileMode.CLAMP));
+            // Smoked glass: a faint white sheen at the top over a translucent dark tint, so the white tiles and the
+            // focus glow read on a bright wallpaper and the band still lets a dark one show through. A canvas
+            // decoration cannot blur what is behind it cheaply, so the frosted look comes from tint and edge only.
+            band.setShader(new LinearGradient(0, rect.top, 0, rect.bottom,
+                    new int[]{glass(0x2E, 0xFFFFFF), glass(0x47, 0x0E1218), glass(0x5C, 0x0E1218)},
+                    new float[]{0f, 0.18f, 1f}, Shader.TileMode.CLAMP));
             shaderTop = rect.top;
             shaderBottom = rect.bottom;
         }
         c.drawRoundRect(rect, radius, radius, band);
         c.drawRoundRect(rect, radius, radius, edge);
+    }
+
+    private int glass(int alpha, int rgb) {
+        return (Math.round(alpha * glassAlpha) << 24) | rgb;
     }
 }

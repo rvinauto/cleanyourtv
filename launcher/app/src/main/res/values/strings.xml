@@ -145,4 +145,32 @@
     <!-- Cinematic top shelf (cinematic_home): the line under the focused dock app's name; %1$s is when it was
          last opened, e.g. "5 minutes ago" or "yesterday, 9:40 pm". -->
     <string name="last_opened">Last opened %1$s</string>
+    <!-- Launcher settings: online wallpaper (feed, refresh, cache, rotation). -->
+    <string name="online_wallpaper_state">Online wallpaper: %1$s</string>
+    <string name="online_wallpaper_label">Online wallpaper</string>
+    <string name="online_toggle">On or off: %1$s</string>
+    <string name="online_source">Source: %1$s</string>
+    <string name="online_source_jsdelivr">Bing 4K (jsDelivr, works in China)</string>
+    <string name="online_source_github">Bing 4K (GitHub raw)</string>
+    <string name="online_source_custom">Custom address</string>
+    <string name="online_refresh_hours">Refresh every: %1$d h</string>
+    <string name="online_cache_count">Pictures kept: %1$d</string>
+    <string name="online_rotation">Change picture every: %1$s</string>
+    <string name="rotation_minutes">%1$d min</string>
+    <string name="rotation_per_refresh">each refresh</string>
+    <string name="online_refresh_now">Refresh now</string>
+    <string name="online_clear_cache">Clear downloaded pictures</string>
+    <string name="online_status">Last refresh: %1$s · %2$d pictures</string>
+    <string name="online_status_never">never</string>
+    <string name="online_status_error">Last error: %1$s</string>
+    <string name="online_url_invalid">The address must start with https://</string>
+    <string name="online_refreshing">Refreshing when you go back to Home</string>
+    <string name="online_cache_cleared">Downloaded pictures cleared</string>
+    <string name="online_url_hint" translatable="false">https://example.com/feed.json</string>
+    <string name="online_type">Type: %1$s</string>
+    <string name="online_type_scenery">Scenery (Bing)</string>
+    <string name="online_type_movies">Movies &amp; TV (TMDB)</string>
+    <string name="online_type_mixed">Mixed</string>
+    <string name="online_captions">Title on picture: %1$s</string>
+    <string name="online_type_custom">Wallpaper type applies to the built-in sources only</string>
 </resources>

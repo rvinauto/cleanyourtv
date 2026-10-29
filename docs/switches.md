@@ -28,3 +28,7 @@ the rules. Keys from before this rule are on its wanted list; a screenshot for o
 | `festival` | <img src="../themes/dussehra/screenshot.jpg" width="320" alt="festival on a TV"> |
 | `settings_key_panel` | <img src="quick-settings-panel.jpg" width="320" alt="settings_key_panel on a TV"> |
 | `home_idle_clock_minutes` | <img src="clock-screensaver.png" width="320" alt="home_idle_clock_minutes on a TV"> |
+| `online_wallpaper` | <img src="switches/online-wallpaper.jpg" width="320" alt="online_wallpaper on a TV"> |
+| `online_wallpaper_feed` | <img src="switches/online-wallpaper.jpg" width="320" alt="online_wallpaper_feed on a TV"> |
+| `online_wallpaper_refresh_hours` | <img src="switches/online-wallpaper.jpg" width="320" alt="online_wallpaper_refresh_hours on a TV"> |
+| `online_wallpaper_cache_count` | <img src="switches/online-wallpaper.jpg" width="320" alt="online_wallpaper_cache_count on a TV"> |

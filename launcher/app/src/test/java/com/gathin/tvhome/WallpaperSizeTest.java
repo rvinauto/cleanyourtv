@@ -12,6 +12,11 @@ public class WallpaperSizeTest {
         assertFalse(WallpaperSize.accepted(65535, 2159));
     }
 
+    @Test public void enormousDimensionsCannotOverflowThePixelLimit() {
+        assertFalse(WallpaperSize.accepted(Integer.MAX_VALUE, Integer.MAX_VALUE));
+        assertFalse(WallpaperSize.accepted(65536, 65536));
+    }
+
     @Test public void fourKPictureIsAccepted() {
         assertTrue(WallpaperSize.accepted(3840, 2160));
         assertTrue(WallpaperSize.accepted(1920, 1080));

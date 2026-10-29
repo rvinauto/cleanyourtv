@@ -42,6 +42,11 @@ final class Config {
     static final String SETTINGS_NAME = "launcher_settings";
     static final String ROWS_BELOW_DOCK_KEY = "rows_below_dock";
     static final String WALLPAPER_CHOICE_KEY = "wallpaper_choice";
+    /** Launcher settings' online wallpaper choices; absent means the theme or config.xml decides. */
+    static final String ONLINE_KEY = "online_wallpaper", ONLINE_FEED_KEY = "online_wallpaper_feed",
+            ONLINE_HOURS_KEY = "online_wallpaper_refresh_hours", ONLINE_COUNT_KEY = "online_wallpaper_cache_count",
+            ROTATION_KEY = "wallpaper_rotation_minutes", ONLINE_FORCE_KEY = "online_wallpaper_force",
+            CAPTIONS_KEY = "wallpaper_captions";
     static final String DOCK_OPACITY_KEY = "dock_opacity";
     /**
      * Counts the changes made in Launcher settings. Home remembers the count it was built with and rebuilds on
@@ -200,6 +205,7 @@ final class Config {
     static final String GLOW_RADIAL = "radial", GLOW_HORIZON = "horizon";
     /** Show each rotating wallpaper's name from wallpapers/captions.txt (config.xml / theme wallpaper_captions). */
     final boolean wallpaperCaptions;
+    final OnlineWallpapers.Options onlineWallpaper;
     /** Answer VIEW_INPUTS with the Inputs menu (handle_view_inputs); see InputsRequestActivity. */
     final boolean handleViewInputs;
     /** Hold OK on a tile opens a menu (Move, Remove from Home, App info) instead of App info (config.xml / theme tile_menu). */
@@ -218,7 +224,8 @@ final class Config {
                    List<RaceWeekend.Race> raceCalendar, boolean cinematicHome, boolean ambientGlow, boolean appGlow, boolean fadeRows, int homeIdleClockMinutes,
                    boolean keyFilter, boolean dockGlass, String glowStyle, boolean wallpaperCaptions,
                    boolean handleViewInputs, boolean tileMenu, boolean dockEvenPadding, boolean cinematicDots, boolean cinematicWhiteFocus, boolean wifiStatusColor, int cinematicScrim, int cinematicArt,
-                   Map<String, Set<String>> wallpaperMoods) {
+                   Map<String, Set<String>> wallpaperMoods, OnlineWallpapers.Options onlineWallpaper) {
+        this.onlineWallpaper = onlineWallpaper;
         this.handleViewInputs = handleViewInputs;
         this.tileMenu = tileMenu;
         this.inputKeycodes = inputKeycodes;
@@ -474,12 +481,17 @@ final class Config {
         if (chosenRows >= 0 && chosenRows <= 3) rowsBelow = chosenRows;
         animations = choices.getBoolean("animations", animations);
         advancedEffects = choices.getBoolean("advanced_effects", advancedEffects);
+        wallpaperCaptions = choices.getBoolean(CAPTIONS_KEY, wallpaperCaptions);
         File wallpaper = dir != null ? new File(dir, WALLPAPER_NAME) : null;
         if (wallpaper != null && !(wallpaper.isFile() && wallpaper.length() > 0)) wallpaper = null;
         // A theme can also switch the wallpaper off while the file is still there.
         boolean wallpaperEnabled = json == null || bool(json, "wallpaper", true);
         if (!wallpaperEnabled) wallpaper = null;
-        int rotationMinutes = json == null ? 0 : integer(json, "wallpaper_rotation_minutes", 0, 0, 1440);
+        int rotationDefault = res.getInteger(R.integer.wallpaper_rotation_minutes);
+        int rotationMinutes = json == null ? rotationDefault
+                : integer(json, "wallpaper_rotation_minutes", rotationDefault, 0, 1440);
+        int chosenRotation = choices.getInt(ROTATION_KEY, -1);
+        if (chosenRotation >= 0 && chosenRotation <= 1440) rotationMinutes = chosenRotation;
         int wallpaperDim = json == null ? 0 : integer(json, "wallpaper_dim", 0, 0, 90);
         int dockOpacity = json == null ? 100 : integer(json, "dock_opacity", 100, 30, 100);
         dockOpacity = chosenDockOpacity(choices.getInt(DOCK_OPACITY_KEY, -1), dockOpacity);
@@ -515,7 +527,32 @@ final class Config {
                 Math.max(0, Math.min(100, skyIntensity)), settingsKeycodes, settingsKeyPanel, restoreKeyServices, wallpaperEnabled, wallpaper,
                 wallpapers, rotationMinutes, wallpaperDim, dockOpacity, wallpaperOrder, applied,
                 festival, inputKeycodes, appKeys, stockHomeRedirect, json == null ? Collections.emptyList() : raceCalendar(json), cinematic, ambientGlow, appGlow, fadeRows,
-                Math.max(0, idleClockMinutes), keyFilter, dockGlass, glowStyle, wallpaperCaptions, handleViewInputs, tileMenu, dockEvenPadding, cinematicDots, cinematicWhiteFocus, wifiStatusColor, cinematicScrim, cinematicArt, wallpaperMoods);
+                Math.max(0, idleClockMinutes), keyFilter, dockGlass, glowStyle, wallpaperCaptions, handleViewInputs, tileMenu, dockEvenPadding, cinematicDots, cinematicWhiteFocus, wifiStatusColor, cinematicScrim, cinematicArt, wallpaperMoods,
+                onlineWallpapers(res, json, choices, wallpaperEnabled && chosen == null));
+    }
+
+    /** Keep these locals out of load's large layout/configuration pass. */
+    private static OnlineWallpapers.Options onlineWallpapers(Resources res, JSONObject json, SharedPreferences choices,
+                                                            boolean allowed) {
+        boolean enabled = res.getBoolean(R.bool.online_wallpaper);
+        String feed = res.getString(R.string.online_wallpaper_feed);
+        int hours = res.getInteger(R.integer.online_wallpaper_refresh_hours);
+        int count = res.getInteger(R.integer.online_wallpaper_cache_count);
+        if (json != null) {
+            enabled = bool(json, "online_wallpaper", enabled);
+            feed = string(json, "online_wallpaper_feed", feed);
+            hours = integer(json, "online_wallpaper_refresh_hours", hours, 1, 168);
+            count = integer(json, "online_wallpaper_cache_count", count, 1, 30);
+        }
+        // Launcher settings on the TV win over the theme, which wins over config.xml.
+        enabled = choices.getBoolean(ONLINE_KEY, enabled);
+        feed = choices.getString(ONLINE_FEED_KEY, feed);
+        int chosenHours = choices.getInt(ONLINE_HOURS_KEY, -1);
+        if (chosenHours >= 1 && chosenHours <= 168) hours = chosenHours;
+        int chosenCount = choices.getInt(ONLINE_COUNT_KEY, -1);
+        if (chosenCount >= 1 && chosenCount <= 30) count = chosenCount;
+        return new OnlineWallpapers.Options(enabled && allowed, feed == null ? "" : feed, hours, count,
+                choices.getLong(ONLINE_FORCE_KEY, 0));
     }
 
     /**
@@ -560,12 +597,21 @@ final class Config {
             if (!"absent".equals(token)) editor.remove("columns").remove("animations")
                     .remove("advanced_effects").remove(ROWS_BELOW_DOCK_KEY).remove(WALLPAPER_CHOICE_KEY)
                     .remove(DOCK_OPACITY_KEY);
+            if (!"absent".equals(token)) removeOnlineChoices(editor);
             editor.putString(THEME_SIGNATURE_KEY, signature).commit();
         } else if (!seen.equals(signature)) {
-            choices.edit().remove("columns").remove("animations").remove("advanced_effects")
+            SharedPreferences.Editor editor = choices.edit().remove("columns").remove("animations")
+                    .remove("advanced_effects")
                     .remove(ROWS_BELOW_DOCK_KEY).remove(WALLPAPER_CHOICE_KEY).remove(DOCK_OPACITY_KEY)
-                    .putString(THEME_SIGNATURE_KEY, signature).commit();
+                    .putString(THEME_SIGNATURE_KEY, signature);
+            removeOnlineChoices(editor).commit();
         }
+    }
+
+    /** A theme push or reset hands the online wallpaper back to the theme, like every other on-TV choice. */
+    static SharedPreferences.Editor removeOnlineChoices(SharedPreferences.Editor editor) {
+        return editor.remove(ONLINE_KEY).remove(ONLINE_FEED_KEY).remove(ONLINE_HOURS_KEY)
+                .remove(ONLINE_COUNT_KEY).remove(ROTATION_KEY).remove(CAPTIONS_KEY);
     }
 
     /** The dock band opacity chosen in Launcher settings, or the theme's when none (or an out-of-range one) is saved. */

@@ -63,4 +63,31 @@
         <item quantity="other">%1$d 个应用</item>
     </plurals>
     <string name="greeting_with_name">%1$s，%2$s</string>
+    <!-- Launcher settings: online wallpaper (feed, refresh, cache, rotation). -->
+    <string name="online_wallpaper_state">在线壁纸：%1$s</string>
+    <string name="online_wallpaper_label">在线壁纸</string>
+    <string name="online_toggle">开关：%1$s</string>
+    <string name="online_source">来源：%1$s</string>
+    <string name="online_source_jsdelivr">必应 4K（jsDelivr，国内可用）</string>
+    <string name="online_source_github">必应 4K（GitHub raw）</string>
+    <string name="online_source_custom">自定义地址</string>
+    <string name="online_refresh_hours">刷新间隔：%1$d 小时</string>
+    <string name="online_cache_count">缓存张数：%1$d</string>
+    <string name="online_rotation">切换间隔：%1$s</string>
+    <string name="rotation_minutes">%1$d 分钟</string>
+    <string name="rotation_per_refresh">每次刷新</string>
+    <string name="online_refresh_now">立即刷新</string>
+    <string name="online_clear_cache">清除已下载的壁纸</string>
+    <string name="online_status">上次刷新：%1$s · %2$d 张</string>
+    <string name="online_status_never">从未</string>
+    <string name="online_status_error">上次错误：%1$s</string>
+    <string name="online_url_invalid">地址必须以 https:// 开头</string>
+    <string name="online_refreshing">返回桌面后开始刷新</string>
+    <string name="online_cache_cleared">已清除下载的壁纸</string>
+    <string name="online_type">壁纸类型：%1$s</string>
+    <string name="online_type_scenery">风景（必应）</string>
+    <string name="online_type_movies">影视（TMDB）</string>
+    <string name="online_type_mixed">混合</string>
+    <string name="online_captions">显示标题：%1$s</string>
+    <string name="online_type_custom">壁纸类型只适用于内置来源</string>
 </resources>

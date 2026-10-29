@@ -18,6 +18,13 @@ final class WallpaperRotation {
         return ORDER_SEQUENTIAL.equals(order) || ORDER_SHUFFLE.equals(order);
     }
 
+    /** Local ordering is unchanged; online files join only when the player admits a cache snapshot. */
+    static List<File> withOnline(List<File> local, List<OnlineWallpapers.Entry> cached) {
+        List<File> result = new ArrayList<>(local);
+        for (OnlineWallpapers.Entry entry : cached) result.add(entry.file);
+        return result;
+    }
+
     static List<File> images(File directory) {
         List<File> result = new ArrayList<>();
         File[] entries = directory == null ? null : directory.listFiles();
@@ -84,5 +91,23 @@ final class WallpaperRotation {
 
     static boolean due(long previous, long now, long interval) {
         return interval > 0 && (previous == 0 || now < previous || now - previous >= interval);
+    }
+
+    /**
+     * The rotation clock in ms. wallpaper_rotation_minutes wins; with it at 0 an online collection still rotates,
+     * once per refresh interval, so downloaded pictures are not stuck behind a clock that never ticks.
+     */
+    static long interval(int rotationMinutes, boolean online, long refreshMs) {
+        if (rotationMinutes > 0) return rotationMinutes * 60_000L;
+        return online ? Math.max(60_000L, refreshMs) : 0;
+    }
+
+    /**
+     * Whether a snapshot from the online worker joins the collection at once. The cached snapshot (initial) always
+     * does; a fresh download does when nothing is on screen yet (first run, empty cache), otherwise it waits for
+     * the rotation clock so a download never swaps the picture under the viewer.
+     */
+    static boolean admitNow(boolean initial, String displayed, int entries) {
+        return initial || (entries > 0 && (displayed == null || displayed.isEmpty()));
     }
 }

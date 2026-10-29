@@ -4,7 +4,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -185,7 +184,7 @@ final class Cards {
      */
     static List<Card> discover(Context ctx, Set<String> hidden, Supplier<Map<String, Record>> recordSource,
                                List<ResolveInfo> leanback) {
-        if ((ctx.getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0) selfCheck();
+        if (BuildConfig.DEBUG) selfCheck();
         List<Card> out = new ArrayList<>();
         PackageManager pm = ctx.getPackageManager();
         List<ResolveInfo> declared;

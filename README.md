@@ -475,7 +475,11 @@ apps), which is why the report names that loss per package instead of calling it
 ## The launcher
 
 A small native home screen for Android TV: **about 474 KB**, plain Java, built for TVs with 1 GB of RAM.
-No blur, no video, no network permission, no background services.
+No blur, no video, no background services. This fork adds the Internet permission for an
+[optional HTTPS wallpaper feed with a private cache](themes/README.md#online-wallpapers-optional),
+disabled by default; local wallpaper operation remains offline.
+See the [Online Wallpapers handoff](docs/HANDOFF-2026-10-23-online-wallpapers.md) for the
+verified build results, remaining device checks and manual APK workflow instructions.
 
 The **TV** needs Android 8.0 (API 26) or newer: `minSdk` is a compile-time floor in
 [`launcher/app/build.gradle`](launcher/app/build.gradle), and the install script asks the TV for
@@ -517,8 +521,8 @@ and a wallpaper.
 <details>
 <summary><b>Launcher settings and the default home</b></summary>
 
-- Click **Settings** for the TV's own settings. Hold OK on it and choose **Launcher settings**, or click it
-  straight away with `launcher_settings_button`. The launcher's own page has these rows, top to bottom:
+- Click **Settings** (top right) for a small menu: **Launcher settings**, module cards, dock edit, reorder and
+  **TV settings**; with `launcher_settings_button` it opens Launcher settings straight away. The launcher's own page has these rows, top to bottom:
   - **Reorder apps**, only with `launcher_settings_button`: OK picks an app up, the arrows move it, Back
     places it, and Back again finishes.
   - **Apps per row** 4, 5, 6 or 7; **Rows below dock** 0 to 3, how many rows of tiles stay visible under the
@@ -527,6 +531,10 @@ and a wallpaper.
   - **Wallpaper**: one picture from the theme's collection (or its `wallpaper.jpg`), **None**, or **Theme
     default**. A pick holds that picture and stops the rotation until you choose Theme default, press
     Follow theme, or push the theme again.
+  - **Online wallpaper**: on or off; the source (Bing 4K through jsDelivr, which works in mainland China,
+    Bing 4K from GitHub raw, or a custom `https://` address typed with the TV keyboard); refresh every 1 to
+    168 hours; pictures kept 3 to 30; how often the picture changes; **Refresh now** and **Clear downloaded
+    pictures**. The line under it shows the last refresh, the number of pictures and the last error.
   - **Animations** on or off, and **Advanced effects** (tile lift, icon zoom and smooth ambient-colour
     transitions; they may use more memory) once animations are on.
   - **Follow theme (reset on-TV choices)**, which clears every choice above. Pushing or resetting a theme
