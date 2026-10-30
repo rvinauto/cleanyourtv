@@ -2,6 +2,11 @@
  "version": 1,
  "wallpapers": [
   {
+   "id": "tmdb-movie-791523",
+   "url": "https://image.tmdb.org/t/p/original/7S9zJTVtK3dvhChTO1MDVu4bmBu.jpg",
+   "caption": "荒野丛林 (2026)"
+  },
+  {
    "id": "tmdb-movie-1058424",
    "url": "https://image.tmdb.org/t/p/original/2RxFCDsy6dumZxRrsd2966HKXst.jpg",
    "caption": "希望 (2026)"
@@ -22,29 +27,24 @@
    "caption": "MobLand (2025)"
   },
   {
-   "id": "tmdb-movie-1400940",
-   "url": "https://image.tmdb.org/t/p/original/VnT9D7NogVWrmN2UuT30exIYPh.jpg",
-   "caption": "泥面人 (2026)"
-  },
-  {
-   "id": "tmdb-tv-95480",
-   "url": "https://image.tmdb.org/t/p/original/gPQppUnLx9vqPDLz3WwZ2HJsNbt.jpg",
-   "caption": "Slow Horses (2022)"
-  },
-  {
    "id": "tmdb-movie-1596275",
    "url": "https://image.tmdb.org/t/p/original/hbz4aeVsjnKb2HRoFbbr46Egh8y.jpg",
    "caption": "极速：伪装者 (2026)"
   },
   {
-   "id": "tmdb-tv-120911",
-   "url": "https://image.tmdb.org/t/p/original/2qS2LGqsAyT1NEDeIj24Hp2IR10.jpg",
-   "caption": "The Terminal List (2022)"
+   "id": "tmdb-movie-1400940",
+   "url": "https://image.tmdb.org/t/p/original/xSDoxv4pHvs4xZjvTb0Iqg1A6ro.jpg",
+   "caption": "泥面人 (2026)"
   },
   {
    "id": "tmdb-tv-96677",
    "url": "https://image.tmdb.org/t/p/original/jgAZYiuRV37pCxmhx8NTdhE36RL.jpg",
    "caption": "Lupin (2021)"
+  },
+  {
+   "id": "tmdb-tv-120911",
+   "url": "https://image.tmdb.org/t/p/original/2qS2LGqsAyT1NEDeIj24Hp2IR10.jpg",
+   "caption": "The Terminal List (2022)"
   },
   {
    "id": "tmdb-movie-1283515",
