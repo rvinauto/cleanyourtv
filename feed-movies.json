@@ -17,11 +17,6 @@
    "caption": "蜘蛛侠：崭新之日 (2026)"
   },
   {
-   "id": "tmdb-tv-213375",
-   "url": "https://image.tmdb.org/t/p/original/58v1KFe3rxvHrYM1hLH5ScpwqNR.jpg",
-   "caption": "幻视任务 (2026)"
-  },
-  {
    "id": "tmdb-tv-247718",
    "url": "https://image.tmdb.org/t/p/original/h0OC7ouop8YLwbAVfS3UUE2Lw4T.jpg",
    "caption": "MobLand (2025)"
@@ -32,19 +27,9 @@
    "caption": "极速：伪装者 (2026)"
   },
   {
-   "id": "tmdb-movie-1400940",
-   "url": "https://image.tmdb.org/t/p/original/xSDoxv4pHvs4xZjvTb0Iqg1A6ro.jpg",
-   "caption": "泥面人 (2026)"
-  },
-  {
-   "id": "tmdb-tv-96677",
-   "url": "https://image.tmdb.org/t/p/original/jgAZYiuRV37pCxmhx8NTdhE36RL.jpg",
-   "caption": "Lupin (2021)"
-  },
-  {
-   "id": "tmdb-tv-120911",
-   "url": "https://image.tmdb.org/t/p/original/2qS2LGqsAyT1NEDeIj24Hp2IR10.jpg",
-   "caption": "The Terminal List (2022)"
+   "id": "tmdb-tv-213375",
+   "url": "https://image.tmdb.org/t/p/original/58v1KFe3rxvHrYM1hLH5ScpwqNR.jpg",
+   "caption": "幻视任务 (2026)"
   },
   {
    "id": "tmdb-movie-1283515",
@@ -52,14 +37,29 @@
    "caption": "不存在的罪人 (2026)"
   },
   {
-   "id": "tmdb-movie-1384216",
-   "url": "https://image.tmdb.org/t/p/original/yhCHnkidQdR3lksbdyFxduRXFPK.jpg",
-   "caption": "末世行者 (2026)"
+   "id": "tmdb-movie-1368337",
+   "url": "https://image.tmdb.org/t/p/original/bulFtfy3oBQtCnAMSi7g6DSSds3.jpg",
+   "caption": "奥德赛 (2026)"
   },
   {
    "id": "tmdb-tv-30984",
    "url": "https://image.tmdb.org/t/p/original/aXO5vBpGEl2xUfhJtZyLWeLY5ZJ.jpg",
    "caption": "死神 (2004)"
+  },
+  {
+   "id": "tmdb-movie-1400940",
+   "url": "https://image.tmdb.org/t/p/original/xSDoxv4pHvs4xZjvTb0Iqg1A6ro.jpg",
+   "caption": "泥面人 (2026)"
+  },
+  {
+   "id": "tmdb-tv-120911",
+   "url": "https://image.tmdb.org/t/p/original/2qS2LGqsAyT1NEDeIj24Hp2IR10.jpg",
+   "caption": "The Terminal List (2022)"
+  },
+  {
+   "id": "tmdb-tv-96677",
+   "url": "https://image.tmdb.org/t/p/original/jgAZYiuRV37pCxmhx8NTdhE36RL.jpg",
+   "caption": "Lupin (2021)"
   }
  ]
 }
