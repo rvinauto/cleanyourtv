@@ -2,6 +2,16 @@
  "version": 1,
  "wallpapers": [
   {
+   "id": "20261031-242d9ded23355c54c0b733c1211d1586",
+   "url": "https://cn.bing.com/th?id=OHR.SchwarzwaldAutumn_ZH-CN6323627599_UHD.jpg",
+   "caption": "林间迷雾 — 黑森林，巴登-符腾堡州，德国 (© Britus/Getty Images)"
+  },
+  {
+   "id": "tmdb-tv-456",
+   "url": "https://image.tmdb.org/t/p/original/jIArNHIekrCSVgdMbKPAXpPY03Y.jpg",
+   "caption": "辛普森一家 (1989)"
+  },
+  {
    "id": "20261030-d50b635f82614ecfde8e234c0f6d0631",
    "url": "https://cn.bing.com/th?id=OHR.FrankfurtHalloween_ZH-CN5998782698_UHD.jpg",
    "caption": "往昔帝国的幽影 — 圣巴尔多禄茂教堂，法兰克福，德国 (© AlxeyPnferov/Getty Images)"
@@ -49,7 +59,7 @@
   {
    "id": "tmdb-movie-1596275",
    "url": "https://image.tmdb.org/t/p/original/hbz4aeVsjnKb2HRoFbbr46Egh8y.jpg",
-   "caption": "极速：伪装者 (2026)"
+   "caption": "假面恋人：换挡追爱 (2026)"
   },
   {
    "id": "20261025-61fbf9f782353a6a4a80ac713224c053",
@@ -67,9 +77,9 @@
    "caption": "群峰与宁静相遇之地 — 玛琳湖，贾斯珀国家公园，艾伯塔省，加拿大 (© Andrey Popov/Getty Images)"
   },
   {
-   "id": "tmdb-movie-1283515",
-   "url": "https://image.tmdb.org/t/p/original/cKetrF2dAnQ0AMV5i4BMOs41I5P.jpg",
-   "caption": "不存在的罪人 (2026)"
+   "id": "tmdb-movie-1507696",
+   "url": "https://image.tmdb.org/t/p/original/o3XwuDUj0n8qnK91p6q8LKfr6rj.jpg",
+   "caption": "天启Z：新世界 (2026)"
   },
   {
    "id": "20261023-8b6a33956db57eaa614b800cd9e6c3d8",
@@ -77,9 +87,9 @@
    "caption": "书香里的极致华美 — 皇家葡萄牙语阅览室，里约热内卢，巴西 (© Antonio Salaverry/Shutterstock)"
   },
   {
-   "id": "tmdb-movie-1368337",
-   "url": "https://image.tmdb.org/t/p/original/bulFtfy3oBQtCnAMSi7g6DSSds3.jpg",
-   "caption": "奥德赛 (2026)"
+   "id": "tmdb-movie-1283515",
+   "url": "https://image.tmdb.org/t/p/original/cKetrF2dAnQ0AMV5i4BMOs41I5P.jpg",
+   "caption": "不存在的罪人 (2026)"
   },
   {
    "id": "20261022-0360442f708dff212a10b844a50f9ef0",
@@ -87,9 +97,9 @@
    "caption": "荒野伙伴 — 两只灰狼，黄石国家公园，怀俄明州，美国 (© John Morrison/Getty Images)"
   },
   {
-   "id": "tmdb-tv-30984",
-   "url": "https://image.tmdb.org/t/p/original/aXO5vBpGEl2xUfhJtZyLWeLY5ZJ.jpg",
-   "caption": "死神 (2004)"
+   "id": "tmdb-movie-1384216",
+   "url": "https://image.tmdb.org/t/p/original/yhCHnkidQdR3lksbdyFxduRXFPK.jpg",
+   "caption": "末世行者 (2026)"
   },
   {
    "id": "20261021-f5712223d70223a41356c0e2064f8cbd",
@@ -97,9 +107,9 @@
    "caption": "静水映斑斓 — 内藏山国立公园的秋景，韩国 (© Twenty47studio/Getty Images)"
   },
   {
-   "id": "tmdb-movie-1400940",
-   "url": "https://image.tmdb.org/t/p/original/xSDoxv4pHvs4xZjvTb0Iqg1A6ro.jpg",
-   "caption": "泥面人 (2026)"
+   "id": "tmdb-tv-120911",
+   "url": "https://image.tmdb.org/t/p/original/2qS2LGqsAyT1NEDeIj24Hp2IR10.jpg",
+   "caption": "The Terminal List (2022)"
   },
   {
    "id": "20261020-a7a759485d043460ce495a296170a16d",
@@ -107,19 +117,14 @@
    "caption": "飞掠河面 — 香江上的阮潢桥，顺化，越南 (© VU PHAM VAN/Getty Images)"
   },
   {
-   "id": "tmdb-tv-120911",
-   "url": "https://image.tmdb.org/t/p/original/2qS2LGqsAyT1NEDeIj24Hp2IR10.jpg",
-   "caption": "The Terminal List (2022)"
+   "id": "tmdb-movie-1400940",
+   "url": "https://image.tmdb.org/t/p/original/xSDoxv4pHvs4xZjvTb0Iqg1A6ro.jpg",
+   "caption": "泥面人 (2026)"
   },
   {
    "id": "20261019-1a1dd724adcbc1c2aa3af8c97ea83f63",
    "url": "https://cn.bing.com/th?id=OHR.BrownSloth_ZH-CN5776383136_UHD.jpg",
    "caption": "慢节奏生活 — 褐喉三趾树懒，塔拉曼卡旧港，哥斯达黎加 (© Suzi Eszterhas/Minden Pictures)"
-  },
-  {
-   "id": "tmdb-tv-96677",
-   "url": "https://image.tmdb.org/t/p/original/jgAZYiuRV37pCxmhx8NTdhE36RL.jpg",
-   "caption": "Lupin (2021)"
   },
   {
    "id": "20261018-423ca0274a16c6906e776de99f1a0240",
@@ -130,11 +135,6 @@
    "id": "20261017-65461e4b90bf6915104c62b9a3ec91e7",
    "url": "https://cn.bing.com/th?id=OHR.DolbadarnWales_ZH-CN3649667806_UHD.jpg",
    "caption": "75载，风华正茂 — 多巴达恩城堡，兰贝里斯，斯诺登尼亚国家公园，威尔士 (© joe daniel price/Getty Images)"
-  },
-  {
-   "id": "20261016-4e1ade5dbf2afc59df2b3bd5a69a55ad",
-   "url": "https://cn.bing.com/th?id=OHR.ChauvetPaintingsFrance_ZH-CN3150703955_UHD.jpg",
-   "caption": "发掘尘封的过去 — 肖维岩洞艺术作品等比例复制品，瓦隆蓬达尔克，法国 (© Audrey Poree/Alamy)"
   }
  ]
 }
