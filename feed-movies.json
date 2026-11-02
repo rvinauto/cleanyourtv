@@ -2,11 +2,6 @@
  "version": 1,
  "wallpapers": [
   {
-   "id": "tmdb-tv-456",
-   "url": "https://image.tmdb.org/t/p/original/jIArNHIekrCSVgdMbKPAXpPY03Y.jpg",
-   "caption": "辛普森一家 (1989)"
-  },
-  {
    "id": "tmdb-movie-791523",
    "url": "https://image.tmdb.org/t/p/original/7S9zJTVtK3dvhChTO1MDVu4bmBu.jpg",
    "caption": "荒野丛林 (2026)"
@@ -29,12 +24,7 @@
   {
    "id": "tmdb-movie-1596275",
    "url": "https://image.tmdb.org/t/p/original/hbz4aeVsjnKb2HRoFbbr46Egh8y.jpg",
-   "caption": "假面恋人：换挡追爱 (2026)"
-  },
-  {
-   "id": "tmdb-tv-213375",
-   "url": "https://image.tmdb.org/t/p/original/58v1KFe3rxvHrYM1hLH5ScpwqNR.jpg",
-   "caption": "幻视任务 (2026)"
+   "caption": "假面恋人：换档追爱 (2026)"
   },
   {
    "id": "tmdb-movie-1507696",
@@ -42,9 +32,19 @@
    "caption": "天启Z：新世界 (2026)"
   },
   {
+   "id": "tmdb-tv-213375",
+   "url": "https://image.tmdb.org/t/p/original/58v1KFe3rxvHrYM1hLH5ScpwqNR.jpg",
+   "caption": "幻视任务 (2026)"
+  },
+  {
    "id": "tmdb-movie-1283515",
    "url": "https://image.tmdb.org/t/p/original/cKetrF2dAnQ0AMV5i4BMOs41I5P.jpg",
    "caption": "不存在的罪人 (2026)"
+  },
+  {
+   "id": "tmdb-tv-30984",
+   "url": "https://image.tmdb.org/t/p/original/aXO5vBpGEl2xUfhJtZyLWeLY5ZJ.jpg",
+   "caption": "死神 (2004)"
   },
   {
    "id": "tmdb-movie-1384216",
@@ -57,9 +57,9 @@
    "caption": "The Terminal List (2022)"
   },
   {
-   "id": "tmdb-movie-1400940",
-   "url": "https://image.tmdb.org/t/p/original/xSDoxv4pHvs4xZjvTb0Iqg1A6ro.jpg",
-   "caption": "泥面人 (2026)"
+   "id": "tmdb-tv-96677",
+   "url": "https://image.tmdb.org/t/p/original/jgAZYiuRV37pCxmhx8NTdhE36RL.jpg",
+   "caption": "Lupin (2021)"
   }
  ]
 }
