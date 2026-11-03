@@ -12,24 +12,19 @@
    "caption": "希望 (2026)"
   },
   {
-   "id": "tmdb-movie-969681",
-   "url": "https://image.tmdb.org/t/p/original/4tjxYg2AbOzzG9G1YuiT2NzYhlH.jpg",
-   "caption": "蜘蛛侠：崭新之日 (2026)"
-  },
-  {
    "id": "tmdb-tv-247718",
    "url": "https://image.tmdb.org/t/p/original/h0OC7ouop8YLwbAVfS3UUE2Lw4T.jpg",
    "caption": "MobLand (2025)"
   },
   {
-   "id": "tmdb-movie-1596275",
-   "url": "https://image.tmdb.org/t/p/original/hbz4aeVsjnKb2HRoFbbr46Egh8y.jpg",
-   "caption": "假面恋人：换档追爱 (2026)"
-  },
-  {
    "id": "tmdb-movie-1507696",
    "url": "https://image.tmdb.org/t/p/original/o3XwuDUj0n8qnK91p6q8LKfr6rj.jpg",
    "caption": "天启Z：新世界 (2026)"
+  },
+  {
+   "id": "tmdb-tv-153312",
+   "url": "https://image.tmdb.org/t/p/original/mNHRGO1gFpR2CYZdANe72kcKq7G.jpg",
+   "caption": "塔尔萨之王 (2022)"
   },
   {
    "id": "tmdb-tv-213375",
@@ -42,14 +37,19 @@
    "caption": "不存在的罪人 (2026)"
   },
   {
+   "id": "tmdb-tv-549",
+   "url": "https://image.tmdb.org/t/p/original/hrfP9BQ4mOMZOa8nHbFJLSDHBLz.jpg",
+   "caption": "法律与秩序 (1990)"
+  },
+  {
+   "id": "tmdb-movie-1423191",
+   "url": "https://image.tmdb.org/t/p/original/3icyRAqgakNcQn6aDVz9libFmBA.jpg",
+   "caption": "生化危机：爆发夜 (2026)"
+  },
+  {
    "id": "tmdb-tv-30984",
    "url": "https://image.tmdb.org/t/p/original/aXO5vBpGEl2xUfhJtZyLWeLY5ZJ.jpg",
    "caption": "死神 (2004)"
-  },
-  {
-   "id": "tmdb-movie-1384216",
-   "url": "https://image.tmdb.org/t/p/original/yhCHnkidQdR3lksbdyFxduRXFPK.jpg",
-   "caption": "末世行者 (2026)"
   },
   {
    "id": "tmdb-tv-120911",
@@ -57,9 +57,9 @@
    "caption": "The Terminal List (2022)"
   },
   {
-   "id": "tmdb-tv-96677",
-   "url": "https://image.tmdb.org/t/p/original/jgAZYiuRV37pCxmhx8NTdhE36RL.jpg",
-   "caption": "Lupin (2021)"
+   "id": "tmdb-movie-1384216",
+   "url": "https://image.tmdb.org/t/p/original/yhCHnkidQdR3lksbdyFxduRXFPK.jpg",
+   "caption": "末世行者 (2026)"
   }
  ]
 }
