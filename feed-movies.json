@@ -17,6 +17,11 @@
    "caption": "天启Z：新世界 (2026)"
   },
   {
+   "id": "tmdb-movie-1058424",
+   "url": "https://image.tmdb.org/t/p/original/3KvGTuNX47Pdqlg9ossua2TFKrZ.jpg",
+   "caption": "希望 (2026)"
+  },
+  {
    "id": "tmdb-tv-247718",
    "url": "https://image.tmdb.org/t/p/original/h0OC7ouop8YLwbAVfS3UUE2Lw4T.jpg",
    "caption": "MobLand (2025)"
@@ -27,9 +32,9 @@
    "caption": "幻视任务 (2026)"
   },
   {
-   "id": "tmdb-tv-37854",
-   "url": "https://image.tmdb.org/t/p/original/2rmK7mnchw9Xr3XdiTFSxTTLXqv.jpg",
-   "caption": "航海王 (1999)"
+   "id": "tmdb-movie-1294189",
+   "url": "https://image.tmdb.org/t/p/original/iRIhPqqoUHiFBxn8oYf3gCQnaKk.jpg",
+   "caption": "猫鼬 (2026)"
   },
   {
    "id": "tmdb-movie-1283515",
@@ -37,18 +42,13 @@
    "caption": "不存在的罪人 (2026)"
   },
   {
-   "id": "tmdb-movie-1294189",
-   "url": "https://image.tmdb.org/t/p/original/fEpP7Kib3LeUz0ckTsNJ52cl1k0.jpg",
-   "caption": "猫鼬 (2026)"
-  },
-  {
-   "id": "tmdb-tv-30984",
-   "url": "https://image.tmdb.org/t/p/original/aXO5vBpGEl2xUfhJtZyLWeLY5ZJ.jpg",
-   "caption": "死神 (2004)"
+   "id": "tmdb-tv-279246",
+   "url": "https://image.tmdb.org/t/p/original/1ptukf8gx19U1HcBv3aRzzlXuyJ.jpg",
+   "caption": "再婚皇后 (2026)"
   },
   {
    "id": "tmdb-movie-1571955",
-   "url": "https://image.tmdb.org/t/p/original/xDw1Qm73qioQKCOx2VP5w4CBusL.jpg",
+   "url": "https://image.tmdb.org/t/p/original/uI3kWI7kGW5E0F8WduewgQYPt34.jpg",
    "caption": "失控撞劫 (2026)"
   },
   {
@@ -57,9 +57,9 @@
    "caption": "末路兼职 (2026)"
   },
   {
-   "id": "tmdb-tv-200875",
-   "url": "https://image.tmdb.org/t/p/original/2fOKVDoc2O3eZmBZesWPuE5kgPN.jpg",
-   "caption": "小丑回魂：欢迎来到德里镇 (2025)"
+   "id": "tmdb-tv-96677",
+   "url": "https://image.tmdb.org/t/p/original/jgAZYiuRV37pCxmhx8NTdhE36RL.jpg",
+   "caption": "Lupin (2021)"
   }
  ]
 }
