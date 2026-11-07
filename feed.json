@@ -2,6 +2,11 @@
  "version": 1,
  "wallpapers": [
   {
+   "id": "20261106-8bd1a0a85b934a78ee8c90d2a6692a2b",
+   "url": "https://cn.bing.com/th?id=OHR.DakotaBison_ZH-CN2302503868_UHD.jpg",
+   "caption": "归来的草原巨兽 — 草原上的一头野牛，西奥多·罗斯福国家公园，北达科他州，美国 (© Tandem Stock/Adobe Stock)"
+  },
+  {
    "id": "20261105-83e427360a433d9f9e12ebbb4317ff61",
    "url": "https://cn.bing.com/th?id=OHR.PipiwaiTrail_ZH-CN1811194311_UHD.jpg",
    "caption": "穿越毛伊岛的绿色隧道 — 竹林，皮皮维小径，哈莱亚卡拉国家公园，毛伊岛，夏威夷州，美国 (© MNStudio/Getty Images)"
@@ -70,11 +75,6 @@
    "id": "20261023-8b6a33956db57eaa614b800cd9e6c3d8",
    "url": "https://cn.bing.com/th?id=OHR.PortugueseLibrary_ZH-CN7096893027_UHD.jpg",
    "caption": "书香里的极致华美 — 皇家葡萄牙语阅览室，里约热内卢，巴西 (© Antonio Salaverry/Shutterstock)"
-  },
-  {
-   "id": "20261022-0360442f708dff212a10b844a50f9ef0",
-   "url": "https://cn.bing.com/th?id=OHR.YellowstoneWolves_ZH-CN6767268961_UHD.jpg",
-   "caption": "荒野伙伴 — 两只灰狼，黄石国家公园，怀俄明州，美国 (© John Morrison/Getty Images)"
   }
  ]
 }
