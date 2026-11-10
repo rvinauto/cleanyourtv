@@ -7,19 +7,14 @@
    "caption": "生化危机：爆发夜 (2026)"
   },
   {
-   "id": "tmdb-movie-1368337",
-   "url": "https://image.tmdb.org/t/p/original/iDiTY1wA35YWzTmXLTtqaxtN6tc.jpg",
-   "caption": "奥德赛 (2026)"
-  },
-  {
    "id": "tmdb-movie-1263337",
    "url": "https://image.tmdb.org/t/p/original/kpqsljPQtWqPKJBTAEtoXtQZ9Ko.jpg",
    "caption": "野兽之心 (2026)"
   },
   {
-   "id": "tmdb-movie-1507696",
-   "url": "https://image.tmdb.org/t/p/original/o3XwuDUj0n8qnK91p6q8LKfr6rj.jpg",
-   "caption": "天启Z：新世界 (2026)"
+   "id": "tmdb-movie-1368337",
+   "url": "https://image.tmdb.org/t/p/original/iDiTY1wA35YWzTmXLTtqaxtN6tc.jpg",
+   "caption": "奥德赛 (2026)"
   },
   {
    "id": "tmdb-tv-247718",
@@ -27,14 +22,9 @@
    "caption": "MobLand (2025)"
   },
   {
-   "id": "tmdb-movie-1813355",
-   "url": "https://image.tmdb.org/t/p/original/z26LxXDMmAIzKr06FPDudCJyvsM.jpg",
-   "caption": "小丑回魂：德里故事 (2026)"
-  },
-  {
-   "id": "tmdb-tv-37854",
-   "url": "https://image.tmdb.org/t/p/original/2rmK7mnchw9Xr3XdiTFSxTTLXqv.jpg",
-   "caption": "航海王 (1999)"
+   "id": "tmdb-tv-279246",
+   "url": "https://image.tmdb.org/t/p/original/fNcpHmuZLKoyhNMBEzdqzX8iIvg.jpg",
+   "caption": "再婚皇后 (2026)"
   },
   {
    "id": "tmdb-tv-213375",
@@ -42,9 +32,9 @@
    "caption": "幻视任务 (2026)"
   },
   {
-   "id": "tmdb-tv-279246",
-   "url": "https://image.tmdb.org/t/p/original/fNcpHmuZLKoyhNMBEzdqzX8iIvg.jpg",
-   "caption": "再婚皇后 (2026)"
+   "id": "tmdb-movie-1381071",
+   "url": "https://image.tmdb.org/t/p/original/oqrYIDH4tvfEzPe1yqT4jzmAWHQ.jpg",
+   "caption": "哥斯拉-0.0 (2026)"
   },
   {
    "id": "tmdb-movie-1294189",
@@ -52,14 +42,24 @@
    "caption": "猫鼬 (2026)"
   },
   {
-   "id": "tmdb-movie-1381071",
-   "url": "https://image.tmdb.org/t/p/original/oqrYIDH4tvfEzPe1yqT4jzmAWHQ.jpg",
-   "caption": "哥斯拉-0.0 (2026)"
-  },
-  {
    "id": "tmdb-movie-1283515",
    "url": "https://image.tmdb.org/t/p/original/cKetrF2dAnQ0AMV5i4BMOs41I5P.jpg",
    "caption": "不存在的罪人 (2026)"
+  },
+  {
+   "id": "tmdb-movie-656908",
+   "url": "https://image.tmdb.org/t/p/original/6kViBlzPbDrE58dqEtwNF2DWqWZ.jpg",
+   "caption": "罗摩衍那：王子传奇 (2026)"
+  },
+  {
+   "id": "tmdb-tv-303044",
+   "url": "https://image.tmdb.org/t/p/original/yQHskBQhYsnxcoRsYHESSOUaRja.jpg",
+   "caption": "校园接送恋曲 (2026)"
+  },
+  {
+   "id": "tmdb-movie-1570488",
+   "url": "https://image.tmdb.org/t/p/original/6OOiqbY4Di0I6dNw0fyOBIxzK5k.jpg",
+   "caption": "狗狗的完美圣诞节 (2026)"
   }
  ]
 }
