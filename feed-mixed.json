@@ -2,9 +2,9 @@
  "version": 1,
  "wallpapers": [
   {
-   "id": "20261109-9999d3a3c7f78905711802f9717916f9",
-   "url": "https://cn.bing.com/th?id=OHR.RoseIsland_ZH-CN6477140814_UHD.jpg",
-   "caption": "惬意放松，尽享海岛时光 — 玫瑰岛航拍图，巴哈马 (© Abstract Aerial Art/Getty Images)"
+   "id": "20261110-2f8ec1b9756e84d222b20fd5fdf412b3",
+   "url": "https://cn.bing.com/th?id=OHR.Atlantica_ZH-CN6593995386_UHD.jpg",
+   "caption": "奇妙纷呈的森林 — 大西洋森林，巴西 (© FG Trade/Getty Images)"
   },
   {
    "id": "tmdb-movie-1423191",
@@ -12,14 +12,24 @@
    "caption": "生化危机：爆发夜 (2026)"
   },
   {
+   "id": "20261109-9999d3a3c7f78905711802f9717916f9",
+   "url": "https://cn.bing.com/th?id=OHR.RoseIsland_ZH-CN6477140814_UHD.jpg",
+   "caption": "惬意放松，尽享海岛时光 — 玫瑰岛航拍图，巴哈马 (© Abstract Aerial Art/Getty Images)"
+  },
+  {
+   "id": "tmdb-movie-1263337",
+   "url": "https://image.tmdb.org/t/p/original/6uVRPFflyJpo8Cx872olmlGTWla.jpg",
+   "caption": "野兽之心 (2026)"
+  },
+  {
    "id": "20261108-59e5064fcb772d5d91242962833903f7",
    "url": "https://cn.bing.com/th?id=OHR.TrianaSpain_ZH-CN6329291776_UHD.jpg",
    "caption": "艺术与韵律交汇之地 — 特里亚纳历史街区，塞维利亚，西班牙 (© Andrzej Rostek/Getty Images)"
   },
   {
-   "id": "tmdb-movie-1263337",
-   "url": "https://image.tmdb.org/t/p/original/kpqsljPQtWqPKJBTAEtoXtQZ9Ko.jpg",
-   "caption": "野兽之心 (2026)"
+   "id": "tmdb-movie-1368337",
+   "url": "https://image.tmdb.org/t/p/original/twiVn9oFXOVR0uoYgawyEBlnFu8.jpg",
+   "caption": "奥德赛 (2026)"
   },
   {
    "id": "20261107-8603d5f4458b499767e4c196511719c7",
@@ -27,9 +37,9 @@
    "caption": "光芒四射的节日 — 排灯节灯笼，孟买，马哈拉施特拉邦，印度 (© Dinodia Photo/Getty Images)"
   },
   {
-   "id": "tmdb-movie-1368337",
-   "url": "https://image.tmdb.org/t/p/original/iDiTY1wA35YWzTmXLTtqaxtN6tc.jpg",
-   "caption": "奥德赛 (2026)"
+   "id": "tmdb-tv-247718",
+   "url": "https://image.tmdb.org/t/p/original/h0OC7ouop8YLwbAVfS3UUE2Lw4T.jpg",
+   "caption": "MobLand (2025)"
   },
   {
    "id": "20261106-8bd1a0a85b934a78ee8c90d2a6692a2b",
@@ -37,9 +47,9 @@
    "caption": "归来的草原巨兽 — 草原上的一头野牛，西奥多·罗斯福国家公园，北达科他州，美国 (© Tandem Stock/Adobe Stock)"
   },
   {
-   "id": "tmdb-tv-247718",
-   "url": "https://image.tmdb.org/t/p/original/h0OC7ouop8YLwbAVfS3UUE2Lw4T.jpg",
-   "caption": "MobLand (2025)"
+   "id": "tmdb-movie-969681",
+   "url": "https://image.tmdb.org/t/p/original/subj7knTn4DeS6KS7qI66EQKe9i.jpg",
+   "caption": "蜘蛛侠：崭新之日 (2026)"
   },
   {
    "id": "20261105-83e427360a433d9f9e12ebbb4317ff61",
@@ -47,9 +57,9 @@
    "caption": "穿越毛伊岛的绿色隧道 — 竹林，皮皮维小径，哈莱亚卡拉国家公园，毛伊岛，夏威夷州，美国 (© MNStudio/Getty Images)"
   },
   {
-   "id": "tmdb-tv-279246",
-   "url": "https://image.tmdb.org/t/p/original/fNcpHmuZLKoyhNMBEzdqzX8iIvg.jpg",
-   "caption": "再婚皇后 (2026)"
+   "id": "tmdb-tv-213375",
+   "url": "https://image.tmdb.org/t/p/original/58v1KFe3rxvHrYM1hLH5ScpwqNR.jpg",
+   "caption": "幻视任务 (2026)"
   },
   {
    "id": "20261104-e764edbedb3e17b846cc1a31ea9fa5a8",
@@ -57,9 +67,9 @@
    "caption": "向山巅再迈一步 — 石墙边的木制翻越梯，黑岩，湖区，英格兰 (© Alex Treadway/Getty Images)"
   },
   {
-   "id": "tmdb-tv-213375",
-   "url": "https://image.tmdb.org/t/p/original/58v1KFe3rxvHrYM1hLH5ScpwqNR.jpg",
-   "caption": "幻视任务 (2026)"
+   "id": "tmdb-tv-279246",
+   "url": "https://image.tmdb.org/t/p/original/fNcpHmuZLKoyhNMBEzdqzX8iIvg.jpg",
+   "caption": "再婚皇后 (2026)"
   },
   {
    "id": "20261103-92b10e60db48e67f8af937985ce75657",
@@ -77,9 +87,9 @@
    "caption": "群峰间的宁静 — 布莱埃斯湖，法内斯-塞内斯-布莱埃斯湖自然公园，多洛米蒂山脉，意大利 (© leonid_tit/Getty Images)"
   },
   {
-   "id": "tmdb-movie-1294189",
-   "url": "https://image.tmdb.org/t/p/original/iRIhPqqoUHiFBxn8oYf3gCQnaKk.jpg",
-   "caption": "猫鼬 (2026)"
+   "id": "tmdb-movie-656908",
+   "url": "https://image.tmdb.org/t/p/original/6kViBlzPbDrE58dqEtwNF2DWqWZ.jpg",
+   "caption": "罗摩衍那：王子传奇 (2026)"
   },
   {
    "id": "20261101-c091713ae0083d7086be3f2e0dba0f90",
@@ -87,9 +97,9 @@
    "caption": "写在冰上的未来 — 北极熊和幼崽，哈得孙湾畔，马尼托巴省，加拿大 (© Danita Delimont/Adobe Stock)"
   },
   {
-   "id": "tmdb-movie-1283515",
-   "url": "https://image.tmdb.org/t/p/original/cKetrF2dAnQ0AMV5i4BMOs41I5P.jpg",
-   "caption": "不存在的罪人 (2026)"
+   "id": "tmdb-movie-1294189",
+   "url": "https://image.tmdb.org/t/p/original/iRIhPqqoUHiFBxn8oYf3gCQnaKk.jpg",
+   "caption": "猫鼬 (2026)"
   },
   {
    "id": "20261031-242d9ded23355c54c0b733c1211d1586",
@@ -97,9 +107,9 @@
    "caption": "林间迷雾 — 黑森林，巴登-符腾堡州，德国 (© Britus/Getty Images)"
   },
   {
-   "id": "tmdb-movie-656908",
-   "url": "https://image.tmdb.org/t/p/original/6kViBlzPbDrE58dqEtwNF2DWqWZ.jpg",
-   "caption": "罗摩衍那：王子传奇 (2026)"
+   "id": "tmdb-tv-303044",
+   "url": "https://image.tmdb.org/t/p/original/yQHskBQhYsnxcoRsYHESSOUaRja.jpg",
+   "caption": "校园接送恋曲 (2026)"
   },
   {
    "id": "20261030-d50b635f82614ecfde8e234c0f6d0631",
@@ -107,19 +117,14 @@
    "caption": "往昔帝国的幽影 — 圣巴尔多禄茂教堂，法兰克福，德国 (© AlxeyPnferov/Getty Images)"
   },
   {
-   "id": "tmdb-tv-303044",
-   "url": "https://image.tmdb.org/t/p/original/yQHskBQhYsnxcoRsYHESSOUaRja.jpg",
-   "caption": "校园接送恋曲 (2026)"
+   "id": "tmdb-movie-1400837",
+   "url": "https://image.tmdb.org/t/p/original/ncm7djsVTHQQMX2HEbEVxMUFchG.jpg",
+   "caption": "另一个妈妈 (2026)"
   },
   {
    "id": "20261029-19f861c6ad7549bbc1fae0b28ba1d421",
    "url": "https://cn.bing.com/th?id=OHR.AutumnCranes_ZH-CN5772055404_UHD.jpg",
    "caption": "展翅高飞的时节 — 沙丘鹤，博斯克德尔阿帕奇国家野生动物保护区，新墨西哥州，美国 (© Terry St.Louis/Getty Images)"
-  },
-  {
-   "id": "tmdb-movie-1570488",
-   "url": "https://image.tmdb.org/t/p/original/6OOiqbY4Di0I6dNw0fyOBIxzK5k.jpg",
-   "caption": "狗狗的完美圣诞节 (2026)"
   },
   {
    "id": "20261028-8b7f035ee445c1ba73f3300ae54a3756",
@@ -130,11 +135,6 @@
    "id": "20261027-11b5bd9380c5434da5967379a03e1961",
    "url": "https://cn.bing.com/th?id=OHR.KuneticeCastle_ZH-CN8895858920_UHD.jpg",
    "caption": "历史守望之地 — 库涅季采山城堡，波希米亚，捷克 (© Marek Saroch/Alamy)"
-  },
-  {
-   "id": "20261026-bd1e1d7a297913000ce4600e3fa393b8",
-   "url": "https://cn.bing.com/th?id=OHR.PondCypress_ZH-CN9472607734_UHD.jpg",
-   "caption": "大自然的金色明镜 — 秋叶缤纷的池杉林，乔治亚州，美国 (© Chris Moore/Getty Images)"
   }
  ]
 }
