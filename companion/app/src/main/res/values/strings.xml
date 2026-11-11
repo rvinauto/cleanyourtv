@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CleanYourTV Companion</string>
+
+    <string name="main_intro">Connect to your TV over the same Wi-Fi, then manage its apps, trim it down, or install the CleanYourTV launcher. Nothing leaves your network.</string>
+    <string name="host_hint">TV address, e.g. 192.168.1.50</string>
+    <string name="port_default">5555</string>
+    <string name="port_hint">Port</string>
+    <string name="connect">Connect</string>
+    <string name="connecting">Connecting… Accept “Allow USB debugging” on the TV with its remote.</string>
+    <string name="connected">Connected: %1$s</string>
+    <string name="connect_failed">Could not connect: %1$s</string>
+    <string name="recent_tvs">Recent TVs</string>
+    <string name="no_recent">No TV yet. Turn on Network debugging on the TV (Settings → Device → About → tap Build number 7 times, then Network debugging).</string>
+    <string name="section_apps">Apps</string>
+    <string name="section_optimize">Optimize</string>
+    <string name="section_install">Install an APK</string>
+    <string name="section_screenshot">Screenshot</string>
+    <string name="status_not_connected">Connect to a TV first.</string>
+    <string name="port_invalid">Port must be between 1 and 65535.</string>
+    <string name="host_invalid">Enter the TV’s address, for example 192.168.1.50.</string>
+    <string name="adb_warning">Port 5555 is plain text and has no password. Keep it on your own network, and turn Network debugging off on the TV when you are done (see docs/REMOTE.md).</string>
+
+    <string name="apps_title">Apps</string>
+    <string name="apps_loading">Reading the app list…</string>
+    <string name="apps_loaded">%1$d apps</string>
+    <string name="apps_empty">No apps matched.</string>
+    <string name="apps_refresh">Refresh</string>
+    <string name="apps_third_party">Installed by you</string>
+    <string name="apps_system">System</string>
+    <string name="apps_disabled">disabled</string>
+    <string name="apps_core">core, protected</string>
+    <string name="apps_core_short">Protected</string>
+    <string name="apps_open">Open</string>
+    <string name="apps_disable">Disable</string>
+    <string name="apps_enable">Enable</string>
+    <string name="apps_stop">Force stop</string>
+    <string name="apps_confirm_disable_title">Disable %1$s?</string>
+    <string name="apps_confirm_disable_message">It stays installed and can be enabled again here. The TV may need a restart before the change shows everywhere.</string>
+    <string name="apps_disable_done">Disabled %1$s</string>
+    <string name="apps_enable_done">Enabled %1$s</string>
+    <string name="apps_stop_done">Stopped %1$s</string>
+    <string name="apps_no_launcher">No launchable activity found for %1$s.</string>
+    <string name="apps_failed">%1$s failed: %2$s</string>
+    <string name="apps_working">Working…</string>
+
+    <string name="optimize_title">Optimize</string>
+    <string name="optimize_intro">Paste a debloat list — one package per line, comments with #. Packages Android needs are skipped and never sent to the TV. The list of currently disabled packages is saved on this phone before the first change, and “Restore last backup” enables exactly those again.</string>
+    <string name="optimize_paste_hint">com.example.bloat\ncom.example.telemetry</string>
+    <string name="optimize_apply">Apply list</string>
+    <string name="optimize_restore">Restore last backup</string>
+    <string name="optimize_backup_note">Disable only. Nothing is uninstalled, and root is never used.</string>
+    <string name="optimize_confirm_title">Disable %1$d packages?</string>
+    <string name="optimize_confirm_message">The current disabled list is backed up first. Core Android packages are skipped.</string>
+    <string name="optimize_running">Disabling… %1$d of %2$d</string>
+    <string name="optimize_done">Done: %1$d disabled, %2$d skipped, %3$d failed.</string>
+    <string name="optimize_no_packages">No valid package names in that list.</string>
+    <string name="optimize_restored">Re-enabled %1$d packages from the last backup.</string>
+    <string name="optimize_nothing_to_restore">No backup on this phone yet.</string>
+    <string name="optimize_backup_failed">Could not read the disabled list; nothing was changed: %1$s</string>
+    <string name="optimize_working">Working…</string>
+
+    <string name="install_title">Install an APK</string>
+    <string name="install_intro">Pick an APK on this phone. It is copied to the TV and installed with “pm install -r”, which keeps the app’s data.</string>
+    <string name="install_pick">Choose an APK</string>
+    <string name="install_pick_launcher">Install the CleanYourTV launcher on the TV</string>
+    <string name="install_no_file">No file selected.</string>
+    <string name="install_not_apk">That file is not an .apk.</string>
+    <string name="install_selected">Selected: %1$s (%2$s)</string>
+    <string name="install_start">Install on the TV</string>
+    <string name="install_pushing">Copying to the TV…</string>
+    <string name="install_installing">Installing…</string>
+    <string name="install_done">Installed.</string>
+    <string name="install_failed">Install failed: %1$s</string>
+    <string name="install_launcher_hint">The launcher is installed but not yet Home. On the TV, open Settings → Apps → Default apps → Home, or run “cmd package set-home-activity” as described in the repository README.</string>
+    <string name="install_launcher_missing">The APK installed, but package com.gathin.tvhome was not found on the TV.</string>
+    <string name="install_working">Working…</string>
+
+    <string name="screenshot_title">Screenshot</string>
+    <string name="screenshot_intro">Takes a PNG on the TV and shows it here. Live TV and some streaming apps give a black frame; that is the TV, not a failure.</string>
+    <string name="screenshot_take">Take screenshot</string>
+    <string name="screenshot_taking">Taking screenshot…</string>
+    <string name="screenshot_failed">Screenshot failed: %1$s</string>
+
+</resources>

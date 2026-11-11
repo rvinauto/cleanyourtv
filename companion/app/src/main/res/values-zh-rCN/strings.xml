@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CleanYourTV 手机版</string>
+
+    <string name="main_intro">手机和电视连同一个 Wi-Fi，就能管理电视上的应用、精简系统，或把 CleanYourTV 桌面装到电视。数据不出你的局域网。</string>
+    <string name="host_hint">电视地址，例如 192.168.1.50</string>
+    <string name="port_default">5555</string>
+    <string name="port_hint">端口</string>
+    <string name="connect">连接</string>
+    <string name="connecting">正在连接……请在电视上用遥控器允许“USB 调试”。</string>
+    <string name="connected">已连接：%1$s</string>
+    <string name="connect_failed">连接失败：%1$s</string>
+    <string name="recent_tvs">最近的电视</string>
+    <string name="no_recent">还没有连接过。先在电视上打开网络调试：设置 → 关于 → 连点“版本号”7 次，再打开“网络调试”。</string>
+    <string name="section_apps">应用管理</string>
+    <string name="section_optimize">精简优化</string>
+    <string name="section_install">安装 APK</string>
+    <string name="section_screenshot">截图</string>
+    <string name="status_not_connected">请先连接电视。</string>
+    <string name="port_invalid">端口必须在 1 到 65535 之间。</string>
+    <string name="host_invalid">请填电视地址，例如 192.168.1.50。</string>
+    <string name="adb_warning">5555 端口是明文、无密码的。只在自己的局域网里用，用完在电视上关掉网络调试（见 docs/REMOTE.md）。</string>
+
+    <string name="apps_title">应用管理</string>
+    <string name="apps_loading">正在读取应用列表……</string>
+    <string name="apps_loaded">共 %1$d 个应用</string>
+    <string name="apps_empty">没有匹配的应用。</string>
+    <string name="apps_refresh">刷新</string>
+    <string name="apps_third_party">你安装的</string>
+    <string name="apps_system">系统</string>
+    <string name="apps_disabled">已停用</string>
+    <string name="apps_core">系统核心，受保护</string>
+    <string name="apps_core_short">受保护</string>
+    <string name="apps_open">打开</string>
+    <string name="apps_disable">停用</string>
+    <string name="apps_enable">启用</string>
+    <string name="apps_stop">强行停止</string>
+    <string name="apps_confirm_disable_title">停用 %1$s？</string>
+    <string name="apps_confirm_disable_message">应用仍留在电视上，可以在这里重新启用。部分界面可能要重启电视后才更新。</string>
+    <string name="apps_disable_done">已停用 %1$s</string>
+    <string name="apps_enable_done">已启用 %1$s</string>
+    <string name="apps_stop_done">已停止 %1$s</string>
+    <string name="apps_no_launcher">%1$s 没有可启动的界面。</string>
+    <string name="apps_failed">%1$s 失败：%2$s</string>
+    <string name="apps_working">处理中……</string>
+
+    <string name="optimize_title">精简优化</string>
+    <string name="optimize_intro">粘贴精简清单，每行一个包名，# 开头是注释。Android 必需的包会被跳过，不会发到电视。第一次改动前，当前已停用列表会备份到这台手机；“恢复上次备份”只启用备份里的包。</string>
+    <string name="optimize_paste_hint">com.example.bloat\ncom.example.telemetry</string>
+    <string name="optimize_apply">应用清单</string>
+    <string name="optimize_restore">恢复上次备份</string>
+    <string name="optimize_backup_note">只停用，不卸载，也不用 root。</string>
+    <string name="optimize_confirm_title">停用 %1$d 个包？</string>
+    <string name="optimize_confirm_message">会先备份当前已停用列表，并跳过 Android 核心包。</string>
+    <string name="optimize_running">正在停用……第 %1$d / %2$d 个</string>
+    <string name="optimize_done">完成：停用 %1$d 个，跳过 %2$d 个，失败 %3$d 个。</string>
+    <string name="optimize_no_packages">清单里没有合法的包名。</string>
+    <string name="optimize_restored">已从上次备份重新启用 %1$d 个包。</string>
+    <string name="optimize_nothing_to_restore">这台手机上还没有备份。</string>
+    <string name="optimize_backup_failed">读取已停用列表失败，没有做任何改动：%1$s</string>
+    <string name="optimize_working">处理中……</string>
+
+    <string name="install_title">安装 APK</string>
+    <string name="install_intro">选择这台手机上的 APK。它会先复制到电视，再用“pm install -r”安装，应用数据会保留。</string>
+    <string name="install_pick">选择 APK</string>
+    <string name="install_pick_launcher">把 CleanYourTV 桌面装到电视</string>
+    <string name="install_no_file">还没有选择文件。</string>
+    <string name="install_not_apk">这个文件不是 .apk。</string>
+    <string name="install_selected">已选择：%1$s（%2$s）</string>
+    <string name="install_start">安装到电视</string>
+    <string name="install_pushing">正在复制到电视……</string>
+    <string name="install_installing">正在安装……</string>
+    <string name="install_done">安装完成。</string>
+    <string name="install_failed">安装失败：%1$s</string>
+    <string name="install_launcher_hint">桌面已安装，但还不是默认 Home。在电视上打开 设置 → 应用 → 默认应用 → 主屏幕，或按仓库 README 运行“cmd package set-home-activity”。</string>
+    <string name="install_launcher_missing">APK 装上了，但电视上没找到 com.gathin.tvhome。</string>
+    <string name="install_working">处理中……</string>
+
+    <string name="screenshot_title">截图</string>
+    <string name="screenshot_intro">在电视上截一张 PNG 并显示在这里。直播电视和部分流媒体应用会返回黑屏，那是电视的限制，不是失败。</string>
+    <string name="screenshot_take">截图</string>
+    <string name="screenshot_taking">正在截图……</string>
+    <string name="screenshot_failed">截图失败：%1$s</string>
+
+</resources>
