@@ -2,13 +2,23 @@
  "version": 1,
  "wallpapers": [
   {
+   "id": "20261112-2a34b5b6572ba4df26d1368e9a64c61e",
+   "url": "https://cn.bing.com/th?id=OHR.AbrahamCanada_ZH-CN0344365912_UHD.jpg",
+   "caption": "冰下秘境 — 亚伯拉罕湖，艾伯塔省，加拿大 (© Guang Cao/Getty Images)"
+  },
+  {
+   "id": "tmdb-tv-84773",
+   "url": "https://image.tmdb.org/t/p/original/uVukvj5r9jEMva78IfaGWMNwGe.jpg",
+   "caption": "指环王：力量之戒 (2022)"
+  },
+  {
    "id": "20261111-4cd78b6a40ab0d146b30dc1d5e26cd6e",
    "url": "https://cn.bing.com/th?id=OHR.NorthWindow_ZH-CN6734579353_UHD.jpg",
    "caption": "没有建筑师的建筑杰作 — 北窗，拱门国家公园，莫阿布，犹他州，美国 (© lightphoto/Getty Images)"
   },
   {
    "id": "tmdb-movie-1423191",
-   "url": "https://image.tmdb.org/t/p/original/3icyRAqgakNcQn6aDVz9libFmBA.jpg",
+   "url": "https://image.tmdb.org/t/p/original/8R79AZjX1Bt4219Ub3CrRMsPQsW.jpg",
    "caption": "生化危机：爆发夜 (2026)"
   },
   {
@@ -28,7 +38,7 @@
   },
   {
    "id": "tmdb-movie-1368337",
-   "url": "https://image.tmdb.org/t/p/original/bulFtfy3oBQtCnAMSi7g6DSSds3.jpg",
+   "url": "https://image.tmdb.org/t/p/original/njbjSn2ihutJD1lNeM4jAmeDkG9.jpg",
    "caption": "奥德赛 (2026)"
   },
   {
@@ -37,9 +47,9 @@
    "caption": "艺术与韵律交汇之地 — 特里亚纳历史街区，塞维利亚，西班牙 (© Andrzej Rostek/Getty Images)"
   },
   {
-   "id": "tmdb-tv-213375",
-   "url": "https://image.tmdb.org/t/p/original/58v1KFe3rxvHrYM1hLH5ScpwqNR.jpg",
-   "caption": "幻视任务 (2026)"
+   "id": "tmdb-tv-247718",
+   "url": "https://image.tmdb.org/t/p/original/h0OC7ouop8YLwbAVfS3UUE2Lw4T.jpg",
+   "caption": "MobLand (2025)"
   },
   {
    "id": "20261107-8603d5f4458b499767e4c196511719c7",
@@ -47,9 +57,9 @@
    "caption": "光芒四射的节日 — 排灯节灯笼，孟买，马哈拉施特拉邦，印度 (© Dinodia Photo/Getty Images)"
   },
   {
-   "id": "tmdb-tv-247718",
-   "url": "https://image.tmdb.org/t/p/original/h0OC7ouop8YLwbAVfS3UUE2Lw4T.jpg",
-   "caption": "MobLand (2025)"
+   "id": "tmdb-movie-969681",
+   "url": "https://image.tmdb.org/t/p/original/subj7knTn4DeS6KS7qI66EQKe9i.jpg",
+   "caption": "蜘蛛侠：崭新之日 (2026)"
   },
   {
    "id": "20261106-8bd1a0a85b934a78ee8c90d2a6692a2b",
@@ -57,44 +67,14 @@
    "caption": "归来的草原巨兽 — 草原上的一头野牛，西奥多·罗斯福国家公园，北达科他州，美国 (© Tandem Stock/Adobe Stock)"
   },
   {
-   "id": "tmdb-movie-969681",
-   "url": "https://image.tmdb.org/t/p/original/subj7knTn4DeS6KS7qI66EQKe9i.jpg",
-   "caption": "蜘蛛侠：崭新之日 (2026)"
+   "id": "tmdb-tv-213375",
+   "url": "https://image.tmdb.org/t/p/original/58v1KFe3rxvHrYM1hLH5ScpwqNR.jpg",
+   "caption": "幻视任务 (2026)"
   },
   {
-   "id": "20261105-83e427360a433d9f9e12ebbb4317ff61",
+   "id": "20261105-abc84e4d26fc9e4a728cecaa0dc955e0",
    "url": "https://cn.bing.com/th?id=OHR.PipiwaiTrail_ZH-CN1811194311_UHD.jpg",
    "caption": "穿越毛伊岛的绿色隧道 — 竹林，皮皮维小径，哈莱亚卡拉国家公园，毛伊岛，夏威夷州，美国 (© MNStudio/Getty Images)"
-  },
-  {
-   "id": "tmdb-tv-37854",
-   "url": "https://image.tmdb.org/t/p/original/2rmK7mnchw9Xr3XdiTFSxTTLXqv.jpg",
-   "caption": "航海王 (1999)"
-  },
-  {
-   "id": "20261104-e764edbedb3e17b846cc1a31ea9fa5a8",
-   "url": "https://cn.bing.com/th?id=OHR.StileCrossing_ZH-CN9811465935_UHD.jpg",
-   "caption": "向山巅再迈一步 — 石墙边的木制翻越梯，黑岩，湖区，英格兰 (© Alex Treadway/Getty Images)"
-  },
-  {
-   "id": "tmdb-tv-84773",
-   "url": "https://image.tmdb.org/t/p/original/ukewRnKD05Si7DkED2tSKBTXeEd.jpg",
-   "caption": "指环王：力量之戒 (2022)"
-  },
-  {
-   "id": "20261103-92b10e60db48e67f8af937985ce75657",
-   "url": "https://cn.bing.com/th?id=OHR.AutumnChina_ZH-CN7665959692_UHD.jpg",
-   "caption": "泛舟如画秋林 — 五彩落羽杉间划船的人们，宣城，安徽省，中国 (© Jackal Pan/Getty Images)"
-  },
-  {
-   "id": "tmdb-tv-279246",
-   "url": "https://image.tmdb.org/t/p/original/fNcpHmuZLKoyhNMBEzdqzX8iIvg.jpg",
-   "caption": "再婚皇后 (2026)"
-  },
-  {
-   "id": "20261102-6bd5dfc358e5b75ec73225f8ebca75dd",
-   "url": "https://cn.bing.com/th?id=OHR.AlpineBraies_ZH-CN7307997866_UHD.jpg",
-   "caption": "群峰间的宁静 — 布莱埃斯湖，法内斯-塞内斯-布莱埃斯湖自然公园，多洛米蒂山脉，意大利 (© leonid_tit/Getty Images)"
   },
   {
    "id": "tmdb-movie-1400837",
@@ -102,9 +82,19 @@
    "caption": "另一个妈妈 (2026)"
   },
   {
-   "id": "20261101-c091713ae0083d7086be3f2e0dba0f90",
-   "url": "https://cn.bing.com/th?id=OHR.HudsonBear_ZH-CN6630706907_UHD.jpg",
-   "caption": "写在冰上的未来 — 北极熊和幼崽，哈得孙湾畔，马尼托巴省，加拿大 (© Danita Delimont/Adobe Stock)"
+   "id": "20261104-9b85a2876a7b20b24abe9549d8d38d9d",
+   "url": "https://cn.bing.com/th?id=OHR.StileCrossing_ZH-CN9811465935_UHD.jpg",
+   "caption": "向山巅再迈一步 — 石墙边的木制翻越梯，黑岩，湖区，英格兰 (© Alex Treadway/Getty Images)"
+  },
+  {
+   "id": "tmdb-tv-279246",
+   "url": "https://image.tmdb.org/t/p/original/fNcpHmuZLKoyhNMBEzdqzX8iIvg.jpg",
+   "caption": "再婚皇后 (2026)"
+  },
+  {
+   "id": "20261103-92b10e60db48e67f8af937985ce75657",
+   "url": "https://cn.bing.com/th?id=OHR.AutumnChina_ZH-CN7665959692_UHD.jpg",
+   "caption": "泛舟如画秋林 — 五彩落羽杉间划船的人们，宣城，安徽省，中国 (© Jackal Pan/Getty Images)"
   },
   {
    "id": "tmdb-movie-1381071",
@@ -112,14 +102,29 @@
    "caption": "哥斯拉-0.0 (2026)"
   },
   {
-   "id": "20261031-242d9ded23355c54c0b733c1211d1586",
-   "url": "https://cn.bing.com/th?id=OHR.SchwarzwaldAutumn_ZH-CN6323627599_UHD.jpg",
-   "caption": "林间迷雾 — 黑森林，巴登-符腾堡州，德国 (© Britus/Getty Images)"
+   "id": "20261102-6bd5dfc358e5b75ec73225f8ebca75dd",
+   "url": "https://cn.bing.com/th?id=OHR.AlpineBraies_ZH-CN7307997866_UHD.jpg",
+   "caption": "群峰间的宁静 — 布莱埃斯湖，法内斯-塞内斯-布莱埃斯湖自然公园，多洛米蒂山脉，意大利 (© leonid_tit/Getty Images)"
   },
   {
    "id": "tmdb-tv-303044",
    "url": "https://image.tmdb.org/t/p/original/yQHskBQhYsnxcoRsYHESSOUaRja.jpg",
    "caption": "校园接送恋曲 (2026)"
+  },
+  {
+   "id": "20261101-c091713ae0083d7086be3f2e0dba0f90",
+   "url": "https://cn.bing.com/th?id=OHR.HudsonBear_ZH-CN6630706907_UHD.jpg",
+   "caption": "写在冰上的未来 — 北极熊和幼崽，哈得孙湾畔，马尼托巴省，加拿大 (© Danita Delimont/Adobe Stock)"
+  },
+  {
+   "id": "tmdb-movie-656908",
+   "url": "https://image.tmdb.org/t/p/original/6kViBlzPbDrE58dqEtwNF2DWqWZ.jpg",
+   "caption": "罗摩衍那：王子传奇 (2026)"
+  },
+  {
+   "id": "20261031-242d9ded23355c54c0b733c1211d1586",
+   "url": "https://cn.bing.com/th?id=OHR.SchwarzwaldAutumn_ZH-CN6323627599_UHD.jpg",
+   "caption": "林间迷雾 — 黑森林，巴登-符腾堡州，德国 (© Britus/Getty Images)"
   },
   {
    "id": "20261030-d50b635f82614ecfde8e234c0f6d0631",
@@ -130,11 +135,6 @@
    "id": "20261029-19f861c6ad7549bbc1fae0b28ba1d421",
    "url": "https://cn.bing.com/th?id=OHR.AutumnCranes_ZH-CN5772055404_UHD.jpg",
    "caption": "展翅高飞的时节 — 沙丘鹤，博斯克德尔阿帕奇国家野生动物保护区，新墨西哥州，美国 (© Terry St.Louis/Getty Images)"
-  },
-  {
-   "id": "20261028-8b7f035ee445c1ba73f3300ae54a3756",
-   "url": "https://cn.bing.com/th?id=OHR.AveburyStones_ZH-CN9127100951_UHD.jpg",
-   "caption": "薄雾邂逅千年时光 — 立石，埃夫伯里，威尔特郡，英格兰 (© George W Johnson/Getty Images)"
   }
  ]
 }
