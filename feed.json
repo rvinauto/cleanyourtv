@@ -2,6 +2,11 @@
  "version": 1,
  "wallpapers": [
   {
+   "id": "20261113-1856b2d356971c95d3f11a4500ccb30d",
+   "url": "https://cn.bing.com/th?id=OHR.BlueHK_ZH-CN1382345392_UHD.jpg",
+   "caption": "唯有向上发展 — 中国香港维多利亚港 (© Juan Romero/Cavan Images)"
+  },
+  {
    "id": "20261112-2a34b5b6572ba4df26d1368e9a64c61e",
    "url": "https://cn.bing.com/th?id=OHR.AbrahamCanada_ZH-CN0344365912_UHD.jpg",
    "caption": "冰下秘境 — 亚伯拉罕湖，艾伯塔省，加拿大 (© Guang Cao/Getty Images)"
@@ -70,11 +75,6 @@
    "id": "20261030-d50b635f82614ecfde8e234c0f6d0631",
    "url": "https://cn.bing.com/th?id=OHR.FrankfurtHalloween_ZH-CN5998782698_UHD.jpg",
    "caption": "往昔帝国的幽影 — 圣巴尔多禄茂教堂，法兰克福，德国 (© AlxeyPnferov/Getty Images)"
-  },
-  {
-   "id": "20261029-19f861c6ad7549bbc1fae0b28ba1d421",
-   "url": "https://cn.bing.com/th?id=OHR.AutumnCranes_ZH-CN5772055404_UHD.jpg",
-   "caption": "展翅高飞的时节 — 沙丘鹤，博斯克德尔阿帕奇国家野生动物保护区，新墨西哥州，美国 (© Terry St.Louis/Getty Images)"
   }
  ]
 }
