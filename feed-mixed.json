@@ -2,14 +2,24 @@
  "version": 1,
  "wallpapers": [
   {
+   "id": "20261114-ec68aadb483bc1046ea041d7af239397",
+   "url": "https://cn.bing.com/th?id=OHR.FirstFrost_ZH-CN2219029557_UHD.jpg",
+   "caption": "霜染枝叶 — 覆霜的红叶杜鹃 (© avoferten/Shutterstock)"
+  },
+  {
+   "id": "tmdb-tv-84773",
+   "url": "https://image.tmdb.org/t/p/original/i1phX1JpaqSnHBBGta6LBFYVCZq.jpg",
+   "caption": "指环王：力量之戒 (2022)"
+  },
+  {
    "id": "20261113-1856b2d356971c95d3f11a4500ccb30d",
    "url": "https://cn.bing.com/th?id=OHR.BlueHK_ZH-CN1382345392_UHD.jpg",
    "caption": "唯有向上发展 — 中国香港维多利亚港 (© Juan Romero/Cavan Images)"
   },
   {
-   "id": "tmdb-tv-84773",
-   "url": "https://image.tmdb.org/t/p/original/uVukvj5r9jEMva78IfaGWMNwGe.jpg",
-   "caption": "指环王：力量之戒 (2022)"
+   "id": "tmdb-movie-1263337",
+   "url": "https://image.tmdb.org/t/p/original/yE766yhgg98tKwTKd8CyNvAtmn6.jpg",
+   "caption": "野兽之心 (2026)"
   },
   {
    "id": "20261112-2a34b5b6572ba4df26d1368e9a64c61e",
@@ -27,9 +37,9 @@
    "caption": "没有建筑师的建筑杰作 — 北窗，拱门国家公园，莫阿布，犹他州，美国 (© lightphoto/Getty Images)"
   },
   {
-   "id": "tmdb-movie-1263337",
-   "url": "https://image.tmdb.org/t/p/original/6uVRPFflyJpo8Cx872olmlGTWla.jpg",
-   "caption": "野兽之心 (2026)"
+   "id": "tmdb-movie-1368337",
+   "url": "https://image.tmdb.org/t/p/original/twiVn9oFXOVR0uoYgawyEBlnFu8.jpg",
+   "caption": "奥德赛 (2026)"
   },
   {
    "id": "20261110-2f8ec1b9756e84d222b20fd5fdf412b3",
@@ -37,9 +47,9 @@
    "caption": "奇妙纷呈的森林 — 大西洋森林，巴西 (© FG Trade/Getty Images)"
   },
   {
-   "id": "tmdb-movie-1368337",
-   "url": "https://image.tmdb.org/t/p/original/twiVn9oFXOVR0uoYgawyEBlnFu8.jpg",
-   "caption": "奥德赛 (2026)"
+   "id": "tmdb-tv-247718",
+   "url": "https://image.tmdb.org/t/p/original/h0OC7ouop8YLwbAVfS3UUE2Lw4T.jpg",
+   "caption": "MobLand (2025)"
   },
   {
    "id": "20261109-9999d3a3c7f78905711802f9717916f9",
@@ -47,9 +57,9 @@
    "caption": "惬意放松，尽享海岛时光 — 玫瑰岛航拍图，巴哈马 (© Abstract Aerial Art/Getty Images)"
   },
   {
-   "id": "tmdb-tv-247718",
-   "url": "https://image.tmdb.org/t/p/original/h0OC7ouop8YLwbAVfS3UUE2Lw4T.jpg",
-   "caption": "MobLand (2025)"
+   "id": "tmdb-movie-969681",
+   "url": "https://image.tmdb.org/t/p/original/4tjxYg2AbOzzG9G1YuiT2NzYhlH.jpg",
+   "caption": "蜘蛛侠：崭新之日 (2026)"
   },
   {
    "id": "20261108-59e5064fcb772d5d91242962833903f7",
@@ -57,9 +67,9 @@
    "caption": "艺术与韵律交汇之地 — 特里亚纳历史街区，塞维利亚，西班牙 (© Andrzej Rostek/Getty Images)"
   },
   {
-   "id": "tmdb-movie-969681",
-   "url": "https://image.tmdb.org/t/p/original/subj7knTn4DeS6KS7qI66EQKe9i.jpg",
-   "caption": "蜘蛛侠：崭新之日 (2026)"
+   "id": "tmdb-movie-1400837",
+   "url": "https://image.tmdb.org/t/p/original/ncm7djsVTHQQMX2HEbEVxMUFchG.jpg",
+   "caption": "另一个妈妈 (2026)"
   },
   {
    "id": "20261107-8603d5f4458b499767e4c196511719c7",
@@ -77,9 +87,9 @@
    "caption": "归来的草原巨兽 — 草原上的一头野牛，西奥多·罗斯福国家公园，北达科他州，美国 (© Tandem Stock/Adobe Stock)"
   },
   {
-   "id": "tmdb-movie-1400837",
-   "url": "https://image.tmdb.org/t/p/original/ncm7djsVTHQQMX2HEbEVxMUFchG.jpg",
-   "caption": "另一个妈妈 (2026)"
+   "id": "tmdb-tv-279246",
+   "url": "https://image.tmdb.org/t/p/original/fNcpHmuZLKoyhNMBEzdqzX8iIvg.jpg",
+   "caption": "再婚皇后 (2026)"
   },
   {
    "id": "20261105-abc84e4d26fc9e4a728cecaa0dc955e0",
@@ -87,9 +97,9 @@
    "caption": "穿越毛伊岛的绿色隧道 — 竹林，皮皮维小径，哈莱亚卡拉国家公园，毛伊岛，夏威夷州，美国 (© MNStudio/Getty Images)"
   },
   {
-   "id": "tmdb-tv-279246",
-   "url": "https://image.tmdb.org/t/p/original/fNcpHmuZLKoyhNMBEzdqzX8iIvg.jpg",
-   "caption": "再婚皇后 (2026)"
+   "id": "tmdb-movie-1381071",
+   "url": "https://image.tmdb.org/t/p/original/oqrYIDH4tvfEzPe1yqT4jzmAWHQ.jpg",
+   "caption": "哥斯拉-0.0 (2026)"
   },
   {
    "id": "20261104-9b85a2876a7b20b24abe9549d8d38d9d",
@@ -97,9 +107,9 @@
    "caption": "向山巅再迈一步 — 石墙边的木制翻越梯，黑岩，湖区，英格兰 (© Alex Treadway/Getty Images)"
   },
   {
-   "id": "tmdb-movie-1381071",
-   "url": "https://image.tmdb.org/t/p/original/oqrYIDH4tvfEzPe1yqT4jzmAWHQ.jpg",
-   "caption": "哥斯拉-0.0 (2026)"
+   "id": "tmdb-movie-1003596",
+   "url": "https://image.tmdb.org/t/p/original/rObL4of4eFA8yWaN9pRFo9aOVNi.jpg",
+   "caption": "复仇者联盟5：毁灭之日 (2026)"
   },
   {
    "id": "20261103-92b10e60db48e67f8af937985ce75657",
@@ -107,19 +117,14 @@
    "caption": "泛舟如画秋林 — 五彩落羽杉间划船的人们，宣城，安徽省，中国 (© Jackal Pan/Getty Images)"
   },
   {
-   "id": "tmdb-movie-1616687",
-   "url": "https://image.tmdb.org/t/p/original/hir35iIjs1FIzp7PrY1JK2Eg40n.jpg",
-   "caption": "绝境反击 (2026)"
+   "id": "tmdb-tv-254630",
+   "url": "https://image.tmdb.org/t/p/original/tjy25xpiFeo2gahl7N0hoxbRtG7.jpg",
+   "caption": "12 12 12 (2026)"
   },
   {
    "id": "20261102-6bd5dfc358e5b75ec73225f8ebca75dd",
    "url": "https://cn.bing.com/th?id=OHR.AlpineBraies_ZH-CN7307997866_UHD.jpg",
    "caption": "群峰间的宁静 — 布莱埃斯湖，法内斯-塞内斯-布莱埃斯湖自然公园，多洛米蒂山脉，意大利 (© leonid_tit/Getty Images)"
-  },
-  {
-   "id": "tmdb-tv-2190",
-   "url": "https://image.tmdb.org/t/p/original/3UviYOlhn8EgXMBuiT6MnUuo1w9.jpg",
-   "caption": "南方公园 (1997)"
   },
   {
    "id": "20261101-c091713ae0083d7086be3f2e0dba0f90",
@@ -130,11 +135,6 @@
    "id": "20261031-242d9ded23355c54c0b733c1211d1586",
    "url": "https://cn.bing.com/th?id=OHR.SchwarzwaldAutumn_ZH-CN6323627599_UHD.jpg",
    "caption": "林间迷雾 — 黑森林，巴登-符腾堡州，德国 (© Britus/Getty Images)"
-  },
-  {
-   "id": "20261030-d50b635f82614ecfde8e234c0f6d0631",
-   "url": "https://cn.bing.com/th?id=OHR.FrankfurtHalloween_ZH-CN5998782698_UHD.jpg",
-   "caption": "往昔帝国的幽影 — 圣巴尔多禄茂教堂，法兰克福，德国 (© AlxeyPnferov/Getty Images)"
   }
  ]
 }
