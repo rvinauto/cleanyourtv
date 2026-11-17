@@ -2,6 +2,11 @@
  "version": 1,
  "wallpapers": [
   {
+   "id": "20261116-3b8afb6796beb49fa4f34e5ed7c87a93",
+   "url": "https://cn.bing.com/th?id=OHR.TrailCedars_ZH-CN2670680285_UHD.jpg",
+   "caption": "走进广阔的大自然 — 雪松林步道，冰川国家公园，蒙大拿州，美国 (© DBushue Photography/Getty Images)"
+  },
+  {
    "id": "20261115-77e8d59b9dd7048a85e8166d528bc270",
    "url": "https://cn.bing.com/th?id=OHR.GilaCliff_ZH-CN2393001519_UHD.jpg",
    "caption": "历经岁月，屹立不倒 — 美国新墨西哥州吉拉悬崖民居国家纪念地 (© Chiara Salvadori/Getty Images)"
@@ -70,11 +75,6 @@
    "id": "20261102-6bd5dfc358e5b75ec73225f8ebca75dd",
    "url": "https://cn.bing.com/th?id=OHR.AlpineBraies_ZH-CN7307997866_UHD.jpg",
    "caption": "群峰间的宁静 — 布莱埃斯湖，法内斯-塞内斯-布莱埃斯湖自然公园，多洛米蒂山脉，意大利 (© leonid_tit/Getty Images)"
-  },
-  {
-   "id": "20261101-c091713ae0083d7086be3f2e0dba0f90",
-   "url": "https://cn.bing.com/th?id=OHR.HudsonBear_ZH-CN6630706907_UHD.jpg",
-   "caption": "写在冰上的未来 — 北极熊和幼崽，哈得孙湾畔，马尼托巴省，加拿大 (© Danita Delimont/Adobe Stock)"
   }
  ]
 }
