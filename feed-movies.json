@@ -33,13 +33,8 @@
   },
   {
    "id": "tmdb-movie-969681",
-   "url": "https://image.tmdb.org/t/p/original/subj7knTn4DeS6KS7qI66EQKe9i.jpg",
+   "url": "https://image.tmdb.org/t/p/original/r08LxMJCbf1SiJIWeyH9aJmdqwC.jpg",
    "caption": "蜘蛛侠：崭新之日 (2026)"
-  },
-  {
-   "id": "tmdb-tv-279246",
-   "url": "https://image.tmdb.org/t/p/original/fNcpHmuZLKoyhNMBEzdqzX8iIvg.jpg",
-   "caption": "再婚皇后 (2026)"
   },
   {
    "id": "tmdb-tv-153312",
@@ -47,14 +42,19 @@
    "caption": "塔尔萨之王 (2022)"
   },
   {
+   "id": "tmdb-tv-279246",
+   "url": "https://image.tmdb.org/t/p/original/fNcpHmuZLKoyhNMBEzdqzX8iIvg.jpg",
+   "caption": "再婚皇后 (2026)"
+  },
+  {
    "id": "tmdb-movie-1616687",
    "url": "https://image.tmdb.org/t/p/original/hir35iIjs1FIzp7PrY1JK2Eg40n.jpg",
    "caption": "绝境反击 (2026)"
   },
   {
-   "id": "tmdb-tv-213375",
-   "url": "https://image.tmdb.org/t/p/original/uoXXbN2PrOxH6UKyP7kYwmGpAAP.jpg",
-   "caption": "幻视任务 (2026)"
+   "id": "tmdb-movie-1300968",
+   "url": "https://image.tmdb.org/t/p/original/Ac56cVxw43dUY7rUIjadk0ro0xt.jpg",
+   "caption": "饥饿游戏：收获日出 (2026)"
   },
   {
    "id": "tmdb-tv-291507",
