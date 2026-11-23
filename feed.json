@@ -2,6 +2,11 @@
  "version": 1,
  "wallpapers": [
   {
+   "id": "20261122-8bcab12cbf53fd1c7b81ec7e9b34e20c",
+   "url": "https://cn.bing.com/th?id=OHR.FibonacciFern_ZH-CN3882237848_UHD.jpg",
+   "caption": "自然中的几何之美 — 蕨类植物的卷曲嫩叶 (© Reza Saputra/Getty Images)"
+  },
+  {
    "id": "20261121-e76c9c230746d4523a18ea94ad7b6872",
    "url": "https://cn.bing.com/th?id=OHR.JustaHermitage_ZH-CN3751022621_UHD.jpg",
    "caption": "海浪间的庇护所 — 西班牙坎塔布里亚自治区的圣胡斯塔隐修院与小教堂 (© Tramont_ana/Getty Images)"
@@ -70,11 +75,6 @@
    "id": "20261108-59e5064fcb772d5d91242962833903f7",
    "url": "https://cn.bing.com/th?id=OHR.TrianaSpain_ZH-CN6329291776_UHD.jpg",
    "caption": "艺术与韵律交汇之地 — 特里亚纳历史街区，塞维利亚，西班牙 (© Andrzej Rostek/Getty Images)"
-  },
-  {
-   "id": "20261107-8603d5f4458b499767e4c196511719c7",
-   "url": "https://cn.bing.com/th?id=OHR.DiwaliLamps_ZH-CN2462894749_UHD.jpg",
-   "caption": "光芒四射的节日 — 排灯节灯笼，孟买，马哈拉施特拉邦，印度 (© Dinodia Photo/Getty Images)"
   }
  ]
 }

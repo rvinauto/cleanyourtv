@@ -8,7 +8,7 @@
   },
   {
    "id": "tmdb-movie-1368337",
-   "url": "https://image.tmdb.org/t/p/original/dZI4Ek4qc2Fib2G1zFkGhKKuc6j.jpg",
+   "url": "https://image.tmdb.org/t/p/original/c7btGYblBnfAaw713WvFM0Kimc7.jpg",
    "caption": "奥德赛 (2026)"
   },
   {
@@ -32,13 +32,18 @@
    "caption": "另一个妈妈 (2026)"
   },
   {
+   "id": "tmdb-tv-37854",
+   "url": "https://image.tmdb.org/t/p/original/2rmK7mnchw9Xr3XdiTFSxTTLXqv.jpg",
+   "caption": "航海王 (1999)"
+  },
+  {
    "id": "tmdb-tv-153312",
    "url": "https://image.tmdb.org/t/p/original/mNHRGO1gFpR2CYZdANe72kcKq7G.jpg",
    "caption": "塔尔萨之王 (2022)"
   },
   {
    "id": "tmdb-movie-969681",
-   "url": "https://image.tmdb.org/t/p/original/r08LxMJCbf1SiJIWeyH9aJmdqwC.jpg",
+   "url": "https://image.tmdb.org/t/p/original/subj7knTn4DeS6KS7qI66EQKe9i.jpg",
    "caption": "蜘蛛侠：崭新之日 (2026)"
   },
   {
@@ -52,14 +57,9 @@
    "caption": "再婚皇后 (2026)"
   },
   {
-   "id": "tmdb-movie-1616687",
-   "url": "https://image.tmdb.org/t/p/original/hir35iIjs1FIzp7PrY1JK2Eg40n.jpg",
-   "caption": "绝境反击 (2026)"
-  },
-  {
-   "id": "tmdb-tv-291507",
-   "url": "https://image.tmdb.org/t/p/original/cr5cwJzkm8nwiZLbXUb3ti0e40X.jpg",
-   "caption": "青春共体 (2026)"
+   "id": "tmdb-movie-1551025",
+   "url": "https://image.tmdb.org/t/p/original/7s1ysyCATVEiDGLCRLWuC74U7K9.jpg",
+   "caption": "守护你，遇见爱 (2026)"
   }
  ]
 }
