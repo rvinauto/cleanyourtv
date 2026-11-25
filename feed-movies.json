@@ -22,29 +22,19 @@
    "caption": "饥饿游戏：收获日出 (2026)"
   },
   {
-   "id": "tmdb-tv-37854",
-   "url": "https://image.tmdb.org/t/p/original/2rmK7mnchw9Xr3XdiTFSxTTLXqv.jpg",
-   "caption": "航海王 (1999)"
-  },
-  {
    "id": "tmdb-movie-969681",
-   "url": "https://image.tmdb.org/t/p/original/subj7knTn4DeS6KS7qI66EQKe9i.jpg",
+   "url": "https://image.tmdb.org/t/p/original/r08LxMJCbf1SiJIWeyH9aJmdqwC.jpg",
    "caption": "蜘蛛侠：崭新之日 (2026)"
   },
   {
-   "id": "tmdb-movie-1423191",
-   "url": "https://image.tmdb.org/t/p/original/3icyRAqgakNcQn6aDVz9libFmBA.jpg",
-   "caption": "生化危机：爆发夜 (2026)"
+   "id": "tmdb-movie-1003596",
+   "url": "https://image.tmdb.org/t/p/original/rObL4of4eFA8yWaN9pRFo9aOVNi.jpg",
+   "caption": "复仇者联盟5 (2026)"
   },
   {
    "id": "tmdb-tv-279246",
    "url": "https://image.tmdb.org/t/p/original/fNcpHmuZLKoyhNMBEzdqzX8iIvg.jpg",
    "caption": "再婚皇后 (2026)"
-  },
-  {
-   "id": "tmdb-movie-1003596",
-   "url": "https://image.tmdb.org/t/p/original/tXNt66khUBZcusc22INKCeGRr4l.jpg",
-   "caption": "复仇者联盟5 (2026)"
   },
   {
    "id": "tmdb-movie-1551025",
@@ -57,9 +47,19 @@
    "caption": "青春共体 (2026)"
   },
   {
-   "id": "tmdb-tv-213375",
-   "url": "https://image.tmdb.org/t/p/original/uoXXbN2PrOxH6UKyP7kYwmGpAAP.jpg",
-   "caption": "幻视任务 (2026)"
+   "id": "tmdb-tv-85077",
+   "url": "https://image.tmdb.org/t/p/original/2YQFwn9aF7huTFHxn9lFTAn14F.jpg",
+   "caption": "拣选 (2019)"
+  },
+  {
+   "id": "tmdb-movie-1595124",
+   "url": "https://image.tmdb.org/t/p/original/27IITQqpqXAGRWeeNtRWoPW0Xxn.jpg",
+   "caption": "童话继姊妹 (2026)"
+  },
+  {
+   "id": "tmdb-tv-303745",
+   "url": "https://image.tmdb.org/t/p/original/ob7m6JqZ7jSOocR3VL73VxRC6Is.jpg",
+   "caption": "我的有罪之人 (2026)"
   }
  ]
 }

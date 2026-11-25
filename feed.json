@@ -2,6 +2,11 @@
  "version": 1,
  "wallpapers": [
   {
+   "id": "20261124-0fde8be729d820a01149c059f0b16a26",
+   "url": "https://cn.bing.com/th?id=OHR.SunsetPoint_ZH-CN5737034685_UHD.jpg",
+   "caption": "美国西南部的一场雪 — 日落观景点，布莱斯峡谷国家公园，犹他州 (© Colin D. Young/Alamy)"
+  },
+  {
    "id": "20261123-f61be471a0e42e7718b05ee7817a4ef7",
    "url": "https://cn.bing.com/th?id=OHR.CairngormsSquirrel_ZH-CN0941302869_UHD.jpg",
    "caption": "秋日的保护色 — 红松鼠，凯恩戈姆斯国家公园，苏格兰高地 (© Scotland: The Big Picture/Minden Pictures)"
@@ -70,11 +75,6 @@
    "id": "20261110-2f8ec1b9756e84d222b20fd5fdf412b3",
    "url": "https://cn.bing.com/th?id=OHR.Atlantica_ZH-CN6593995386_UHD.jpg",
    "caption": "奇妙纷呈的森林 — 大西洋森林，巴西 (© FG Trade/Getty Images)"
-  },
-  {
-   "id": "20261109-9999d3a3c7f78905711802f9717916f9",
-   "url": "https://cn.bing.com/th?id=OHR.RoseIsland_ZH-CN6477140814_UHD.jpg",
-   "caption": "惬意放松，尽享海岛时光 — 玫瑰岛航拍图，巴哈马 (© Abstract Aerial Art/Getty Images)"
   }
  ]
 }
