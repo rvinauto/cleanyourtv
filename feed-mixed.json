@@ -2,6 +2,16 @@
  "version": 1,
  "wallpapers": [
   {
+   "id": "20261125-f8c04b2a00aa14c262abbfe7827c039b",
+   "url": "https://cn.bing.com/th?id=OHR.RFHilo_ZH-CN5962114314_UHD.jpg",
+   "caption": "彩虹落下的地方 — 怀卢库河上的彩虹瀑布，希洛市，夏威夷州，美国 (© Peter Unger/Getty Images)"
+  },
+  {
+   "id": "tmdb-tv-247718",
+   "url": "https://image.tmdb.org/t/p/original/h0OC7ouop8YLwbAVfS3UUE2Lw4T.jpg",
+   "caption": "MobLand (2025)"
+  },
+  {
    "id": "20261124-0fde8be729d820a01149c059f0b16a26",
    "url": "https://cn.bing.com/th?id=OHR.SunsetPoint_ZH-CN5737034685_UHD.jpg",
    "caption": "美国西南部的一场雪 — 日落观景点，布莱斯峡谷国家公园，犹他州 (© Colin D. Young/Alamy)"
@@ -17,9 +27,9 @@
    "caption": "秋日的保护色 — 红松鼠，凯恩戈姆斯国家公园，苏格兰高地 (© Scotland: The Big Picture/Minden Pictures)"
   },
   {
-   "id": "tmdb-tv-247718",
-   "url": "https://image.tmdb.org/t/p/original/h0OC7ouop8YLwbAVfS3UUE2Lw4T.jpg",
-   "caption": "MobLand (2025)"
+   "id": "tmdb-movie-1368337",
+   "url": "https://image.tmdb.org/t/p/original/c7btGYblBnfAaw713WvFM0Kimc7.jpg",
+   "caption": "奥德赛 (2026)"
   },
   {
    "id": "20261122-8bcab12cbf53fd1c7b81ec7e9b34e20c",
@@ -27,9 +37,9 @@
    "caption": "自然中的几何之美 — 蕨类植物的卷曲嫩叶 (© Reza Saputra/Getty Images)"
   },
   {
-   "id": "tmdb-movie-1368337",
-   "url": "https://image.tmdb.org/t/p/original/c7btGYblBnfAaw713WvFM0Kimc7.jpg",
-   "caption": "奥德赛 (2026)"
+   "id": "tmdb-movie-1300968",
+   "url": "https://image.tmdb.org/t/p/original/Ac56cVxw43dUY7rUIjadk0ro0xt.jpg",
+   "caption": "饥饿游戏：收获日出 (2026)"
   },
   {
    "id": "20261121-e76c9c230746d4523a18ea94ad7b6872",
@@ -37,9 +47,9 @@
    "caption": "海浪间的庇护所 — 西班牙坎塔布里亚自治区的圣胡斯塔隐修院与小教堂 (© Tramont_ana/Getty Images)"
   },
   {
-   "id": "tmdb-movie-1300968",
-   "url": "https://image.tmdb.org/t/p/original/Ac56cVxw43dUY7rUIjadk0ro0xt.jpg",
-   "caption": "饥饿游戏：收获日出 (2026)"
+   "id": "tmdb-movie-969681",
+   "url": "https://image.tmdb.org/t/p/original/r08LxMJCbf1SiJIWeyH9aJmdqwC.jpg",
+   "caption": "蜘蛛侠：崭新之日 (2026)"
   },
   {
    "id": "20261120-0dbe86a1eee8d9db8080a64b54dec647",
@@ -47,9 +57,9 @@
    "caption": "陶瓦屋顶下的梦 — 法国普罗旺斯-阿尔卑斯-蔚蓝海岸大区尼斯 (© Siripong Kaewla-iad/Getty Images)"
   },
   {
-   "id": "tmdb-movie-969681",
-   "url": "https://image.tmdb.org/t/p/original/r08LxMJCbf1SiJIWeyH9aJmdqwC.jpg",
-   "caption": "蜘蛛侠：崭新之日 (2026)"
+   "id": "tmdb-tv-279246",
+   "url": "https://image.tmdb.org/t/p/original/fNcpHmuZLKoyhNMBEzdqzX8iIvg.jpg",
+   "caption": "再婚皇后 (2026)"
   },
   {
    "id": "20261119-fe8250db00606968c8404f967f5a8b4a",
@@ -67,9 +77,9 @@
    "caption": "思想在此成形 — 雕塑《知识之躯》，由豪梅·普兰萨创作，位于德国法兰克福的法兰克福歌德大学 (© Todamo/Shutterstock)"
   },
   {
-   "id": "tmdb-tv-279246",
-   "url": "https://image.tmdb.org/t/p/original/fNcpHmuZLKoyhNMBEzdqzX8iIvg.jpg",
-   "caption": "再婚皇后 (2026)"
+   "id": "tmdb-tv-171802",
+   "url": "https://image.tmdb.org/t/p/original/7UAUa3qQBtm7Z07d2BwiBPGBGbe.jpg",
+   "caption": "Blade Runner 2099 (2026)"
   },
   {
    "id": "20261117-12b362ab9443bdc239f76afb2e1df543",
@@ -97,9 +107,9 @@
    "caption": "历经岁月，屹立不倒 — 美国新墨西哥州吉拉悬崖民居国家纪念地 (© Chiara Salvadori/Getty Images)"
   },
   {
-   "id": "tmdb-tv-85077",
-   "url": "https://image.tmdb.org/t/p/original/2YQFwn9aF7huTFHxn9lFTAn14F.jpg",
-   "caption": "拣选 (2019)"
+   "id": "tmdb-movie-1595124",
+   "url": "https://image.tmdb.org/t/p/original/27IITQqpqXAGRWeeNtRWoPW0Xxn.jpg",
+   "caption": "童话继姊妹 (2026)"
   },
   {
    "id": "20261114-ec68aadb483bc1046ea041d7af239397",
@@ -107,19 +117,14 @@
    "caption": "霜染枝叶 — 覆霜的红叶杜鹃 (© avoferten/Shutterstock)"
   },
   {
-   "id": "tmdb-movie-1595124",
-   "url": "https://image.tmdb.org/t/p/original/27IITQqpqXAGRWeeNtRWoPW0Xxn.jpg",
-   "caption": "童话继姊妹 (2026)"
+   "id": "tmdb-tv-303745",
+   "url": "https://image.tmdb.org/t/p/original/ob7m6JqZ7jSOocR3VL73VxRC6Is.jpg",
+   "caption": "我的有罪之人 (2026)"
   },
   {
    "id": "20261113-1856b2d356971c95d3f11a4500ccb30d",
    "url": "https://cn.bing.com/th?id=OHR.BlueHK_ZH-CN1382345392_UHD.jpg",
    "caption": "唯有向上发展 — 中国香港维多利亚港 (© Juan Romero/Cavan Images)"
-  },
-  {
-   "id": "tmdb-tv-303745",
-   "url": "https://image.tmdb.org/t/p/original/ob7m6JqZ7jSOocR3VL73VxRC6Is.jpg",
-   "caption": "我的有罪之人 (2026)"
   },
   {
    "id": "20261112-2a34b5b6572ba4df26d1368e9a64c61e",
@@ -130,11 +135,6 @@
    "id": "20261111-4cd78b6a40ab0d146b30dc1d5e26cd6e",
    "url": "https://cn.bing.com/th?id=OHR.NorthWindow_ZH-CN6734579353_UHD.jpg",
    "caption": "没有建筑师的建筑杰作 — 北窗，拱门国家公园，莫阿布，犹他州，美国 (© lightphoto/Getty Images)"
-  },
-  {
-   "id": "20261110-2f8ec1b9756e84d222b20fd5fdf412b3",
-   "url": "https://cn.bing.com/th?id=OHR.Atlantica_ZH-CN6593995386_UHD.jpg",
-   "caption": "奇妙纷呈的森林 — 大西洋森林，巴西 (© FG Trade/Getty Images)"
   }
  ]
 }

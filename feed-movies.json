@@ -2,14 +2,14 @@
  "version": 1,
  "wallpapers": [
   {
-   "id": "tmdb-tv-84773",
-   "url": "https://image.tmdb.org/t/p/original/i1phX1JpaqSnHBBGta6LBFYVCZq.jpg",
-   "caption": "指环王：力量之戒 (2022)"
-  },
-  {
    "id": "tmdb-tv-247718",
    "url": "https://image.tmdb.org/t/p/original/h0OC7ouop8YLwbAVfS3UUE2Lw4T.jpg",
    "caption": "MobLand (2025)"
+  },
+  {
+   "id": "tmdb-tv-84773",
+   "url": "https://image.tmdb.org/t/p/original/i1phX1JpaqSnHBBGta6LBFYVCZq.jpg",
+   "caption": "指环王：力量之戒 (2022)"
   },
   {
    "id": "tmdb-movie-1368337",
@@ -27,14 +27,19 @@
    "caption": "蜘蛛侠：崭新之日 (2026)"
   },
   {
+   "id": "tmdb-tv-279246",
+   "url": "https://image.tmdb.org/t/p/original/fNcpHmuZLKoyhNMBEzdqzX8iIvg.jpg",
+   "caption": "再婚皇后 (2026)"
+  },
+  {
    "id": "tmdb-movie-1003596",
    "url": "https://image.tmdb.org/t/p/original/rObL4of4eFA8yWaN9pRFo9aOVNi.jpg",
    "caption": "复仇者联盟5 (2026)"
   },
   {
-   "id": "tmdb-tv-279246",
-   "url": "https://image.tmdb.org/t/p/original/fNcpHmuZLKoyhNMBEzdqzX8iIvg.jpg",
-   "caption": "再婚皇后 (2026)"
+   "id": "tmdb-tv-171802",
+   "url": "https://image.tmdb.org/t/p/original/7UAUa3qQBtm7Z07d2BwiBPGBGbe.jpg",
+   "caption": "Blade Runner 2099 (2026)"
   },
   {
    "id": "tmdb-movie-1551025",
@@ -45,11 +50,6 @@
    "id": "tmdb-tv-291507",
    "url": "https://image.tmdb.org/t/p/original/cr5cwJzkm8nwiZLbXUb3ti0e40X.jpg",
    "caption": "青春共体 (2026)"
-  },
-  {
-   "id": "tmdb-tv-85077",
-   "url": "https://image.tmdb.org/t/p/original/2YQFwn9aF7huTFHxn9lFTAn14F.jpg",
-   "caption": "拣选 (2019)"
   },
   {
    "id": "tmdb-movie-1595124",

@@ -2,6 +2,11 @@
  "version": 1,
  "wallpapers": [
   {
+   "id": "20261125-f8c04b2a00aa14c262abbfe7827c039b",
+   "url": "https://cn.bing.com/th?id=OHR.RFHilo_ZH-CN5962114314_UHD.jpg",
+   "caption": "彩虹落下的地方 — 怀卢库河上的彩虹瀑布，希洛市，夏威夷州，美国 (© Peter Unger/Getty Images)"
+  },
+  {
    "id": "20261124-0fde8be729d820a01149c059f0b16a26",
    "url": "https://cn.bing.com/th?id=OHR.SunsetPoint_ZH-CN5737034685_UHD.jpg",
    "caption": "美国西南部的一场雪 — 日落观景点，布莱斯峡谷国家公园，犹他州 (© Colin D. Young/Alamy)"
@@ -70,11 +75,6 @@
    "id": "20261111-4cd78b6a40ab0d146b30dc1d5e26cd6e",
    "url": "https://cn.bing.com/th?id=OHR.NorthWindow_ZH-CN6734579353_UHD.jpg",
    "caption": "没有建筑师的建筑杰作 — 北窗，拱门国家公园，莫阿布，犹他州，美国 (© lightphoto/Getty Images)"
-  },
-  {
-   "id": "20261110-2f8ec1b9756e84d222b20fd5fdf412b3",
-   "url": "https://cn.bing.com/th?id=OHR.Atlantica_ZH-CN6593995386_UHD.jpg",
-   "caption": "奇妙纷呈的森林 — 大西洋森林，巴西 (© FG Trade/Getty Images)"
   }
  ]
 }
