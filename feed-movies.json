@@ -2,19 +2,14 @@
  "version": 1,
  "wallpapers": [
   {
-   "id": "tmdb-tv-247718",
-   "url": "https://image.tmdb.org/t/p/original/h0OC7ouop8YLwbAVfS3UUE2Lw4T.jpg",
-   "caption": "MobLand (2025)"
-  },
-  {
    "id": "tmdb-tv-84773",
    "url": "https://image.tmdb.org/t/p/original/i1phX1JpaqSnHBBGta6LBFYVCZq.jpg",
    "caption": "指环王：力量之戒 (2022)"
   },
   {
-   "id": "tmdb-movie-1368337",
-   "url": "https://image.tmdb.org/t/p/original/c7btGYblBnfAaw713WvFM0Kimc7.jpg",
-   "caption": "奥德赛 (2026)"
+   "id": "tmdb-tv-247718",
+   "url": "https://image.tmdb.org/t/p/original/h0OC7ouop8YLwbAVfS3UUE2Lw4T.jpg",
+   "caption": "MobLand (2025)"
   },
   {
    "id": "tmdb-movie-1300968",
@@ -22,14 +17,19 @@
    "caption": "饥饿游戏：收获日出 (2026)"
   },
   {
+   "id": "tmdb-movie-1368337",
+   "url": "https://image.tmdb.org/t/p/original/c7btGYblBnfAaw713WvFM0Kimc7.jpg",
+   "caption": "奥德赛 (2026)"
+  },
+  {
    "id": "tmdb-movie-969681",
    "url": "https://image.tmdb.org/t/p/original/r08LxMJCbf1SiJIWeyH9aJmdqwC.jpg",
    "caption": "蜘蛛侠：崭新之日 (2026)"
   },
   {
-   "id": "tmdb-tv-37854",
-   "url": "https://image.tmdb.org/t/p/original/2rmK7mnchw9Xr3XdiTFSxTTLXqv.jpg",
-   "caption": "航海王 (1999)"
+   "id": "tmdb-tv-153312",
+   "url": "https://image.tmdb.org/t/p/original/v1d3baYqMfyQKxBHXu5Pmu6vTZ3.jpg",
+   "caption": "塔尔萨之王 (2022)"
   },
   {
    "id": "tmdb-movie-1003596",
@@ -37,19 +37,19 @@
    "caption": "复仇者联盟5 (2026)"
   },
   {
+   "id": "tmdb-tv-171802",
+   "url": "https://image.tmdb.org/t/p/original/uOlIq21Rx0Sl7y39b1znTfQYGb7.jpg",
+   "caption": "Blade Runner 2099 (2026)"
+  },
+  {
    "id": "tmdb-tv-279246",
    "url": "https://image.tmdb.org/t/p/original/fNcpHmuZLKoyhNMBEzdqzX8iIvg.jpg",
    "caption": "再婚皇后 (2026)"
   },
   {
-   "id": "tmdb-tv-171802",
-   "url": "https://image.tmdb.org/t/p/original/7UAUa3qQBtm7Z07d2BwiBPGBGbe.jpg",
-   "caption": "Blade Runner 2099 (2026)"
-  },
-  {
-   "id": "tmdb-tv-291507",
-   "url": "https://image.tmdb.org/t/p/original/cr5cwJzkm8nwiZLbXUb3ti0e40X.jpg",
-   "caption": "青春共体 (2026)"
+   "id": "tmdb-movie-1153576",
+   "url": "https://image.tmdb.org/t/p/original/9vNW8ysMKIbefbEQOFEZIKpMqwZ.jpg",
+   "caption": "街头霸王 (2026)"
   },
   {
    "id": "tmdb-movie-1595124",
@@ -57,9 +57,9 @@
    "caption": "童话继姐妹 (2026)"
   },
   {
-   "id": "tmdb-tv-103540",
-   "url": "https://image.tmdb.org/t/p/original/dLIKNqBi9L1cVbwuniXkaNOsIXg.jpg",
-   "caption": "Percy Jackson and the Olympians (2023)"
+   "id": "tmdb-movie-1765072",
+   "url": "https://image.tmdb.org/t/p/original/rrbbzCyS45yooXpUGJatfptlHYI.jpg",
+   "caption": "一切如你所见 (2026)"
   }
  ]
 }
